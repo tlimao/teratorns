@@ -12,7 +12,6 @@ public abstract class GameObject {
 	protected Vector2 position;
 	protected Vector2 velocity;
 	protected Vector2 acceleration;
-	protected Vector2 center;
 	protected float width;
 	protected float height;
 	protected float rotation;
@@ -25,7 +24,6 @@ public abstract class GameObject {
 		position = new Vector2(x, y);
 		velocity = new Vector2(0, 0);
 		acceleration = new Vector2(0, 0);
-		center = new Vector2(x + width / 2, y + height / 2);
 		
 		interactor = new Interactor(this, width, height);
 	}
@@ -33,14 +31,13 @@ public abstract class GameObject {
 	public class Interactor {
 		
 		private Rectangle interactionRect;
+		private Vector2 offset;
 		private GameObject parent;
 		
 		public Interactor(GameObject gameObject, float width, float height) {
 			parent = gameObject;
-			interactionRect = new Rectangle();
-			interactionRect.setCenter(center);
-			interactionRect.width = width;
-			interactionRect.height = height;
+			offset = new Vector2(0, 0);
+			interactionRect = new Rectangle(position.x, position.y, width, height);
 		}
 		
 		public GameObject getParent() {
@@ -54,10 +51,14 @@ public abstract class GameObject {
 		public void setSize(float width, float height) {
 			interactionRect.width = width;
 			interactionRect.height = height;
+			
+			offset.set(parent.width - width, parent.height - height);
+			
+			interactionRect.setPosition(position.cpy().add(offset));
 		}
 		
 		public void updatePosition() {
-			interactionRect.setCenter(center);
+			interactionRect.setPosition(position.cpy().add(offset));
 		}
 	}
 	
@@ -67,13 +68,11 @@ public abstract class GameObject {
 	
 	public void setPosition(float x, float y) {
 		position.set(x, y);
-		center.set(x + width / 2, y + height / 2);
 		interactor.updatePosition();
 	}
 	
 	public void setPosition(Vector2 pos) {
 		position.set(pos);
-		center.set(pos.x + width / 2, pos.y + height / 2);
 		interactor.updatePosition();
 	}
 	
@@ -99,22 +98,6 @@ public abstract class GameObject {
 	
 	public void setAcceleration(Vector2 acc) {
 		acceleration.set(acc);
-	}
-	
-	public Vector2 getCenter() {
-		return center.cpy();
-	}
-	
-	public void setCenter(float x, float y) {
-		center.set(x, y);
-		position.set(x - width / 2, y - height / 2);
-		interactor.updatePosition();
-	}
-	
-	public void setCenter(Vector2 pos) {
-		center.set(pos);
-		position.set(pos.x - width / 2, pos.y - height / 2);
-		interactor.updatePosition();
 	}
 	
 	public float getRotation() {

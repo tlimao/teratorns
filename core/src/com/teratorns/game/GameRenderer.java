@@ -9,7 +9,7 @@ import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.teratorns.helpers.CameraHelper;
 import com.teratorns.utils.Constants;
 import com.teratorns.view.View;
-import com.teratorns.view.ViewArray;
+import com.teratorns.view.ViewManager;
 
 public class GameRenderer {
 	
@@ -42,7 +42,7 @@ public class GameRenderer {
 		Gdx.gl.glClearColor(0, 0, 0, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		
-		for (View v : ViewArray.instance.views) {
+		for (View v : ViewManager.instance.views) {
 			v.draw(runtime);
 		}
 	}

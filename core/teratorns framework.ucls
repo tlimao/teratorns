@@ -64,8 +64,8 @@
       <operations public="false" package="false" protected="false" private="false" static="true"/>    
     </display>  
   </class>  
-  <class id="8" language="java" name="com.teratorns.view.ViewArray" project="teratorns-core" 
-    file="/teratorns-core/src/com/teratorns/view/ViewArray.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="8" language="java" name="com.teratorns.view.ViewManager" project="teratorns-core" 
+    file="/teratorns-core/src/com/teratorns/view/ViewManager.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="832" y="382"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
       visibility="true">      

@@ -7,11 +7,9 @@ import com.teratorns.game.GameLogic;
 import com.teratorns.game.GameOptions;
 import com.teratorns.game.GameRenderer;
 import com.teratorns.game.GameWorld;
-import com.teratorns.game.views.WorldView;
 import com.teratorns.helpers.InputHelper;
 import com.teratorns.helpers.InteractionHelper;
 import com.teratorns.helpers.PlayerHelper;
-import com.teratorns.view.ViewManager;
 
 public class GameScreen implements Screen {
 	
@@ -21,7 +19,6 @@ public class GameScreen implements Screen {
 	public GameScreen() {
 		gameWorld = new GameWorld();
 		gameLogic = new GameLogic(gameWorld);
-		ViewManager.instance.addView(new WorldView(gameWorld));
 		
 		PlayerHelper playerHelper = new PlayerHelper();
 		GameOptions gameOptions = new GameOptions();

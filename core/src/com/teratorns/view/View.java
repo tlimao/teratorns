@@ -1,7 +1,6 @@
 package com.teratorns.view;
 
 import com.badlogic.gdx.utils.Array;
-import com.teratorns.game.GameClock;
 
 public abstract class View {
 	

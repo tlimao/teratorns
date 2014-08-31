@@ -2,6 +2,7 @@ package com.teratorns.screens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.teratorns.game.GameClock;
 import com.teratorns.game.GameLogic;
 import com.teratorns.game.GameOptions;
 import com.teratorns.game.GameRenderer;
@@ -28,11 +29,14 @@ public class GameScreen implements Screen {
 
 	@Override
 	public void render(float delta) {
+		// Update GameClock
+		GameClock.instance.incrementTime(delta);
+		
 		// Apply Logic to game world
-		gameLogic.update(delta);
+		gameLogic.update();
 		
 		// Render game
-		GameRenderer.instance.render(delta);
+		GameRenderer.instance.render();
 	}
 
 	@Override

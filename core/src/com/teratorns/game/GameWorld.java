@@ -19,9 +19,9 @@ public class GameWorld {
 		worldObjects.add(obj);
 	}
 	
-	public void update(float delta) {
+	public void update() {
 		for (GameObject obj : worldObjects) {
-			obj.update(delta);
+			obj.update();
 		}
 	}
 }

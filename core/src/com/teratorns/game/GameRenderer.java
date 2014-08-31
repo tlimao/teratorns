@@ -36,14 +36,14 @@ public class GameRenderer {
 		physicsRenderer = new Box2DDebugRenderer();
 	}
 
-	public void render(float runtime) {
+	public void render() {
 		CameraHelper.instance.updateCamera();
 		
 		Gdx.gl.glClearColor(0, 0, 0, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		
 		for (View v : ViewManager.instance.views) {
-			v.draw(runtime);
+			v.draw();
 		}
 	}
 }

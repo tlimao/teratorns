@@ -8,7 +8,7 @@ public class GameLogic {
 		gameWorld = world;
 	}
 	
-	public void update(float delta) {
-		gameWorld.update(delta);
+	public void update() {
+		gameWorld.update();
 	}
 }

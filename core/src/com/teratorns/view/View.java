@@ -1,6 +1,7 @@
 package com.teratorns.view;
 
 import com.badlogic.gdx.utils.Array;
+import com.teratorns.game.GameClock;
 
 public abstract class View {
 	
@@ -13,9 +14,9 @@ public abstract class View {
 		layers = new Array<Layer>();
 	}
 	
-	public void draw(float runtime) {
+	public void draw() {
 		for (Layer l : layers) {
-			l.draw(runtime);
+			l.draw();
 		}
 	}
 	

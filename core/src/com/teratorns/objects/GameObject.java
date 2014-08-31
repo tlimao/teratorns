@@ -112,9 +112,9 @@ public abstract class GameObject {
 		return interactor;
 	}
 
-	public abstract void update(float delta);
+	public abstract void update();
 	
-	public abstract void draw(float runtime);
+	public abstract void draw();
 	
 	public void drawInteractor() {
 		GameRenderer.instance.shapeRenderer.begin(ShapeType.Line);

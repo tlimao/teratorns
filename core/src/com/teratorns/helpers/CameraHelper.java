@@ -15,7 +15,7 @@ public class CameraHelper {
 	private float zoomInc;
 	
 	private CameraHelper() {
-		position.set(Constants.viewportWidth / 2, Constants.viewportHeight / 2);
+		position = new Vector2(Constants.viewportWidth / 2, Constants.viewportHeight / 2);
 		
 		zoom = 1;
 		zoomMax = 1.5f;

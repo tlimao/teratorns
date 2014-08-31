@@ -4,18 +4,17 @@ import com.badlogic.gdx.utils.Array;
 
 public abstract class View {
 	
-	protected String tag;
-	
 	protected Array<Layer> layers;
 	
 	protected View() {
-		tag = "";
 		layers = new Array<Layer>();
 	}
 	
 	public void draw() {
 		for (Layer l : layers) {
-			l.draw();
+			if (l.isVisible()) {
+				l.draw();
+			}
 		}
 	}
 	

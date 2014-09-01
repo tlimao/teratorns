@@ -51,4 +51,8 @@ public class CameraHelper {
 		GameRenderer.instance.camera.position.set(position.y, position.x, 0);
 		GameRenderer.instance.camera.zoom = zoom;
 	}
+	
+	public Vector2 getPosition() {
+		return position.cpy();
+	}
 }

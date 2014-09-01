@@ -7,6 +7,7 @@ import com.teratorns.game.GameLogic;
 import com.teratorns.game.GameOptions;
 import com.teratorns.game.GameRenderer;
 import com.teratorns.game.GameWorld;
+import com.teratorns.game.views.InteractionView;
 import com.teratorns.game.views.WorldView;
 import com.teratorns.helpers.InputHelper;
 import com.teratorns.helpers.InteractionHelper;
@@ -26,6 +27,7 @@ public class GameScreen implements Screen {
 		PlayerHelper playerHelper = new PlayerHelper();
 		GameOptions gameOptions = new GameOptions();
 		InteractionHelper interactionHelper = new InteractionHelper(gameWorld, playerHelper, gameOptions);
+		ViewManager.instance.addView(new InteractionView(interactionHelper));
 		InputHelper inputHelper = new InputHelper(interactionHelper);
 		Gdx.input.setInputProcessor(inputHelper);
 	}

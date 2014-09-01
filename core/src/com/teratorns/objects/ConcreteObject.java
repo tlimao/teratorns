@@ -23,7 +23,6 @@ public class ConcreteObject extends GameObject implements Interactor<Rectangle> 
 		
 		if (interactionRect.overlaps(rect)) {
 			color = Color.GREEN;
-			System.out.println("FFF");
 			return true;
 		}
 		

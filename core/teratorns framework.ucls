@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <class-diagram version="1.1.6" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
-  associations="true" dependencies="false" nesting-relationships="true">  
+  associations="true" dependencies="true" nesting-relationships="true">  
   <class id="1" language="java" name="com.teratorns.GameRun" project="teratorns-core" 
     file="/teratorns-core/src/com/teratorns/GameRun.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="53" width="87" x="96" y="70"/>    
+    <position height="-1" width="-1" x="514" y="84"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="false" package="false" protected="false" private="false" static="true"/>      
@@ -12,7 +12,7 @@
   </class>  
   <class id="2" language="java" name="com.teratorns.assets.AssestsLoader" project="teratorns-core" 
     file="/teratorns-core/src/com/teratorns/assets/AssestsLoader.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="516" y="49"/>    
+    <position height="-1" width="-1" x="183" y="84"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="false" package="false" protected="false" private="false" static="true"/>      
@@ -21,7 +21,7 @@
   </class>  
   <class id="3" language="java" name="com.teratorns.game.GameClock" project="teratorns-core" 
     file="/teratorns-core/src/com/teratorns/game/GameClock.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="53" width="94" x="56" y="260"/>    
+    <position height="-1" width="-1" x="1017" y="84"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="false" package="false" protected="false" private="false" static="true"/>      
@@ -30,7 +30,7 @@
   </class>  
   <class id="4" language="java" name="com.teratorns.game.GameLogic" project="teratorns-core" 
     file="/teratorns-core/src/com/teratorns/game/GameLogic.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="53" width="94" x="622" y="508"/>    
+    <position height="-1" width="-1" x="761" y="84"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="false" package="false" protected="false" private="false" static="true"/>      
@@ -39,7 +39,7 @@
   </class>  
   <class id="5" language="java" name="com.teratorns.game.GameOptions" project="teratorns-core" 
     file="/teratorns-core/src/com/teratorns/game/GameOptions.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="53" width="101" x="327" y="385"/>    
+    <position height="-1" width="-1" x="893" y="84"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="false" package="false" protected="false" private="false" static="true"/>      
@@ -48,7 +48,7 @@
   </class>  
   <class id="6" language="java" name="com.teratorns.game.GameRenderer" project="teratorns-core" 
     file="/teratorns-core/src/com/teratorns/game/GameRenderer.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="53" width="110" x="555" y="295"/>    
+    <position height="-1" width="-1" x="248" y="412"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="false" package="false" protected="false" private="false" static="true"/>      
@@ -57,7 +57,7 @@
   </class>  
   <class id="7" language="java" name="com.teratorns.game.GameWorld" project="teratorns-core" 
     file="/teratorns-core/src/com/teratorns/game/GameWorld.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="53" width="94" x="342" y="263"/>    
+    <position height="-1" width="-1" x="701" y="562"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="false" package="false" protected="false" private="false" static="true"/>      
@@ -66,7 +66,7 @@
   </class>  
   <class id="8" language="java" name="com.teratorns.helpers.CameraHelper" project="teratorns-core" 
     file="/teratorns-core/src/com/teratorns/helpers/CameraHelper.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="53" width="106" x="103" y="439"/>    
+    <position height="-1" width="-1" x="456" y="413"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="false" package="false" protected="false" private="false" static="true"/>      
@@ -75,7 +75,7 @@
   </class>  
   <class id="9" language="java" name="com.teratorns.helpers.InputHelper" project="teratorns-core" 
     file="/teratorns-core/src/com/teratorns/helpers/InputHelper.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="53" width="101" x="132" y="368"/>    
+    <position height="-1" width="-1" x="1290" y="413"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="false" package="false" protected="false" private="false" static="true"/>      
@@ -84,7 +84,7 @@
   </class>  
   <class id="10" language="java" name="com.teratorns.helpers.InteractionHelper" project="teratorns-core" 
     file="/teratorns-core/src/com/teratorns/helpers/InteractionHelper.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="53" width="122" x="351" y="487"/>    
+    <position height="-1" width="-1" x="1047" y="413"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="false" package="false" protected="false" private="false" static="true"/>      
@@ -93,25 +93,25 @@
   </class>  
   <class id="11" language="java" name="com.teratorns.helpers.PlayerHelper" project="teratorns-core" 
     file="/teratorns-core/src/com/teratorns/helpers/PlayerHelper.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="53" width="101" x="148" y="190"/>    
+    <position height="-1" width="-1" x="823" y="413"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="false" package="false" protected="false" private="false" static="true"/>      
       <operations public="false" package="false" protected="false" private="false" static="true"/>    
     </display>  
   </class>  
-  <class id="12" language="java" name="com.teratorns.objects.GameObject.Interactor" project="teratorns-core" 
-    file="/teratorns-core/src/com/teratorns/objects/GameObject.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="53" width="101" x="322" y="140"/>    
+  <interface id="12" language="java" name="com.teratorns.interaction.Interactor" project="teratorns-core" 
+    file="/teratorns-core/src/com/teratorns/interaction/Interactor.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="873" y="695"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="false" package="false" protected="false" private="false" static="true"/>      
       <operations public="false" package="false" protected="false" private="false" static="true"/>    
     </display>  
-  </class>  
+  </interface>  
   <class id="13" language="java" name="com.teratorns.objects.GameObject" project="teratorns-core" 
     file="/teratorns-core/src/com/teratorns/objects/GameObject.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="53" width="101" x="322" y="47"/>    
+    <position height="-1" width="-1" x="704" y="695"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="false" package="false" protected="false" private="false" static="true"/>      
@@ -120,7 +120,7 @@
   </class>  
   <class id="14" language="java" name="com.teratorns.player.Player" project="teratorns-core" 
     file="/teratorns-core/src/com/teratorns/player/Player.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="53" width="97" x="725" y="111"/>    
+    <position height="-1" width="-1" x="1049" y="695"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="false" package="false" protected="false" private="false" static="true"/>      
@@ -129,7 +129,7 @@
   </class>  
   <class id="15" language="java" name="com.teratorns.screens.GameScreen" project="teratorns-core" 
     file="/teratorns-core/src/com/teratorns/screens/GameScreen.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="53" width="104" x="688" y="211"/>    
+    <position height="-1" width="-1" x="613" y="246"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="false" package="false" protected="false" private="false" static="true"/>      
@@ -138,7 +138,7 @@
   </class>  
   <class id="16" language="java" name="com.teratorns.utils.Constants" project="teratorns-core" 
     file="/teratorns-core/src/com/teratorns/utils/Constants.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="598" y="147"/>    
+    <position height="-1" width="-1" x="278" y="246"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="false" package="false" protected="false" private="false" static="true"/>      
@@ -147,7 +147,7 @@
   </class>  
   <class id="17" language="java" name="com.teratorns.view.Layer" project="teratorns-core" 
     file="/teratorns-core/src/com/teratorns/view/Layer.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="53" width="90" x="810" y="310"/>    
+    <position height="-1" width="-1" x="389" y="644"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="false" package="false" protected="false" private="false" static="true"/>      
@@ -156,7 +156,7 @@
   </class>  
   <class id="18" language="java" name="com.teratorns.view.View" project="teratorns-core" 
     file="/teratorns-core/src/com/teratorns/view/View.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="53" width="90" x="842" y="411"/>    
+    <position height="-1" width="-1" x="248" y="644"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="false" package="false" protected="false" private="false" static="true"/>      
@@ -165,114 +165,133 @@
   </class>  
   <class id="19" language="java" name="com.teratorns.view.ViewManager" project="teratorns-core" 
     file="/teratorns-core/src/com/teratorns/view/ViewManager.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="53" width="102" x="832" y="497"/>    
+    <position height="-1" width="-1" x="128" y="530"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="false" package="false" protected="false" private="false" static="true"/>      
       <operations public="false" package="false" protected="false" private="false" static="true"/>    
     </display>  
   </class>  
-  <association id="20">    
-    <end type="SOURCE" refId="13" navigable="false">      
-      <attribute id="21" name="interactor"/>      
-      <multiplicity id="22" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="12" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="23">    
+  <dependency id="20">    
+    <end type="SOURCE" refId="18"/>    
+    <end type="TARGET" refId="17"/>  
+  </dependency>  
+  <dependency id="21">    
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="18"/>  
+  </dependency>  
+  <dependency id="22">    
+    <end type="SOURCE" refId="15"/>    
+    <end type="TARGET" refId="3"/>  
+  </dependency>  
+  <dependency id="23">    
+    <end type="SOURCE" refId="15"/>    
+    <end type="TARGET" refId="9"/>  
+  </dependency>  
+  <association id="24">    
+    <bendpoint x="761" y="247"/>    
+    <bendpoint x="701" y="247"/>    
     <end type="SOURCE" refId="4" navigable="false">      
-      <attribute id="24" name="gameWorld"/>      
-      <multiplicity id="25" minimum="0" maximum="1"/>    
+      <attribute id="25" name="gameWorld"/>      
+      <multiplicity id="26" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="7" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="26">    
-    <end type="SOURCE" refId="15" navigable="false">      
-      <attribute id="27" name="gameLogic"/>      
-      <multiplicity id="28" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="4" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="29">    
-    <end type="SOURCE" refId="6" navigable="false">      
-      <attribute id="30" name="instance"/>      
-      <multiplicity id="31" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="6" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="32">    
-    <end type="SOURCE" refId="10" navigable="false">      
-      <attribute id="33" name="gameWorld"/>      
-      <multiplicity id="34" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="7" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="35">    
-    <end type="SOURCE" refId="8" navigable="false">      
-      <attribute id="36" name="instance"/>      
-      <multiplicity id="37" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="8" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="38">    
-    <end type="SOURCE" refId="2" navigable="false">      
-      <attribute id="39" name="instance"/>      
-      <multiplicity id="40" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="2" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <nesting id="41">    
-    <end type="SOURCE" refId="13"/>    
-    <end type="TARGET" refId="12"/>  
-  </nesting>  
-  <association id="42">    
+  <dependency id="27">    
+    <end type="SOURCE" refId="8"/>    
+    <end type="TARGET" refId="6"/>  
+  </dependency>  
+  <association id="28">    
     <end type="SOURCE" refId="19" navigable="false">      
-      <attribute id="43" name="instance"/>      
-      <multiplicity id="44" minimum="0" maximum="1"/>    
+      <attribute id="29" name="instance"/>      
+      <multiplicity id="30" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="19" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="45">    
-    <end type="SOURCE" refId="3" navigable="false">      
-      <attribute id="46" name="instance"/>      
-      <multiplicity id="47" minimum="0" maximum="1"/>    
+  <dependency id="31">    
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="16"/>  
+  </dependency>  
+  <dependency id="32">    
+    <end type="SOURCE" refId="8"/>    
+    <end type="TARGET" refId="16"/>  
+  </dependency>  
+  <association id="33">    
+    <end type="SOURCE" refId="8" navigable="false">      
+      <attribute id="34" name="instance"/>      
+      <multiplicity id="35" minimum="0" maximum="1"/>    
     </end>    
-    <end type="TARGET" refId="3" navigable="true"/>    
+    <end type="TARGET" refId="8" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="48">    
-    <end type="SOURCE" refId="10" navigable="false">      
-      <attribute id="49" name="gameOptions"/>      
-      <multiplicity id="50" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="5" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="51">    
+  <association id="36">    
     <end type="SOURCE" refId="9" navigable="false">      
-      <attribute id="52" name="interactionHelper"/>      
-      <multiplicity id="53" minimum="0" maximum="1"/>    
+      <attribute id="37" name="interactionHelper"/>      
+      <multiplicity id="38" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="10" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="54">    
-    <end type="SOURCE" refId="12" navigable="false">      
-      <attribute id="55" name="parent"/>      
-      <multiplicity id="56" minimum="0" maximum="1"/>    
+  <association id="39">    
+    <bendpoint x="613" y="85"/>    
+    <end type="SOURCE" refId="15" navigable="false">      
+      <attribute id="40" name="gameLogic"/>      
+      <multiplicity id="41" minimum="0" maximum="1"/>    
     </end>    
-    <end type="TARGET" refId="13" navigable="true"/>    
+    <end type="TARGET" refId="4" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
+  <association id="42">    
+    <bendpoint x="1047" y="238"/>    
+    <bendpoint x="893" y="238"/>    
+    <end type="SOURCE" refId="10" navigable="false">      
+      <attribute id="43" name="gameOptions"/>      
+      <multiplicity id="44" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="5" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="45">    
+    <end type="SOURCE" refId="1"/>    
+    <end type="TARGET" refId="2"/>  
+  </dependency>  
+  <association id="46">    
+    <bendpoint x="1047" y="562"/>    
+    <end type="SOURCE" refId="10" navigable="false">      
+      <attribute id="47" name="gameWorld"/>      
+      <multiplicity id="48" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="7" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="49">    
+    <end type="SOURCE" refId="15"/>    
+    <end type="TARGET" refId="6"/>  
+  </dependency>  
+  <association id="50">    
+    <end type="SOURCE" refId="3" navigable="false">      
+      <attribute id="51" name="instance"/>      
+      <multiplicity id="52" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="3" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="53">    
+    <end type="SOURCE" refId="10" navigable="false">      
+      <attribute id="54" name="playerHelper"/>      
+      <multiplicity id="55" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="11" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="56">    
+    <end type="SOURCE" refId="7"/>    
+    <end type="TARGET" refId="13"/>  
+  </dependency>  
   <association id="57">    
+    <bendpoint x="613" y="563"/>    
     <end type="SOURCE" refId="15" navigable="false">      
       <attribute id="58" name="gameWorld"/>      
       <multiplicity id="59" minimum="0" maximum="1"/>    
@@ -280,12 +299,44 @@
     <end type="TARGET" refId="7" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="60">    
-    <end type="SOURCE" refId="10" navigable="false">      
-      <attribute id="61" name="playerHelper"/>      
-      <multiplicity id="62" minimum="0" maximum="1"/>    
+  <dependency id="60">    
+    <end type="SOURCE" refId="1"/>    
+    <end type="TARGET" refId="15"/>  
+  </dependency>  
+  <dependency id="61">    
+    <end type="SOURCE" refId="19"/>    
+    <end type="TARGET" refId="18"/>  
+  </dependency>  
+  <dependency id="62">    
+    <end type="SOURCE" refId="15"/>    
+    <end type="TARGET" refId="5"/>  
+  </dependency>  
+  <dependency id="63">    
+    <end type="SOURCE" refId="15"/>    
+    <end type="TARGET" refId="11"/>  
+  </dependency>  
+  <dependency id="64">    
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="19"/>  
+  </dependency>  
+  <association id="65">    
+    <end type="SOURCE" refId="6" navigable="false">      
+      <attribute id="66" name="instance"/>      
+      <multiplicity id="67" minimum="0" maximum="1"/>    
     </end>    
-    <end type="TARGET" refId="11" navigable="true"/>    
+    <end type="TARGET" refId="6" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="68">    
+    <end type="SOURCE" refId="15"/>    
+    <end type="TARGET" refId="10"/>  
+  </dependency>  
+  <association id="69">    
+    <end type="SOURCE" refId="2" navigable="false">      
+      <attribute id="70" name="instance"/>      
+      <multiplicity id="71" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="2" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 

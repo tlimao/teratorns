@@ -3,6 +3,7 @@ package com.teratorns.game;
 import com.badlogic.gdx.utils.Array;
 import com.teratorns.objects.ConcreteObject;
 import com.teratorns.objects.GameObject;
+import com.teratorns.objects.Sheep;
 
 public class GameWorld {
 	
@@ -12,6 +13,7 @@ public class GameWorld {
 		worldObjects = new Array<GameObject>();
 		
 		worldObjects.add(new ConcreteObject(3, 2));
+		worldObjects.add(new Sheep(4, 5));
 	}
 	
 	public Array<GameObject> getWorldObjects() {

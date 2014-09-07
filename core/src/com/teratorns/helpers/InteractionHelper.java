@@ -5,7 +5,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;
 import com.teratorns.game.GameOptions;
 import com.teratorns.game.GameWorld;
-import com.teratorns.objects.ConcreteObject;
+import com.teratorns.interaction.Interactor;
 import com.teratorns.objects.GameObject;
 import com.teratorns.utils.Transformations;
 
@@ -22,7 +22,7 @@ public class InteractionHelper {
 		this.playerHelper = playerHelper;
 		this.gameOptions = gameOptions;
 		
-		interactionRange = 0.5f;
+		interactionRange = 0.25f;
 		interactionRect = new Rectangle();
 		interactionRect.setSize(interactionRange, interactionRange);
 	}
@@ -33,8 +33,10 @@ public class InteractionHelper {
 		
 		Array<GameObject> objects = gameWorld.getWorldObjects();
 		
+		interactionRect.setPosition(point.sub(interactionRange / 2, interactionRange / 2));
+		
 		for (GameObject obj : objects) {
-			((ConcreteObject) obj).isTouched(interactionRect.setPosition(point.sub(interactionRange / 2, interactionRange / 2)));
+			((Interactor<Rectangle>) obj).isTouched(interactionRect);
 		}
 	}
 	

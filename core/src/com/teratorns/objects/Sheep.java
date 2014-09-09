@@ -10,9 +10,11 @@ import com.teratorns.interaction.Interactor;
 public class Sheep extends GameObject implements Interactor<Rectangle> {
 
 	private Rectangle interactionRect;
+	private float scale;
 	
-	public Sheep(float x, float y) {
+	public Sheep(float x, float y, float scale) {
 		super(x, y);
+		this.scale = scale;
 		interactionRect = new Rectangle(x, y, width, height);
 		rotation = 0;
 	}
@@ -52,7 +54,7 @@ public class Sheep extends GameObject implements Interactor<Rectangle> {
 										   		  position.x  , position.y   ,
 										   		  width / 2   , height / 2   ,
 										   		  (int) width , (int) height ,
-										   		  1           , 1            ,
+										   		  scale       , scale        ,
 										   		  0);
 	}
 

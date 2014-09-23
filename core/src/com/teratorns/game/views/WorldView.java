@@ -6,6 +6,7 @@ import com.badlogic.gdx.utils.Array;
 import com.teratorns.game.GameRenderer;
 import com.teratorns.game.GameWorld;
 import com.teratorns.objects.ConcreteObject;
+import com.teratorns.objects.FoodSource;
 import com.teratorns.objects.GameObject;
 import com.teratorns.utils.Constants;
 import com.teratorns.view.Layer;
@@ -47,7 +48,7 @@ public class WorldView extends View {
 			GameRenderer.instance.shapeRenderer.setColor(Color.GREEN);
 			GameRenderer.instance.shapeRenderer.rect(0, 0, Constants.windowWidth, Constants.windowHeight);
 			GameRenderer.instance.shapeRenderer.setColor(Color.DARK_GRAY);
-			GameRenderer.instance.shapeRenderer.circle(ConcreteObject.meta.x, ConcreteObject.meta.y, 0.05f, 15);
+			GameRenderer.instance.shapeRenderer.circle(FoodSource.food.x, FoodSource.food.y, 0.05f, 15);
 			GameRenderer.instance.shapeRenderer.end();
 		}
 	}

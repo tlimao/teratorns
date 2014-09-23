@@ -4,6 +4,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;
 
 public class Swarm {
+	public static Vector2 gBest;
 	private Array<ConcreteObject> swarm;
 	private Vector2 aim;
 	
@@ -11,17 +12,22 @@ public class Swarm {
 	{
 		swarm = new Array<ConcreteObject>();
 		aim = new Vector2(0,0);
+		gBest = new Vector2(0, 0);
 	}
 	
 	public void onClick(float x, float y)
 	{
-		aim.x = x;
-		aim.y = y;
+		aim.set(x, y);
 	}
 	
-	public void addUnity(ConcreteObject unity)
+	public void setGbest(float x, float y) {
+		gBest.set(x, y);
+	}
+	
+	public void addParticle(ConcreteObject particle)
 	{
-		swarm.add(unity);
+		swarm.add(particle);
+		particle.setSwarm(this);
 	}
 	
 	public void update()
@@ -33,9 +39,13 @@ public class Swarm {
 	
 	public void draw()
 	{
-		for (ConcreteObject unity : swarm)
+		for (ConcreteObject particle : swarm)
 		{
-			unity.draw();
+			particle.draw();
 		}
+	}
+	
+	public Array<ConcreteObject> getParticles() {
+		return swarm;
 	}
 }

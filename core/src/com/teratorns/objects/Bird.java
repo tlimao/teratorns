@@ -70,7 +70,7 @@ public class Bird extends GameObject implements Interactor<Rectangle> {
 			int count = 0;
 			for (Bird b : neighbours) {
 				if (position.dst(b.getPosition()) < 0.2f) {
-					diff.add(position.cpy().sub(b.getPosition()));
+					diff.add(velocity.cpy().sub(b.getVelocity()));
 					count++;
 				}
 			}
@@ -84,10 +84,10 @@ public class Bird extends GameObject implements Interactor<Rectangle> {
 			// Nova Velocidade
 			velocity.set(0,0);
 			velocity.add(v1.scl(0.2f));
-			velocity.add(v2.scl(0.3f));
+			velocity.add(v2.scl(0.8f));
 			velocity.add(v3.scl(0.05f));
-			velocity.add(v4.scl((fitness > 0.2f) ? 0.1f : 0.01f));
-			
+			velocity.add(v4.scl((fitness > 0.2f) ? 0.4f : 0.4f));
+			velocity.nor().scl(0.3f);
 			position.add(velocity.cpy().scl(GameClock.instance.getDelta()));
 			
 			fitness = fitness();

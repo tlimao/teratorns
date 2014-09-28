@@ -1,19 +1,24 @@
 package com.teratorns.assets;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.Texture.TextureFilter;
 import com.badlogic.gdx.graphics.g2d.Animation;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.utils.Array;
+import com.teratorns.utils.Constants;
 
 public class AssestsLoader {
 	// Singleton
 	public static AssestsLoader instance = new AssestsLoader();
 	
-	public TextureRegion[] sheep;
-	public Animation sheepWalkingR;
-	public Animation sheepWalkingL;
-	public Sound sheepFx;
+	private TextureAtlas zombieSprites;
+	
+	public Animation zombieWalkingDown;
+	public Animation zombieWalkingUp;
+	public Animation zombieWalkingLeft;
+	public Animation zombieWalkingRight;
 
 	private AssestsLoader() {
 		System.out.println("Assets Loader Created");
@@ -21,41 +26,64 @@ public class AssestsLoader {
 	
 	/** Load assets */
 	public void loadAssets() {
-		sheep = new TextureRegion[4];
+		zombieSprites = new TextureAtlas(Gdx.files.internal(Constants.TX_ZOMBIE_MAP));
+
+		for (Texture t : zombieSprites.getTextures()) {
+			t.setFilter(TextureFilter.Linear, TextureFilter.Linear);
+		}
 		
-		sheep[0] = new TextureRegion(new Texture(Gdx.files.internal("gfx/sheep03.png")));
-		sheep[1] = new TextureRegion(new Texture(Gdx.files.internal("gfx/sheep01.png")));
-		sheep[2] = new TextureRegion(new Texture(Gdx.files.internal("gfx/sheep02.png")));
-		sheep[3] = new TextureRegion(new Texture(Gdx.files.internal("gfx/sheep01.png")));
+		Array<TextureRegion> zombieTextures = new Array<TextureRegion>();
+		TextureRegion tx;
 		
-		sheep[0].flip(false, true);
-		sheep[1].flip(false, true);
-		sheep[2].flip(false, true);
-		sheep[3].flip(false, true);
+		for (int i = 1 ; i < 7 ; i++) {
+			tx = zombieSprites.findRegion("zf" + i);
+			tx.flip(false, true);
+			zombieTextures.add(tx);
+		}
 		
-		sheepWalkingR = new Animation(0.1f, sheep);
-		sheepWalkingR.setPlayMode(Animation.PlayMode.LOOP);
+		for (int i = 1 ; i < 5 ; i++) {
+			tx = zombieSprites.findRegion("zb" + i);
+			tx.flip(false, true);
+			zombieTextures.add(tx);
+		}
 		
-		sheep = new TextureRegion[4];
+		for (int i = 1 ; i < 4 ; i++) {
+			tx = zombieSprites.findRegion("zl" + i);
+			tx.flip(false, true);
+			zombieTextures.add(tx);
+		}
 		
-		sheep[0] = new TextureRegion(new Texture(Gdx.files.internal("gfx/sheep03.png")));
-		sheep[1] = new TextureRegion(new Texture(Gdx.files.internal("gfx/sheep01.png")));
-		sheep[2] = new TextureRegion(new Texture(Gdx.files.internal("gfx/sheep02.png")));
-		sheep[3] = new TextureRegion(new Texture(Gdx.files.internal("gfx/sheep01.png")));
+		for (int i = 1 ; i < 4 ; i++) {
+			tx = zombieSprites.findRegion("zr" + i);
+			tx.flip(false, true);
+			zombieTextures.add(tx);
+		}
+	
+		TextureRegion[] walkingDown  = {zombieTextures.get(0), zombieTextures.get(1), zombieTextures.get(2),
+										zombieTextures.get(3), zombieTextures.get(4), zombieTextures.get(5)};
 		
-		sheep[0].flip(true, true);
-		sheep[1].flip(true, true);
-		sheep[2].flip(true, true);
-		sheep[3].flip(true, true);
+		TextureRegion[] walkingUp    = {zombieTextures.get(6), zombieTextures.get(7),
+										zombieTextures.get(8), zombieTextures.get(9)};
 		
-		sheepWalkingL = new Animation(0.1f, sheep);
-		sheepWalkingL.setPlayMode(Animation.PlayMode.LOOP);
+		TextureRegion[] walkingLeft  = {zombieTextures.get(10), zombieTextures.get(11), zombieTextures.get(12)};
 		
-		sheepFx = Gdx.audio.newSound(Gdx.files.internal("fx/sheep.mp3"));
+		TextureRegion[] walkingRight = {zombieTextures.get(13), zombieTextures.get(14), zombieTextures.get(15)};
+		
+		zombieWalkingDown = new Animation(0.2f, walkingDown);
+		zombieWalkingDown.setPlayMode(Animation.PlayMode.LOOP);
+		
+		zombieWalkingUp = new Animation(0.2f, walkingUp);
+		zombieWalkingUp.setPlayMode(Animation.PlayMode.LOOP);
+		
+		zombieWalkingLeft = new Animation(0.2f, walkingLeft);
+		zombieWalkingLeft.setPlayMode(Animation.PlayMode.LOOP);
+		
+		zombieWalkingRight = new Animation(0.2f, walkingRight);
+		zombieWalkingRight.setPlayMode(Animation.PlayMode.LOOP);
 	}
 	
 	/** Dispose loaded assets */
 	public void disposeAssests() {
-		sheepFx.dispose();
+		zombieSprites.dispose();
 	}
 }

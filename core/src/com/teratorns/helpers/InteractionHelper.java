@@ -6,6 +6,7 @@ import com.badlogic.gdx.utils.Array;
 import com.teratorns.game.GameOptions;
 import com.teratorns.game.GameWorld;
 import com.teratorns.interaction.Interactor;
+import com.teratorns.objects.FoodSource;
 import com.teratorns.objects.GameObject;
 import com.teratorns.utils.Transformations;
 
@@ -28,8 +29,9 @@ public class InteractionHelper {
 	}
 	
 	public void clicked(float sX, float sY) {
-		
 		Vector2 point = Transformations.screenToWorld(sX, sY);
+		
+		FoodSource.food.set(point);
 		
 		Array<GameObject> objects = gameWorld.getWorldObjects();
 		

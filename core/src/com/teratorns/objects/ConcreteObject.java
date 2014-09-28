@@ -61,7 +61,7 @@ public class ConcreteObject extends GameObject implements Interactor<Rectangle> 
 	@Override
 	public void update() {
 		// Analyze Swarm
-		swarmAnalyze(swarm.getParticles());
+		//swarmAnalyze(swarm.getParticles());
 		
 		if (!flag) {
 			if (Math.random() > 0.8f) {

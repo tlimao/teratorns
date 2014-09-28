@@ -5,11 +5,13 @@ import com.badlogic.gdx.Screen;
 import com.teratorns.game.GameClock;
 import com.teratorns.game.GameLogic;
 import com.teratorns.game.GameOptions;
-import com.teratorns.game.GameRenderer;
+import com.teratorns.game.GameRenderer3D;
 import com.teratorns.game.GameWorld;
+import com.teratorns.game.views.WorldView;
 import com.teratorns.helpers.InputHelper;
 import com.teratorns.helpers.InteractionHelper;
 import com.teratorns.helpers.PlayerHelper;
+import com.teratorns.view.ViewManager;
 
 public class GameScreen implements Screen {
 	
@@ -19,6 +21,8 @@ public class GameScreen implements Screen {
 	public GameScreen() {
 		gameWorld = new GameWorld();
 		gameLogic = new GameLogic(gameWorld);
+		
+		ViewManager.instance.addView(new WorldView(gameWorld));
 		
 		PlayerHelper playerHelper = new PlayerHelper();
 		GameOptions gameOptions = new GameOptions();
@@ -36,7 +40,7 @@ public class GameScreen implements Screen {
 		gameLogic.update();
 		
 		// Render game
-		GameRenderer.instance.render();
+		GameRenderer3D.instance.render();
 	}
 
 	@Override
@@ -71,7 +75,7 @@ public class GameScreen implements Screen {
 
 	@Override
 	public void dispose() {
-		// TODO Auto-generated method stub
-		
+		GameRenderer3D.instance.dispose();
+		gameWorld.dispose();
 	}
 }

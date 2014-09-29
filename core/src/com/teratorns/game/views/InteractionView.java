@@ -29,7 +29,11 @@ public class InteractionView extends View {
 			GameRenderer.instance.shapeRenderer.setProjectionMatrix(GameRenderer.instance.camera.combined);
 			GameRenderer.instance.shapeRenderer.begin(ShapeType.Line);
 			GameRenderer.instance.shapeRenderer.setColor(Color.GRAY);
-			GameRenderer.instance.shapeRenderer.rect(lastClick.x, lastClick.y, lastClick.width, lastClick.height);
+			GameRenderer.instance.shapeRenderer.rect(lastClick.x - lastClick.width/2, lastClick.y - lastClick.height/2, lastClick.width, lastClick.height);
+			GameRenderer.instance.shapeRenderer.end();
+			GameRenderer.instance.shapeRenderer.begin(ShapeType.Filled);
+			GameRenderer.instance.shapeRenderer.setColor(Color.RED);
+			GameRenderer.instance.shapeRenderer.circle(lastClick.x, lastClick.y, 0.05f, 9);
 			GameRenderer.instance.shapeRenderer.end();
 		}
 	}

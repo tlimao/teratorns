@@ -12,7 +12,7 @@ import com.teratorns.game.GameRenderer;
 import com.teratorns.interaction.Interactor;
 
 public class Bird extends GameObject implements Interactor<Rectangle> {
-	private float l = 2f;
+	private float l;
 	private Vector2 pBest;
 	private boolean flag;
 	private Array<Vector2> path;
@@ -69,8 +69,8 @@ public class Bird extends GameObject implements Interactor<Rectangle> {
 			Vector2 diff = new Vector2();
 			int count = 0;
 			for (Bird b : neighbours) {
-				if (position.dst(b.getPosition()) < 0.2f) {
-					diff.add(velocity.cpy().sub(b.getVelocity()));
+				if (position.dst(b.getPosition()) < 0.1f) {
+					diff.add(position.cpy().sub(b.getPosition()));
 					count++;
 				}
 			}
@@ -84,9 +84,9 @@ public class Bird extends GameObject implements Interactor<Rectangle> {
 			// Nova Velocidade
 			velocity.set(0,0);
 			velocity.add(v1.scl(0.2f));
-			velocity.add(v2.scl(0.8f));
-			velocity.add(v3.scl(0.05f));
-			velocity.add(v4.scl((fitness > 0.2f) ? 0.4f : 0.4f));
+			velocity.add(v2.scl(0.3f));
+			velocity.add(v3.scl((count > 2) ?90f : 0.05f));
+			velocity.add(v4.scl((fitness > 0.2f) ? 0.4f : 0.01f));
 			velocity.nor().scl(0.3f);
 			position.add(velocity.cpy().scl(GameClock.instance.getDelta()));
 			
@@ -108,7 +108,7 @@ public class Bird extends GameObject implements Interactor<Rectangle> {
 	}
 	
 	private float fitness() {
-		return position.dst(FoodSource.food);
+		return position.cpy().dst(FoodSource.food);
 	}
 
 	@Override
@@ -133,12 +133,27 @@ public class Bird extends GameObject implements Interactor<Rectangle> {
 			Tx = AssestsLoader.instance.zombieWalkingUp.getKeyFrame(GameClock.instance.getRunTime());
 		}
 		
+		GameRenderer.instance.spriteRenderer.draw(AssestsLoader.instance.circle,
+												  position.x - width / 2, position.y - height / 2,
+												  width / 2 , height / 2,
+												  width     , height,
+												  l/2       , l/2,
+												  rotation);
+		
+		GameRenderer.instance.spriteRenderer.draw(AssestsLoader.instance.arrow,
+												  position.x - width / 2 + 0.25f, position.y - height / 2 + 0.25f,
+												  width / 2 , height / 2,
+												  width     , height,
+												  0.2f      , 0.2f,
+												  velocity.angle() + 90);
+		
 		GameRenderer.instance.spriteRenderer.draw(Tx,
 												  position.x - width / 2, position.y - height / 2,
 												  width / 2 , height / 2,
 												  width     , height,
 												  1f         , 1f,
 												  rotation);
+
 		/*GameRenderer.instance.shapeRenderer.begin(ShapeType.Filled);
 		GameRenderer.instance.shapeRenderer.setColor(color);
 		GameRenderer.instance.shapeRenderer.circle(position.x, position.y, 0.1f, 12);
@@ -151,7 +166,7 @@ public class Bird extends GameObject implements Interactor<Rectangle> {
 		GameRenderer.instance.shapeRenderer.begin(ShapeType.Line);
 		GameRenderer.instance.shapeRenderer.line(position, position.cpy().add(velocity.cpy().nor().scl(0.25f)));
 		GameRenderer.instance.shapeRenderer.end();
-		
+
 		if (flag) {
 			GameRenderer.instance.shapeRenderer.begin(ShapeType.Line);
 			GameRenderer.instance.shapeRenderer.setColor(color);

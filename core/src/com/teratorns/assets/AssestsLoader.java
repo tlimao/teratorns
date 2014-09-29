@@ -19,6 +19,10 @@ public class AssestsLoader {
 	public Animation zombieWalkingUp;
 	public Animation zombieWalkingLeft;
 	public Animation zombieWalkingRight;
+	
+	public TextureRegion circle;
+	public TextureRegion arrow;
+	public TextureRegion grass;
 
 	private AssestsLoader() {
 		System.out.println("Assets Loader Created");
@@ -80,6 +84,10 @@ public class AssestsLoader {
 		
 		zombieWalkingRight = new Animation(0.2f, walkingRight);
 		zombieWalkingRight.setPlayMode(Animation.PlayMode.LOOP);
+		
+		circle = zombieSprites.findRegion("circle");
+		grass = zombieSprites.findRegion("grass");
+		arrow = zombieSprites.findRegion("arrow");
 	}
 	
 	/** Dispose loaded assets */

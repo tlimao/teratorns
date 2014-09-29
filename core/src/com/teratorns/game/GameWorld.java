@@ -21,7 +21,7 @@ public class GameWorld {
 		swarm4 = new Swarm();
 		
 		for (int i = 0 ; i < 9 ; i++) {
-			Bird b = new Bird(0.25f, Color.RED, (float) Math.random() * Constants.viewportWidth, (float) Math.random() * Constants.viewportHeight);
+			Bird b = new Bird(2f, Color.RED, (float) Math.random() * Constants.viewportWidth, (float) Math.random() * Constants.viewportHeight);
 			swarm1.addParticle(b);
 			worldObjects.add(b);
 		}

@@ -1,12 +1,9 @@
 package com.teratorns.game.views;
 
-import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import com.badlogic.gdx.utils.Array;
+import com.teratorns.assets.AssestsLoader;
 import com.teratorns.game.GameRenderer;
 import com.teratorns.game.GameWorld;
-import com.teratorns.objects.ConcreteObject;
-import com.teratorns.objects.FoodSource;
 import com.teratorns.objects.GameObject;
 import com.teratorns.utils.Constants;
 import com.teratorns.view.Layer;
@@ -43,13 +40,21 @@ public class WorldView extends View {
 
 		@Override
 		public void draw() {
-			GameRenderer.instance.shapeRenderer.setProjectionMatrix(GameRenderer.instance.camera.combined);
-			GameRenderer.instance.shapeRenderer.begin(ShapeType.Filled);
-			GameRenderer.instance.shapeRenderer.setColor(Color.GREEN);
-			GameRenderer.instance.shapeRenderer.rect(0, 0, Constants.windowWidth, Constants.windowHeight);
-			GameRenderer.instance.shapeRenderer.setColor(Color.DARK_GRAY);
-			GameRenderer.instance.shapeRenderer.circle(FoodSource.food.x, FoodSource.food.y, 0.05f, 15);
-			GameRenderer.instance.shapeRenderer.end();
+			GameRenderer.instance.spriteRenderer.setProjectionMatrix(GameRenderer.instance.camera.combined);
+			GameRenderer.instance.spriteRenderer.begin();
+			
+			for (int i = 0; i < Constants.viewportWidth; i++) {
+				for (int j = 0; j < Constants.viewportHeight; j++) {
+					GameRenderer.instance.spriteRenderer.draw(AssestsLoader.instance.grass,
+							  i, j,
+							  0, 0,
+							  1, 1,
+							  1, 1,
+							  0);
+				}
+			}
+			
+			GameRenderer.instance.spriteRenderer.end();
 		}
 	}
 }

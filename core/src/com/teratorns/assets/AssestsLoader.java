@@ -1,6 +1,7 @@
 package com.teratorns.assets;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.Texture.TextureFilter;
 import com.badlogic.gdx.graphics.g2d.Animation;
@@ -23,6 +24,8 @@ public class AssestsLoader {
 	public TextureRegion circle;
 	public TextureRegion arrow;
 	public TextureRegion grass;
+	
+	public Sound horrorAmbientMusic;
 
 	private AssestsLoader() {
 		System.out.println("Assets Loader Created");
@@ -88,10 +91,13 @@ public class AssestsLoader {
 		circle = zombieSprites.findRegion("circle");
 		grass = zombieSprites.findRegion("grass");
 		arrow = zombieSprites.findRegion("arrow");
+		
+		horrorAmbientMusic = Gdx.audio.newSound(Gdx.files.internal("fx/horror ambient.mp3"));
 	}
 	
 	/** Dispose loaded assets */
 	public void disposeAssests() {
 		zombieSprites.dispose();
+		horrorAmbientMusic.dispose();
 	}
 }

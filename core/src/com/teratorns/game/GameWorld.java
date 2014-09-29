@@ -2,6 +2,7 @@ package com.teratorns.game;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.utils.Array;
+import com.teratorns.assets.AssestsLoader;
 import com.teratorns.objects.Bird;
 import com.teratorns.objects.GameObject;
 import com.teratorns.objects.Swarm;
@@ -25,6 +26,9 @@ public class GameWorld {
 			swarm1.addParticle(b);
 			worldObjects.add(b);
 		}
+		
+		AssestsLoader.instance.horrorAmbientMusic.play();
+		AssestsLoader.instance.horrorAmbientMusic.loop();
 		
 		/*for (int i = 0 ; i < 9 ; i++) {
 			Bird b = new Bird(0, Color.BLUE, (float) Math.random() * Constants.viewportWidth, (float) Math.random() * Constants.viewportHeight);

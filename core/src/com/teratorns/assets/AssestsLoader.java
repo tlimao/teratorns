@@ -92,7 +92,7 @@ public class AssestsLoader {
 		grass = zombieSprites.findRegion("grass");
 		arrow = zombieSprites.findRegion("arrow");
 		
-		horrorAmbientMusic = Gdx.audio.newSound(Gdx.files.internal("fx/horror ambient.mp3"));
+		horrorAmbientMusic = Gdx.audio.newSound(Gdx.files.internal("fx/horror.mp3"));
 	}
 	
 	/** Dispose loaded assets */

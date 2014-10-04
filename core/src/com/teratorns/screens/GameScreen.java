@@ -3,10 +3,12 @@ package com.teratorns.screens;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.teratorns.game.GameClock;
+import com.teratorns.game.GameEditor;
 import com.teratorns.game.GameLogic;
 import com.teratorns.game.GameOptions;
 import com.teratorns.game.GameRenderer;
 import com.teratorns.game.GameWorld;
+import com.teratorns.game.views.EditView;
 import com.teratorns.game.views.InteractionView;
 import com.teratorns.game.views.WorldView;
 import com.teratorns.helpers.InputHelper;
@@ -18,15 +20,19 @@ public class GameScreen implements Screen {
 	
 	private GameWorld gameWorld;
 	private GameLogic gameLogic;
+	private GameEditor gameEditor;
 	
 	public GameScreen() {
 		gameWorld = new GameWorld();
 		gameLogic = new GameLogic(gameWorld);
 		ViewManager.instance.addView(new WorldView(gameWorld));
+
+		gameEditor = new GameEditor();
+		ViewManager.instance.addView(new EditView(gameEditor));
 		
 		PlayerHelper playerHelper = new PlayerHelper();
 		GameOptions gameOptions = new GameOptions();
-		InteractionHelper interactionHelper = new InteractionHelper(gameWorld, playerHelper, gameOptions);
+		InteractionHelper interactionHelper = new InteractionHelper(gameWorld, gameEditor, playerHelper, gameOptions);
 		ViewManager.instance.addView(new InteractionView(interactionHelper));
 		InputHelper inputHelper = new InputHelper(interactionHelper);
 		Gdx.input.setInputProcessor(inputHelper);

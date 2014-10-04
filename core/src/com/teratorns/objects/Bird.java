@@ -18,6 +18,7 @@ public class Bird extends GameObject implements Interactor<Rectangle> {
 	private Array<Vector2> path;
 	private Swarm swarm;
 	private Color color;
+	private float randCoef = 3;
 	
 	public Bird(float l, Color color, float x, float y) {
 		super(x, y);
@@ -33,8 +34,9 @@ public class Bird extends GameObject implements Interactor<Rectangle> {
 	public void update() {
 		float fitness = fitness();
 		
-		if (fitness < 0.01f) {
+		if (fitness < 0.1f) {
 			flag = true;
+			randCoef = 3;
 		}
 		
 		else {
@@ -57,16 +59,16 @@ public class Bird extends GameObject implements Interactor<Rectangle> {
 				}
 			}
 			
-			Vector2 v1 = lBest.sub(position).nor();
+			Vector2 v1 = lBest.sub(position);
 			
 			// Influência da Partícula
-			Vector2 v2 = velocity.cpy().nor();
+			Vector2 v2 = velocity.cpy();
 			
 			// Influência Aleatória
 			Vector2 v3 = new Vector2((float) Math.random(), (float) Math.random());
 			
 			// Influência de Afastamento - para as partículas não se chocarem
-			Vector2 diff = new Vector2();
+			/*Vector2 diff = new Vector2();
 			int count = 0;
 			for (Bird b : neighbours) {
 				if (position.dst(b.getPosition()) < 0.1f) {
@@ -80,13 +82,20 @@ public class Bird extends GameObject implements Interactor<Rectangle> {
 			}
 			
 			Vector2 v4 = diff.nor();
+			*/
 			
 			// Nova Velocidade
 			velocity.set(0,0);
-			velocity.add(v1.scl(0.2f));
-			velocity.add(v2.scl(0.3f));
-			velocity.add(v3.scl((count > 2) ?90f : 0.05f));
-			velocity.add(v4.scl((fitness > 0.2f) ? 0.4f : 0.01f));
+			velocity.add(v1.scl(1));
+			velocity.add(v2.scl(2));
+			//velocity.add(v3.scl((count > 2) ?90f : 0.05f));
+			//velocity.add(v4.scl((fitness > 0.2f) ? 0.4f : 0.01f));
+			
+			velocity.add(v3.scl(randCoef));
+			randCoef -= 0.05f;
+			if (randCoef < 0) {
+				randCoef = 0;
+			}
 			velocity.nor().scl(0.3f);
 			position.add(velocity.cpy().scl(GameClock.instance.getDelta()));
 			
@@ -121,7 +130,7 @@ public class Bird extends GameObject implements Interactor<Rectangle> {
 			Tx = AssestsLoader.instance.zombieWalkingRight.getKeyFrame(GameClock.instance.getRunTime());
 		}
 		
-		if (a > 45 && a < 135) {
+		if (a >= 45 && a <= 135) {
 			Tx = AssestsLoader.instance.zombieWalkingDown.getKeyFrame(GameClock.instance.getRunTime());
 		}
 		
@@ -129,7 +138,7 @@ public class Bird extends GameObject implements Interactor<Rectangle> {
 			Tx = AssestsLoader.instance.zombieWalkingLeft.getKeyFrame(GameClock.instance.getRunTime());
 		}
 		
-		if (a > 215 && a < 315) {
+		if (a >= 215 && a <= 315) {
 			Tx = AssestsLoader.instance.zombieWalkingUp.getKeyFrame(GameClock.instance.getRunTime());
 		}
 		

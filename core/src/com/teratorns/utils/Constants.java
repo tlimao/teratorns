@@ -2,8 +2,8 @@ package com.teratorns.utils;
 
 public class Constants {
 	
-	public static int windowWidth = 1280;
-	public static int windowHeight = 800;
+	public static int windowWidth = 800;
+	public static int windowHeight = 480;
 	
 	public static float aspectRatio = ((float) windowHeight) / windowWidth;
 	

@@ -1,6 +1,7 @@
 package com.teratorns.helpers;
 
 import com.badlogic.gdx.InputProcessor;
+import com.teratorns.assets.AssestsLoader;
 
 public class InputHelper implements InputProcessor {
 

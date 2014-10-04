@@ -1,11 +1,15 @@
 package com.teratorns.game;
 
+import com.teratorns.assets.AssestsLoader;
+
 public class GameClock {
 	
 	public static GameClock instance = new GameClock();
 	
 	private float runtime;
 	private float delta;
+	private float musicTimeStart = 10;
+	private boolean musicFlag = false;
 	
 	private GameClock() {
 		runtime = 0;
@@ -14,6 +18,15 @@ public class GameClock {
 	public void incrementTime(float delta) {
 		runtime += delta;
 		this.delta = delta;
+		
+		if (runtime > musicTimeStart && !musicFlag) {
+			startMusic();
+			musicFlag = true;
+		}
+	}
+	
+	private void startMusic() {
+		AssestsLoader.instance.horrorAmbientMusic.play();
 	}
 	
 	public float getRunTime() {

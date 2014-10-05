@@ -15,16 +15,14 @@ public class InteractionHelper {
 	
 	private GameWorld gameWorld;
 	private GameEditor gameEditor;
-	private GameOptions gameOptions;
 	private PlayerHelper playerHelper;
 	private float interactionRange;
 	private Rectangle interactionRect;
 	
-	public InteractionHelper(GameWorld gameWorld, GameEditor gameEditor, PlayerHelper playerHelper, GameOptions gameOptions) {
+	public InteractionHelper(GameWorld gameWorld, GameEditor gameEditor, PlayerHelper playerHelper) {
 		this.gameWorld = gameWorld;
 		this.gameEditor = gameEditor;
 		this.playerHelper = playerHelper;
-		this.gameOptions = gameOptions;
 		
 		interactionRange = 0.25f;
 		interactionRect = new Rectangle();

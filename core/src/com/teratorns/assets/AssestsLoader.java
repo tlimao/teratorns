@@ -36,6 +36,8 @@ public class AssestsLoader {
 	public TextureRegion panelblueTransCornerRightBottom;
 	public TextureRegion panelblueTransCenter;
 	
+	public TextureRegion greenButton;
+	
 	public TextureRegion buttonBlueLeft;
 	public TextureRegion buttonBlueRight;
 	public TextureRegion buttonBlueMiddle;

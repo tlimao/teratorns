@@ -109,6 +109,8 @@ public abstract class Container implements GuiElement, Interactor<Rectangle> {
 		
 		position.set(parent.getFreePosition().cpy().add(position));
 		interactionRect.setPosition(position);
+		
+		freePosition.set(position.cpy().add(padding.x, 0));
 	}
 	
 	@Override

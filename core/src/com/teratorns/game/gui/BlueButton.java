@@ -2,6 +2,7 @@ package com.teratorns.game.gui;
 
 import com.badlogic.gdx.math.Vector2;
 import com.teratorns.assets.AssestsLoader;
+import com.teratorns.game.GameOptions;
 import com.teratorns.game.GameRenderer;
 import com.teratorns.gui.Button;
 
@@ -24,6 +25,7 @@ public class BlueButton extends Button {
 	@Override
 	public void doAction() {
 		System.out.println(tag + " Clicked!!");
+		GameOptions.instance.resume();
 	}
 
 	@Override

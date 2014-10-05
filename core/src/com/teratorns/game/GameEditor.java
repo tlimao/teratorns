@@ -37,11 +37,11 @@ public class GameEditor implements Interactor<Rectangle> {
 
 		pc1.addGuiElement(pc2);
 
-		BlueButton b4 = (BlueButton) ButtonFactory.createButton(10, 13, 60, 20, ButtonColor.BLUE);
+		BlueButton b4 = (BlueButton) ButtonFactory.createButton(10, 13, 20, 20, ButtonColor.BLUE);
 		b4.setTag("Button 4");
 		pc2.addGuiElement(b4);
 		
-		BlueButton b5 = (BlueButton) ButtonFactory.createButton(10, 13, 90, 20, ButtonColor.BLUE);
+		BlueButton b5 = (BlueButton) ButtonFactory.createButton(10, 13, 70, 20, ButtonColor.BLUE);
 		b5.setTag("Button 5");
 		pc2.addGuiElement(b5);
 		

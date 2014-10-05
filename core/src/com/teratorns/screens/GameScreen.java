@@ -31,8 +31,7 @@ public class GameScreen implements Screen {
 		ViewManager.instance.addView(new EditView(gameEditor));
 		
 		PlayerHelper playerHelper = new PlayerHelper();
-		GameOptions gameOptions = new GameOptions();
-		InteractionHelper interactionHelper = new InteractionHelper(gameWorld, gameEditor, playerHelper, gameOptions);
+		InteractionHelper interactionHelper = new InteractionHelper(gameWorld, gameEditor, playerHelper);
 		ViewManager.instance.addView(new InteractionView(interactionHelper));
 		InputHelper inputHelper = new InputHelper(interactionHelper);
 		Gdx.input.setInputProcessor(inputHelper);
@@ -40,14 +39,19 @@ public class GameScreen implements Screen {
 
 	@Override
 	public void render(float delta) {
-		// Update GameClock
-		GameClock.instance.incrementTime(delta);
-		
-		// Apply Logic to game world
-		gameLogic.update();
+		if (!GameOptions.instance.isPaused()) {
+			// Update GameClock
+			GameClock.instance.incrementTime(delta);
+			
+			// Apply Logic to game world
+			gameLogic.update();
+			
+			GameOptions.instance.resume();
+		}
 		
 		// Render game
 		GameRenderer.instance.render();
+	
 	}
 
 	@Override

@@ -14,14 +14,6 @@ public class GameWorld {
 	
 	public GameWorld() {
 		worldObjects = new Array<GameObject>();
-		
-		swarm1 = new Swarm();
-		
-		for (int i = 0 ; i < 9 ; i++) {
-			Bird b = new Bird(0, Color.RED, (float) Math.random() * Constants.viewportWidth, (float) Math.random() * Constants.viewportHeight);
-			swarm1.addParticle(b);
-			worldObjects.add(b);
-		}
 	}
 	
 	public Array<GameObject> getWorldObjects() {
@@ -33,6 +25,19 @@ public class GameWorld {
 	}
 	
 	public void update() {
-		swarm1.update();
+		if (swarm1 != null) {
+			swarm1.update();
+		}
+	}
+	
+	public void createSwarm() {
+		swarm1 = new Swarm();
+		worldObjects.clear();
+		
+		for (int i = 0 ; i < 9 ; i++) {
+			Bird b = new Bird(5, Color.RED, (float) Math.random() * Constants.viewportWidth, (float) Math.random() * Constants.viewportHeight);
+			swarm1.addParticle(b);
+			worldObjects.add(b);
+		}
 	}
 }

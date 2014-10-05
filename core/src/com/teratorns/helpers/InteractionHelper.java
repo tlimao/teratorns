@@ -4,7 +4,6 @@ import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;
 import com.teratorns.game.GameEditor;
-import com.teratorns.game.GameOptions;
 import com.teratorns.game.GameWorld;
 import com.teratorns.interaction.Interactor;
 import com.teratorns.objects.FoodSource;
@@ -32,7 +31,7 @@ public class InteractionHelper {
 	public void clicked(float sX, float sY) {
 		
 		if (gameEditor.isTouched(new Rectangle(sX, sY, interactionRange, interactionRange))) {
-			System.out.println("Editor Touched!");
+			// Nada
 		}
 		
 		else {

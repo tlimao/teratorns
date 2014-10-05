@@ -19,11 +19,6 @@ public class BlueContainer extends Container {
 		horizontalSize = (int) (w / txWidth);
 		verticalSize = (int) (h / txHeight);
 	}
-
-	@Override
-	public void doAction() {
-		System.out.println(tag + " clicked!");
-	}
 	
 	@Override
 	public void draw() {

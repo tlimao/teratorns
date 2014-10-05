@@ -10,12 +10,6 @@ public class GreenButton extends Button {
 	}
 
 	@Override
-	public void doAction() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
 	public void draw() {
 		// TODO Auto-generated method stub
 		

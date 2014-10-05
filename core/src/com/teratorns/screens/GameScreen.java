@@ -27,7 +27,7 @@ public class GameScreen implements Screen {
 		gameLogic = new GameLogic(gameWorld);
 		ViewManager.instance.addView(new WorldView(gameWorld));
 
-		gameEditor = new GameEditor();
+		gameEditor = new GameEditor(gameWorld);
 		ViewManager.instance.addView(new EditView(gameEditor));
 		
 		PlayerHelper playerHelper = new PlayerHelper();

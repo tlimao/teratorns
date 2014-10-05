@@ -25,6 +25,7 @@ public class AssestsLoader {
 	public TextureRegion circle;
 	public TextureRegion arrow;
 	public TextureRegion grass;
+	public TextureRegion flag;
 	
 	public TextureRegion panelblueTransSideLeft;
 	public TextureRegion panelblueTransSideRight;
@@ -108,6 +109,8 @@ public class AssestsLoader {
 		circle = zombieAtlas.findRegion("circle");
 		grass = zombieAtlas.findRegion("grass");
 		arrow = zombieAtlas.findRegion("arrow");
+		flag = zombieAtlas.findRegion("flag");
+		flag.flip(false, true);
 		
 		horrorAmbientMusic = Gdx.audio.newSound(Gdx.files.internal("fx/horror.mp3"));
 		

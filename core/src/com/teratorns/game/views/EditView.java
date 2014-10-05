@@ -25,10 +25,10 @@ public class EditView extends View  {
 		public void draw() {
 			Array<GuiElement> elements = gameEditor.getGuiElements();
 			
-			//GameRenderer.instance.spriteRenderer.setProjectionMatrix(GameRenderer.instance.guiCamera.combined);
-			//GameRenderer.instance.spriteRenderer.begin();
+			GameRenderer.instance.spriteRenderer.setProjectionMatrix(GameRenderer.instance.guiCamera.combined);
+			GameRenderer.instance.spriteRenderer.begin();
 			
-			GameRenderer.instance.shapeRenderer.setProjectionMatrix(GameRenderer.instance.guiCamera.combined);
+			//GameRenderer.instance.shapeRenderer.setProjectionMatrix(GameRenderer.instance.guiCamera.combined);
 			
 			for (GuiElement element : elements) {
 				if (element.isVisible())
@@ -37,7 +37,7 @@ public class EditView extends View  {
 				}
 			}
 			
-			//GameRenderer.instance.spriteRenderer.end();
+			GameRenderer.instance.spriteRenderer.end();
 		}
 	}
 	

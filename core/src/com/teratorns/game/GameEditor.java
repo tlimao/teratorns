@@ -2,8 +2,12 @@ package com.teratorns.game;
 
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.utils.Array;
-import com.teratorns.game.gui.Button1;
-import com.teratorns.game.gui.PrimaryContainer;
+import com.teratorns.game.gui.BlueButton;
+import com.teratorns.game.gui.BlueContainer;
+import com.teratorns.game.gui.ButtonFactory;
+import com.teratorns.game.gui.ButtonFactory.ButtonColor;
+import com.teratorns.game.gui.ContainerFactory;
+import com.teratorns.game.gui.ContainerFactory.ContainerColor;
 import com.teratorns.gui.GuiElement;
 import com.teratorns.interaction.Interactor;
 
@@ -14,23 +18,32 @@ public class GameEditor implements Interactor<Rectangle> {
 	public GameEditor() {
 		guiElements = new Array<GuiElement>();
 		
-		PrimaryContainer pc1 = new PrimaryContainer(10, 10, 780, 60);
+		BlueContainer pc1 = (BlueContainer) ContainerFactory.createContainer(10, 10, 780, 90, ContainerColor.BLUE);
 		pc1.setTag("Container 1");
-		Button1 b1 = new Button1(10, 10, 40, 20);
+		BlueButton b1 = (BlueButton) ButtonFactory.createButton(10, 13, 60, 20, ButtonColor.BLUE);
 		b1.setTag("Button 1");
 		pc1.addGuiElement(b1);
 		
-		Button1 b2 = new Button1(10, 10, 40, 20);
+		BlueButton b2 = (BlueButton) ButtonFactory.createButton(10, 13, 90, 20, ButtonColor.BLUE);
 		b2.setTag("Button 2");
 		pc1.addGuiElement(b2);
 		
-		Button1 b3 = new Button1(10, 10, 40, 20);
+		BlueButton b3 = (BlueButton) ButtonFactory.createButton(10, 13, 40, 20, ButtonColor.BLUE);
 		b3.setTag("Button 3");
 		pc1.addGuiElement(b3);
 		
-		PrimaryContainer pc2 = new PrimaryContainer(10, 10, 100, 40);
-		pc2.setTag("Container2");
+		BlueContainer pc2 = (BlueContainer) ContainerFactory.createContainer(10, 10, 500, 60, ContainerColor.BLUE);
+		pc2.setTag("Container 2");
+
 		pc1.addGuiElement(pc2);
+
+		BlueButton b4 = (BlueButton) ButtonFactory.createButton(10, 13, 60, 20, ButtonColor.BLUE);
+		b4.setTag("Button 4");
+		pc2.addGuiElement(b4);
+		
+		BlueButton b5 = (BlueButton) ButtonFactory.createButton(10, 13, 90, 20, ButtonColor.BLUE);
+		b5.setTag("Button 5");
+		pc2.addGuiElement(b5);
 		
 		guiElements.add(pc1);
 	}

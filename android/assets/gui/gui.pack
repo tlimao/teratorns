@@ -1,0 +1,96 @@
+
+gui.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+blue_trans_center
+  rotate: false
+  xy: 1, 2
+  size: 25, 25
+  orig: 25, 25
+  offset: 0, 0
+  index: -1
+blue_trans_left_bottom
+  rotate: false
+  xy: 28, 2
+  size: 25, 25
+  orig: 25, 25
+  offset: 0, 0
+  index: -1
+blue_trans_left_top
+  rotate: false
+  xy: 55, 2
+  size: 25, 25
+  orig: 25, 25
+  offset: 0, 0
+  index: -1
+blue_trans_right_bottom
+  rotate: false
+  xy: 82, 2
+  size: 25, 25
+  orig: 25, 25
+  offset: 0, 0
+  index: -1
+blue_trans_right_top
+  rotate: false
+  xy: 109, 2
+  size: 25, 25
+  orig: 25, 25
+  offset: 0, 0
+  index: -1
+blue_trans_side_bottom
+  rotate: false
+  xy: 136, 2
+  size: 25, 25
+  orig: 25, 25
+  offset: 0, 0
+  index: -1
+blue_trans_side_left
+  rotate: false
+  xy: 163, 2
+  size: 25, 25
+  orig: 25, 25
+  offset: 0, 0
+  index: -1
+blue_trans_side_right
+  rotate: false
+  xy: 190, 2
+  size: 25, 25
+  orig: 25, 25
+  offset: 0, 0
+  index: -1
+blue_trans_side_top
+  rotate: false
+  xy: 217, 2
+  size: 25, 25
+  orig: 25, 25
+  offset: 0, 0
+  index: -1
+cursor_pointer
+  rotate: false
+  xy: 244, 3
+  size: 20, 24
+  orig: 20, 24
+  offset: 0, 0
+  index: -1
+button_blue_mid
+  rotate: false
+  xy: 266, 1
+  size: 16, 26
+  orig: 16, 26
+  offset: 0, 0
+  index: -1
+button_blue_left
+  rotate: false
+  xy: 284, 1
+  size: 6, 26
+  orig: 6, 26
+  offset: 0, 0
+  index: -1
+button_blue_right
+  rotate: false
+  xy: 292, 1
+  size: 6, 26
+  orig: 6, 26
+  offset: 0, 0
+  index: -1

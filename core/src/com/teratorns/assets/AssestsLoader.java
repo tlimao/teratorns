@@ -14,7 +14,8 @@ public class AssestsLoader {
 	// Singleton
 	public static AssestsLoader instance = new AssestsLoader();
 	
-	private TextureAtlas zombieSprites;
+	private TextureAtlas zombieAtlas;
+	private TextureAtlas guiAtlas;
 	
 	public Animation zombieWalkingDown;
 	public Animation zombieWalkingUp;
@@ -25,6 +26,20 @@ public class AssestsLoader {
 	public TextureRegion arrow;
 	public TextureRegion grass;
 	
+	public TextureRegion panelblueTransSideLeft;
+	public TextureRegion panelblueTransSideRight;
+	public TextureRegion panelblueTransSideTop;
+	public TextureRegion panelblueTransSideBottom;
+	public TextureRegion panelblueTransCornerLeftTop;
+	public TextureRegion panelblueTransCornerRightTop;
+	public TextureRegion panelblueTransCornerLeftBottom;
+	public TextureRegion panelblueTransCornerRightBottom;
+	public TextureRegion panelblueTransCenter;
+	
+	public TextureRegion buttonBlueLeft;
+	public TextureRegion buttonBlueRight;
+	public TextureRegion buttonBlueMiddle;
+	
 	public Sound horrorAmbientMusic;
 
 	private AssestsLoader() {
@@ -33,9 +48,9 @@ public class AssestsLoader {
 	
 	/** Load assets */
 	public void loadAssets() {
-		zombieSprites = new TextureAtlas(Gdx.files.internal(Constants.TX_ZOMBIE_MAP));
+		zombieAtlas = new TextureAtlas(Gdx.files.internal(Constants.TX_ZOMBIE_MAP));
 
-		for (Texture t : zombieSprites.getTextures()) {
+		for (Texture t : zombieAtlas.getTextures()) {
 			t.setFilter(TextureFilter.Linear, TextureFilter.Linear);
 		}
 		
@@ -43,25 +58,25 @@ public class AssestsLoader {
 		TextureRegion tx;
 		
 		for (int i = 1 ; i < 7 ; i++) {
-			tx = zombieSprites.findRegion("zf" + i);
+			tx = zombieAtlas.findRegion("zf" + i);
 			tx.flip(false, true);
 			zombieTextures.add(tx);
 		}
 		
 		for (int i = 1 ; i < 5 ; i++) {
-			tx = zombieSprites.findRegion("zb" + i);
+			tx = zombieAtlas.findRegion("zb" + i);
 			tx.flip(false, true);
 			zombieTextures.add(tx);
 		}
 		
 		for (int i = 1 ; i < 4 ; i++) {
-			tx = zombieSprites.findRegion("zl" + i);
+			tx = zombieAtlas.findRegion("zl" + i);
 			tx.flip(false, true);
 			zombieTextures.add(tx);
 		}
 		
 		for (int i = 1 ; i < 4 ; i++) {
-			tx = zombieSprites.findRegion("zr" + i);
+			tx = zombieAtlas.findRegion("zr" + i);
 			tx.flip(false, true);
 			zombieTextures.add(tx);
 		}
@@ -88,16 +103,49 @@ public class AssestsLoader {
 		zombieWalkingRight = new Animation(0.2f, walkingRight);
 		zombieWalkingRight.setPlayMode(Animation.PlayMode.LOOP);
 		
-		circle = zombieSprites.findRegion("circle");
-		grass = zombieSprites.findRegion("grass");
-		arrow = zombieSprites.findRegion("arrow");
+		circle = zombieAtlas.findRegion("circle");
+		grass = zombieAtlas.findRegion("grass");
+		arrow = zombieAtlas.findRegion("arrow");
 		
 		horrorAmbientMusic = Gdx.audio.newSound(Gdx.files.internal("fx/horror.mp3"));
+		
+		loadUiAssets();
+	}
+	
+	public void loadUiAssets() {
+		guiAtlas = new TextureAtlas(Gdx.files.internal(Constants.TX_GUI_MAP));
+
+		for (Texture t : guiAtlas.getTextures()) {
+			t.setFilter(TextureFilter.Linear, TextureFilter.Linear);
+		}
+		
+		panelblueTransSideLeft = guiAtlas.findRegion("blue_trans_side_left");
+		panelblueTransSideLeft.flip(false, true);
+		panelblueTransSideRight = guiAtlas.findRegion("blue_trans_side_right");
+		panelblueTransSideRight.flip(false, true);
+		panelblueTransSideTop = guiAtlas.findRegion("blue_trans_side_top");
+		panelblueTransSideTop.flip(false, true);
+		panelblueTransSideBottom = guiAtlas.findRegion("blue_trans_side_bottom");
+		panelblueTransSideBottom.flip(false, true);
+		panelblueTransCenter = guiAtlas.findRegion("blue_trans_center");
+		panelblueTransCornerLeftTop = guiAtlas.findRegion("blue_trans_left_top");
+		panelblueTransCornerLeftTop.flip(false, true);
+		panelblueTransCornerRightTop = guiAtlas.findRegion("blue_trans_right_top");
+		panelblueTransCornerRightTop.flip(false, true);
+		panelblueTransCornerLeftBottom = guiAtlas.findRegion("blue_trans_left_bottom");
+		panelblueTransCornerLeftBottom.flip(false, true);
+		panelblueTransCornerRightBottom = guiAtlas.findRegion("blue_trans_right_bottom");
+		panelblueTransCornerRightBottom.flip(false, true);
+		
+		buttonBlueLeft = guiAtlas.findRegion("button_blue_left");
+		buttonBlueRight = guiAtlas.findRegion("button_blue_right");
+		buttonBlueMiddle = guiAtlas.findRegion("button_blue_mid");
 	}
 	
 	/** Dispose loaded assets */
 	public void disposeAssests() {
-		zombieSprites.dispose();
+		zombieAtlas.dispose();
+		guiAtlas.dispose();
 		horrorAmbientMusic.dispose();
 	}
 }

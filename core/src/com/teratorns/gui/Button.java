@@ -82,7 +82,7 @@ public abstract class Button implements GuiElement, Interactor<Rectangle> {
 		updatePosition(parent.getFreePosition());
 	}
 	
-	private void updatePosition(Vector2 position) {
+	public void updatePosition(Vector2 position) {
 		this.position.set(position);
 		this.position.add(localPosition);
 		interactionRect.setPosition(this.position);

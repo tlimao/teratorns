@@ -186,7 +186,7 @@ public abstract class Container implements GuiElement, Interactor<Rectangle> {
 		
 		for (GuiElement element : guiElements) {
 			element.parrentTo(this);
-			freePosition.set(freePosition.set(element.getPosition().x + element.getWidth() + padding.x, freePosition.y));
+			freePosition.set(freePosition.set(element.getPosition().x + element.getWidth(), freePosition.y));
 		}
 	}
 	

@@ -5,6 +5,7 @@ import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.Texture.TextureFilter;
 import com.badlogic.gdx.graphics.g2d.Animation;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.utils.Array;
@@ -44,6 +45,8 @@ public class AssestsLoader {
 	public TextureRegion buttonBlueMiddle;
 	
 	public Sound horrorAmbientMusic;
+	
+	public BitmapFont kenneyFont;
 
 	private AssestsLoader() {
 		System.out.println("Assets Loader Created");
@@ -115,6 +118,8 @@ public class AssestsLoader {
 		horrorAmbientMusic = Gdx.audio.newSound(Gdx.files.internal("fx/horror.mp3"));
 		
 		loadUiAssets();
+		
+		loadFonts();
 	}
 	
 	public void loadUiAssets() {
@@ -145,6 +150,10 @@ public class AssestsLoader {
 		buttonBlueLeft = guiAtlas.findRegion("button_blue_left");
 		buttonBlueRight = guiAtlas.findRegion("button_blue_right");
 		buttonBlueMiddle = guiAtlas.findRegion("button_blue_mid");
+	}
+	
+	public void loadFonts() {
+		 kenneyFont = new BitmapFont(Gdx.files.internal("fnt/fnt.fnt"), Gdx.files.internal("fnt/fnt.png"), true);
 	}
 	
 	/** Dispose loaded assets */

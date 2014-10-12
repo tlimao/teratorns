@@ -1,7 +1,6 @@
 package com.teratorns.gui;
 
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.teratorns.assets.AssestsLoader;
 import com.teratorns.game.GameRenderer;

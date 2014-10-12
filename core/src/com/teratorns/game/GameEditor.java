@@ -139,7 +139,7 @@ public class GameEditor implements Interactor<Rectangle> {
 		raio.addGuiElement(plus);
 		raio.addGuiElement(minus);
 		
-		BaseContainer menu = new BaseContainer(10, 10);
+		BaseContainer menu = new BaseContainer(30, 30);
 		menu.setPadding(10, 10);
 		menu.setColor(0, 0, 0,0.3f);
 		
@@ -280,6 +280,6 @@ public class GameEditor implements Interactor<Rectangle> {
 		
 		guiElements.add(menu);
 		
-		menu.setPosition(30, 420);
+		menu.setPosition(30, 30);
 	}
 }

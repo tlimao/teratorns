@@ -15,7 +15,7 @@ public class EditView extends View  {
 	public EditView(GameEditor gameEditor) {
 		this.gameEditor = gameEditor;
 		addLayer(new PrimaryMenu());
-		//addLayer(new PrimaryMenuInteraction());
+		addLayer(new PrimaryMenuInteraction());
 	}
 	
 	private class PrimaryMenu extends Layer {

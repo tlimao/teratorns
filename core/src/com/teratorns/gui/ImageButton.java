@@ -1,6 +1,5 @@
 package com.teratorns.gui;
 
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
 import com.teratorns.game.GameRenderer;
@@ -9,6 +8,8 @@ public class ImageButton extends ButtonDecorator {
 
 	private TextureRegion image;
 	private Vector2 imagePadding;
+	private float imageTextureWidth;
+	private float imageTextureHeight;
 	private float scale;
 	
 	public ImageButton(TextureRegion image) {
@@ -16,23 +17,31 @@ public class ImageButton extends ButtonDecorator {
 		scale = 1.0f;
 		imagePadding = new Vector2(0, 0);
 		setImage(image);
+		setScale(1.2f);
 	}
 
 	@Override
 	public void draw() {
 		Vector2 pos = decoratedButton.getPosition();
 		pos.add(imagePadding);
-		GameRenderer.instance.spriteRenderer.draw(image, pos.x, pos.y);
+		GameRenderer.instance.spriteRenderer.draw(image,
+												  pos.x, pos.y,
+												  0, 0,
+												  imageTextureWidth, imageTextureHeight,
+												  scale, scale,
+												  0);
 	}
 
 	public void setImage(TextureRegion image) {
 		this.image = image;
-		decoratedButton.setDimensions(image.getRegionWidth(), image.getRegionHeight());
+		imageTextureWidth = image.getRegionWidth();
+		imageTextureHeight = image.getRegionHeight();
+		decoratedButton.setDimensions(imageTextureWidth, imageTextureHeight);
 	}
 	
 	public void setScale(float imageScale) {
 		scale = imageScale;
-		decoratedButton.setDimensions(width * scale, height * scale);
+		decoratedButton.setDimensions(imageTextureWidth * scale, imageTextureHeight * scale);
 	}
 	
 	public void setImagePadding(float dx, float dy) {

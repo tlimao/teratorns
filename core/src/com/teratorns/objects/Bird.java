@@ -1,8 +1,6 @@
 package com.teratorns.objects;
 
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;
@@ -12,40 +10,27 @@ import com.teratorns.game.GameRenderer;
 import com.teratorns.interaction.Interactor;
 
 public class Bird extends GameObject implements Interactor<Rectangle> {
-	private float l;
 	private Vector2 pBest;
-	private boolean flag;
-	private Array<Vector2> path;
 	private Swarm swarm;
-	private Color color;
-	private float randCoef = 3;
+	private float rand;
 	
-	public Bird(float l, Color color, float x, float y) {
+	public Bird(float x, float y) {
 		super(x, y);
-		this.l = l;
-		this.color = color;
-		flag = false;
-		path = new Array<Vector2>();
 		pBest = position.cpy();
-		velocity.scl((float) Math.random(), (float) Math.random());
+		velocity.set((float) Math.random(), (float) Math.random());
+		
+		rand = SwarmConstants.c3;
 	}
 
 	@Override
 	public void update() {
 		float fitness = fitness();
 		
-		if (fitness < 0.1f) {
-			flag = true;
-			randCoef = 3;
-		}
-		
-		else {
-			flag = false;
-			
+		if (fitness > SwarmConstants.threshold) {
 			Array<Bird> neighbours = new Array<Bird>();
 			
 			for (Bird b : swarm.getParticles()) {
-				if (position.dst(b.getPosition()) < l && !b.equals(this)) {
+				if (position.dst(b.getPosition()) < SwarmConstants.raio && !b.equals(this)) {
 					neighbours.add(b);
 				}
 			}
@@ -60,6 +45,7 @@ public class Bird extends GameObject implements Interactor<Rectangle> {
 			}
 			
 			Vector2 v1 = lBest.sub(position);
+			//System.out.println(SwarmConstants.raio + " " + v1.toString());
 			
 			// Influência da Partícula
 			Vector2 v2 = velocity.cpy();
@@ -67,42 +53,29 @@ public class Bird extends GameObject implements Interactor<Rectangle> {
 			// Influência Aleatória
 			Vector2 v3 = new Vector2((float) Math.random(), (float) Math.random());
 			
-			// Influência de Afastamento - para as partículas não se chocarem
-			/*Vector2 diff = new Vector2();
-			int count = 0;
-			for (Bird b : neighbours) {
-				if (position.dst(b.getPosition()) < 0.1f) {
-					diff.add(position.cpy().sub(b.getPosition()));
-					count++;
-				}
-			}
-			
-			if (count > 0) {
-				diff.scl(1.0f/count);
-			}
-			
-			Vector2 v4 = diff.nor();
-			*/
-			
 			// Nova Velocidade
 			velocity.set(0,0);
-			velocity.add(v1.scl(1));
-			velocity.add(v2.scl(2));
-			//velocity.add(v3.scl((count > 2) ?90f : 0.05f));
-			//velocity.add(v4.scl((fitness > 0.2f) ? 0.4f : 0.01f));
-			
-			velocity.add(v3.scl(randCoef));
-			randCoef -= 0.05f;
-			if (randCoef < 0) {
-				randCoef = 0;
+			if (SwarmConstants.c1 > 1.0E-10f && SwarmConstants.raio > 0) {
+				velocity.add(v1.scl(SwarmConstants.c1));
+			}
+			if (SwarmConstants.c2 > 1.0E-10f) {
+				velocity.add(v2.scl(SwarmConstants.c2));
+			}
+			if (rand > 1.0E-10f && SwarmConstants.c3 > 0) {
+				velocity.add(v3.scl(rand));
 			}
 			velocity.nor().scl(0.3f);
+		
 			position.add(velocity.cpy().scl(GameClock.instance.getDelta()));
 			
 			fitness = fitness();
 			
 			if (fitness < pBest.dst(FoodSource.food)) {
 				pBest = position.cpy();
+				rand -= SwarmConstants.aleatoryDec;
+				if (rand < 0) {
+					rand = 0.0f;
+				}
 			}
 		}
 	}
@@ -122,69 +95,25 @@ public class Bird extends GameObject implements Interactor<Rectangle> {
 
 	@Override
 	public void draw() {
-		TextureRegion Tx = null;
-		
-		float a = velocity.angle();
-		
-		if (a < 45 || a > 315) {
-			Tx = AssestsLoader.instance.zombieWalkingRight.getKeyFrame(GameClock.instance.getRunTime());
-		}
-		
-		if (a >= 45 && a <= 135) {
-			Tx = AssestsLoader.instance.zombieWalkingDown.getKeyFrame(GameClock.instance.getRunTime());
-		}
-		
-		if (a > 135 && a < 215) {
-			Tx = AssestsLoader.instance.zombieWalkingLeft.getKeyFrame(GameClock.instance.getRunTime());
-		}
-		
-		if (a >= 215 && a <= 315) {
-			Tx = AssestsLoader.instance.zombieWalkingUp.getKeyFrame(GameClock.instance.getRunTime());
-		}
+		GameRenderer.instance.spriteRenderer.setColor(0, 0, 0, 1f);
 		
 		GameRenderer.instance.spriteRenderer.draw(AssestsLoader.instance.circle,
+				  position.x - width / 2, position.y - height / 2,
+				  width / 2 , height / 2,
+				  width     , height,
+				  SwarmConstants.raio , SwarmConstants.raio,
+				  rotation);
+		
+		GameRenderer.instance.spriteRenderer.setColor(0, 0, 0, 0.3f);
+		
+		GameRenderer.instance.spriteRenderer.draw(AssestsLoader.instance.boid,
 												  position.x - width / 2, position.y - height / 2,
 												  width / 2 , height / 2,
 												  width     , height,
-												  l/2       , l/2,
-												  rotation);
+												  0.5f      , 0.5f,
+												  velocity.angle());
 		
-		GameRenderer.instance.spriteRenderer.draw(AssestsLoader.instance.arrow,
-												  position.x - width / 2 + 0.25f, position.y - height / 2 + 0.25f,
-												  width / 2 , height / 2,
-												  width     , height,
-												  0.2f      , 0.2f,
-												  velocity.angle() + 90);
-		
-		GameRenderer.instance.spriteRenderer.draw(Tx,
-												  position.x - width / 2, position.y - height / 2,
-												  width / 2 , height / 2,
-												  width     , height,
-												  1f         , 1f,
-												  rotation);
-
-		/*GameRenderer.instance.shapeRenderer.begin(ShapeType.Filled);
-		GameRenderer.instance.shapeRenderer.setColor(color);
-		GameRenderer.instance.shapeRenderer.circle(position.x, position.y, 0.1f, 12);
-		GameRenderer.instance.shapeRenderer.end();
-		GameRenderer.instance.shapeRenderer.begin(ShapeType.Line);
-		GameRenderer.instance.shapeRenderer.setColor(color);
-		GameRenderer.instance.shapeRenderer.circle(position.x, position.y, l/2, 24);
-		GameRenderer.instance.shapeRenderer.end();
-		GameRenderer.instance.shapeRenderer.setColor(color);
-		GameRenderer.instance.shapeRenderer.begin(ShapeType.Line);
-		GameRenderer.instance.shapeRenderer.line(position, position.cpy().add(velocity.cpy().nor().scl(0.25f)));
-		GameRenderer.instance.shapeRenderer.end();
-
-		if (flag) {
-			GameRenderer.instance.shapeRenderer.begin(ShapeType.Line);
-			GameRenderer.instance.shapeRenderer.setColor(color);
-			for (int i = 0 ; i < path.size - 1 ; i++) {
-				GameRenderer.instance.shapeRenderer.line(path.get(i), path.get(i+1));
-			}
-			
-			GameRenderer.instance.shapeRenderer.end();
-		}*/
+		GameRenderer.instance.spriteRenderer.setColor(Color.WHITE);
 	}
 
 	@Override
@@ -198,5 +127,8 @@ public class Bird extends GameObject implements Interactor<Rectangle> {
 		// TODO Auto-generated method stub
 		
 	}
-
+	
+	public void setAleatoryFactor(float value) {
+		rand = value;
+	}
 }

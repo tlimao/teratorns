@@ -1,6 +1,5 @@
 package com.teratorns.game;
 
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.utils.Array;
 import com.teratorns.objects.Bird;
 import com.teratorns.objects.GameObject;
@@ -35,9 +34,13 @@ public class GameWorld {
 		worldObjects.clear();
 		
 		for (int i = 0 ; i < 9 ; i++) {
-			Bird b = new Bird(5, Color.RED, (float) Math.random() * Constants.viewportWidth, (float) Math.random() * Constants.viewportHeight);
+			Bird b = new Bird((float) Math.random() * Constants.viewportWidth, (float) Math.random() * Constants.viewportHeight);
 			swarm1.addParticle(b);
 			worldObjects.add(b);
 		}
+	}
+	
+	public Swarm getSwarm() {
+		return swarm1;
 	}
 }

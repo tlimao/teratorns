@@ -59,10 +59,9 @@ public abstract class Button implements GuiElement, Interactor<Rectangle> {
 	
 	@Override
 	public void drawInteractor() {
-		Vector2 pos = getPosition();
 		GameRenderer.instance.shapeRenderer.begin(ShapeType.Line);
 		GameRenderer.instance.shapeRenderer.setColor(Color.RED);
-		GameRenderer.instance.shapeRenderer.rect(pos.x, pos.y, interactionRect.width, interactionRect.height);
+		GameRenderer.instance.shapeRenderer.rect(interactionRect.x, interactionRect.y, interactionRect.width, interactionRect.height);
 		GameRenderer.instance.shapeRenderer.end();
 	}
 	
@@ -77,7 +76,7 @@ public abstract class Button implements GuiElement, Interactor<Rectangle> {
 	}
 	
 	@Override
-	public void parrentTo(Container parent) {
+	public void parentTo(Container parent) {
 		this.parent = parent;
 		updatePosition(parent.getFreePosition());
 	}
@@ -151,6 +150,8 @@ public abstract class Button implements GuiElement, Interactor<Rectangle> {
 	
 	@Override
 	public void notifyParent() {
-		((Container) parent).childChanged();
+		if (parent != null) {
+			((Container) parent).childChanged();
+		}
 	}
 }

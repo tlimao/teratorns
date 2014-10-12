@@ -11,7 +11,7 @@ public interface GuiElement {
 	public void setVisible(boolean value);
 	public boolean isVisible();
 	public void draw();
-	public void parrentTo(Container parent);
+	public void parentTo(Container parent);
 	public void setPosition(float x, float y);
 	public void setPosition(Vector2 position);
 	public Vector2 getPosition();

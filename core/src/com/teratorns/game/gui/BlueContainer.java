@@ -68,4 +68,16 @@ public class BlueContainer extends Container {
 		
 		super.draw();
 	}
+	
+	@Override
+	public void setHeight(float height) {
+		super.setHeight(height);
+		verticalSize = (int) (height / txHeight);
+	}
+	
+	@Override
+	public void setWidth(float width) {
+		super.setWidth(width);
+		horizontalSize = (int) (width / txWidth);
+	}
 }

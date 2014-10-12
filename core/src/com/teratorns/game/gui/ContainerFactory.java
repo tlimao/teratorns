@@ -10,8 +10,19 @@ public abstract class ContainerFactory {
 	public static Container createContainer(float x, float y, float w, float h, ContainerColor color) {
 		Container newContainer = null;
 		
-		float width = AssestsLoader.instance.panelblueTransCenter.getRegionWidth() * (((int) w) / AssestsLoader.instance.panelblueTransCenter.getRegionWidth());
-		float height = AssestsLoader.instance.panelblueTransCenter.getRegionHeight() * (((int) h) / AssestsLoader.instance.panelblueTransCenter.getRegionHeight());
+		float width = (((int) w) / AssestsLoader.instance.panelblueTransCenter.getRegionWidth());
+		float height = (((int) h) / AssestsLoader.instance.panelblueTransCenter.getRegionHeight());
+		
+		if (width < 2) {
+			width = 2;
+		}
+		
+		if (height < 2) {
+			height = 2;
+		}
+		
+		height *= AssestsLoader.instance.panelblueTransCenter.getRegionHeight();
+		width *= AssestsLoader.instance.panelblueTransCenter.getRegionWidth();
 		
 		switch (color) {
 			case ORANGE:

@@ -23,7 +23,7 @@ public class InteractionView extends View {
 	}
 	
 	private class ClickLayer extends Layer {
-
+		
 		@Override
 		public void draw() {
 			lastClick.set(interactionHelper.getLastClick());
@@ -40,12 +40,14 @@ public class InteractionView extends View {
 			
 			GameRenderer.instance.spriteRenderer.setProjectionMatrix(GameRenderer.instance.camera.combined);
 			GameRenderer.instance.spriteRenderer.begin();
-			GameRenderer.instance.spriteRenderer.draw(AssestsLoader.instance.flag,
-													  lastClick.x - lastClick.width/2 , lastClick.y  - lastClick.height/2, 
+			GameRenderer.instance.spriteRenderer.setColor(0, 0, 0, 0.3f);
+			GameRenderer.instance.spriteRenderer.draw(AssestsLoader.instance.ObjectiveIcon,
+													  lastClick.x - 0.25f, lastClick.y - 0.35f, 
 													  0, 0,
 													  1, 1,
 													  0.5f, 0.5f,
 													  0);
+			GameRenderer.instance.spriteRenderer.setColor(Color.WHITE);
 			GameRenderer.instance.spriteRenderer.end();
 		}
 	}

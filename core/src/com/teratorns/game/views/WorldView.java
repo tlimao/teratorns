@@ -1,5 +1,6 @@
 package com.teratorns.game.views;
 
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.utils.Array;
 import com.teratorns.assets.AssestsLoader;
 import com.teratorns.game.GameRenderer;
@@ -42,8 +43,12 @@ public class WorldView extends View {
 		public void draw() {
 			GameRenderer.instance.spriteRenderer.setProjectionMatrix(GameRenderer.instance.camera.combined);
 			GameRenderer.instance.spriteRenderer.begin();
-			
-			for (int i = 0; i < Constants.viewportWidth; i++) {
+			GameRenderer.instance.spriteRenderer.setColor(1, 1, 1, 1);
+			GameRenderer.instance.spriteRenderer.draw(AssestsLoader.instance.baseColor,
+													  0, 0, 
+													  Constants.viewportWidth, Constants.viewportHeight);
+			GameRenderer.instance.spriteRenderer.setColor(Color.WHITE);
+			/*for (int i = 0; i < Constants.viewportWidth; i++) {
 				for (int j = 0; j < Constants.viewportHeight; j++) {
 					GameRenderer.instance.spriteRenderer.draw(AssestsLoader.instance.grass,
 							  i, j,
@@ -53,8 +58,10 @@ public class WorldView extends View {
 							  0);
 				}
 			}
+			*/
 			
 			GameRenderer.instance.spriteRenderer.end();
+			
 		}
 	}
 }

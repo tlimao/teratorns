@@ -10,7 +10,9 @@ import com.teratorns.interaction.ActionListener;
 import com.teratorns.interaction.Interactor;
 
 public abstract class Container implements GuiElement, Interactor<Rectangle> {
-	
+
+	public static enum ContainerAlignment {VERTICAL, HORIZONTAL};
+	protected ContainerAlignment align;
 	protected GuiElement parent;
 	protected Vector2 padding;
 	protected String tag;
@@ -21,8 +23,8 @@ public abstract class Container implements GuiElement, Interactor<Rectangle> {
 	protected float width;
 	protected float height;
 	protected Vector2 freePosition;
+	@SuppressWarnings("unused")
 	private ActionListener actionListener;
-	
 	private Array<GuiElement> guiElements;
 	
 	public Container(float x, float y, float w, float h) {
@@ -34,15 +36,39 @@ public abstract class Container implements GuiElement, Interactor<Rectangle> {
 		guiElements = new Array<GuiElement>();
 		interactionRect = new Rectangle(x, y, w, h);
 		freePosition = new Vector2(x, y);
-		padding = new Vector2(10, 10);
+		padding = new Vector2(0, 0);
+		align = ContainerAlignment.HORIZONTAL;
+	}
+	
+	public void setAlignment(ContainerAlignment containerAlign) {
+		align = containerAlign;
 	}
 	
 	public void addGuiElement(GuiElement element) {
-		element.parrentTo(this);
+		element.parentTo(this);
 		guiElements.add(element);
-		freePosition.set(freePosition.add(element.getWidth() + padding.x, 0));
+		
+		if (align.equals(ContainerAlignment.HORIZONTAL)) {
+			freePosition.x = element.getPosition().x + element.getWidth() + padding.x;
+			if (Math.abs(freePosition.x - position.x) >= width) {
+				setWidth(Math.abs(freePosition.x - position.x));
+			}
+			if (element.getPosition().y + element.getHeight() >= height) {
+				setHeight(element.getPosition().y + element.getHeight());
+			}
+		} else if (align.equals(ContainerAlignment.VERTICAL)) {
+			freePosition.y = element.getPosition().y + element.getHeight() + padding.y;
+			if (Math.abs(freePosition.y - position.y) >= height) {
+				setHeight(Math.abs(freePosition.y - position.y));
+			}
+
+			if (element.getPosition().x + element.getWidth() >= width) {
+				setWidth(element.getPosition().x + element.getWidth() + padding.x);
+			}
+		}
 	}
 	
+	@SuppressWarnings("unchecked")
 	@Override
 	public boolean isTouched(Rectangle obj) {
 		boolean flag = interactionRect.overlaps(obj);
@@ -50,7 +76,7 @@ public abstract class Container implements GuiElement, Interactor<Rectangle> {
 		if (flag) {
 			for (GuiElement element : guiElements) {
 				if (element instanceof Interactor<?>) {
-					if (((Interactor) element).isTouched(obj))
+					if (((Interactor<Rectangle>) element).isTouched(obj))
 					{
 						break;
 					}
@@ -78,14 +104,14 @@ public abstract class Container implements GuiElement, Interactor<Rectangle> {
 	@Override
 	public void drawInteractor() {
 		GameRenderer.instance.shapeRenderer.begin(ShapeType.Line);
-		GameRenderer.instance.shapeRenderer.setColor(Color.RED);
+		GameRenderer.instance.shapeRenderer.setColor(Color.BLUE);
 		GameRenderer.instance.shapeRenderer.rect(interactionRect.x, interactionRect.y, interactionRect.width, interactionRect.height);
 		GameRenderer.instance.shapeRenderer.end();
 		
 		if (guiElements.size > 0) {
 			for (GuiElement element : guiElements) {
 				if (element.isVisible() && element instanceof Interactor<?>) {
-					((Interactor<Rectangle>) element).drawInteractor();
+					((Interactor<?>) element).drawInteractor();
 				}
 			}
 		}
@@ -112,14 +138,13 @@ public abstract class Container implements GuiElement, Interactor<Rectangle> {
 	}
 	
 	@Override
-	public void parrentTo(Container parent) {
+	public void parentTo(Container parent) {
 		this.parent = parent;
-		
-		position.set(parent.getFreePosition().cpy().add(localPosition));
+		position.set(parent.getFreePosition().add(localPosition));
 		interactionRect.setPosition(position);
 		
-		freePosition.set(position.cpy().add(padding.x, 0));
-		
+		freePosition.set(position.cpy().add(padding));
+
 		updateGuiChilds();
 	}
 	
@@ -131,9 +156,11 @@ public abstract class Container implements GuiElement, Interactor<Rectangle> {
 	@Override
 	public void setPosition(float x, float y) {
 		position.set(x, y);
+		
 		if (parent != null) {
 			this.position.add(localPosition);
 		}
+		
 		interactionRect.setPosition(position);
 		updateGuiChilds();
 	}
@@ -141,9 +168,11 @@ public abstract class Container implements GuiElement, Interactor<Rectangle> {
 	@Override
 	public void setPosition(Vector2 position) {
 		this.position.set(position);
+		
 		if (parent != null) {
 			this.position.add(localPosition);
 		}
+		
 		interactionRect.setPosition(this.position);
 		updateGuiChilds();
 	}
@@ -183,16 +212,24 @@ public abstract class Container implements GuiElement, Interactor<Rectangle> {
 	
 	private void updateGuiChilds() {
 		freePosition = getPosition();
+		freePosition.add(padding);
 		
 		for (GuiElement element : guiElements) {
-			element.parrentTo(this);
-			freePosition.set(freePosition.set(element.getPosition().x + element.getWidth(), freePosition.y));
+			element.parentTo(this);
+			
+			if (align.equals(ContainerAlignment.HORIZONTAL)) {
+				freePosition.x = element.getPosition().x + element.getWidth() + padding.x;
+			} else if (align.equals(ContainerAlignment.VERTICAL)) {
+				freePosition.y = element.getPosition().y + element.getHeight() + padding.y;
+			}
 		}
 	}
 	
 	@Override
 	public void setPadding(float x, float y) {
+		freePosition.sub(padding);
 		padding.set(x, y);
+		freePosition.add(padding);
 	}
 	
 	public void childChanged() {

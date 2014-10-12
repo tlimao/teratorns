@@ -1,6 +1,5 @@
 package com.teratorns.game.views;
 
-import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.utils.Array;
 import com.teratorns.game.GameEditor;
 import com.teratorns.game.GameRenderer;
@@ -24,11 +23,9 @@ public class EditView extends View  {
 		@Override
 		public void draw() {
 			Array<GuiElement> elements = gameEditor.getGuiElements();
-			
-			GameRenderer.instance.spriteRenderer.setProjectionMatrix(GameRenderer.instance.guiCamera.combined);
+
 			GameRenderer.instance.spriteRenderer.begin();
-			
-			//GameRenderer.instance.shapeRenderer.setProjectionMatrix(GameRenderer.instance.guiCamera.combined);
+			GameRenderer.instance.spriteRenderer.setProjectionMatrix(GameRenderer.instance.guiCamera.combined);
 			
 			for (GuiElement element : elements) {
 				if (element.isVisible())
@@ -52,7 +49,7 @@ public class EditView extends View  {
 			for (GuiElement element : elements) {
 				if (element.isVisible())
 				{
-					((Interactor<Rectangle>) element).drawInteractor();
+					((Interactor<?>) element).drawInteractor();
 				}
 			}
 		}

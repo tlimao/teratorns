@@ -12,4 +12,6 @@ public class Constants {
 	
 	public static String TX_ZOMBIE_MAP = "gfx/zombie.pack";
 	public static String TX_GUI_MAP = "gui/gui.pack";
+	
+	public static String TX_ICONS_MAP = "gui/minimalisticons.pack";
 }

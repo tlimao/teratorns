@@ -17,6 +17,7 @@ public class AssestsLoader {
 	
 	private TextureAtlas zombieAtlas;
 	private TextureAtlas guiAtlas;
+	private TextureAtlas iconsAtlas;
 	
 	public Animation zombieWalkingDown;
 	public Animation zombieWalkingUp;
@@ -47,7 +48,18 @@ public class AssestsLoader {
 	public Sound horrorAmbientMusic;
 	
 	public BitmapFont kenneyFont;
-
+	
+	public TextureRegion baseColor;
+	
+	public TextureRegion startIcon;
+	public TextureRegion stopIcon;
+	public TextureRegion pauseIcon;
+	public TextureRegion plusIcon;
+	public TextureRegion minusIcon;
+	public TextureRegion refreshIcon;
+	public TextureRegion ObjectiveIcon;
+	public TextureRegion boid;
+	
 	private AssestsLoader() {
 		System.out.println("Assets Loader Created");
 	}
@@ -150,6 +162,33 @@ public class AssestsLoader {
 		buttonBlueLeft = guiAtlas.findRegion("button_blue_left");
 		buttonBlueRight = guiAtlas.findRegion("button_blue_right");
 		buttonBlueMiddle = guiAtlas.findRegion("button_blue_mid");
+		
+		
+		baseColor = new TextureRegion(new Texture(Gdx.files.internal("gui/base_color.png")));
+		Texture txBoid = new Texture(Gdx.files.internal("gui/boid.png"));
+		txBoid.setFilter(TextureFilter.Linear, TextureFilter.Linear);
+		boid = new TextureRegion(txBoid);
+		
+		iconsAtlas = new TextureAtlas(Gdx.files.internal(Constants.TX_ICONS_MAP));
+
+		for (Texture t : iconsAtlas.getTextures()) {
+			t.setFilter(TextureFilter.Linear, TextureFilter.Linear);
+		}
+		
+		startIcon = iconsAtlas.findRegion("play");
+		startIcon.flip(false, true);
+		stopIcon = iconsAtlas.findRegion("stop");
+		stopIcon.flip(false, true);
+		pauseIcon = iconsAtlas.findRegion("stop");
+		pauseIcon.flip(false, true);
+		plusIcon = iconsAtlas.findRegion("plus");
+		plusIcon.flip(false, true);
+		minusIcon = iconsAtlas.findRegion("minus");
+		minusIcon.flip(false, true);
+		refreshIcon = iconsAtlas.findRegion("refresh");
+		refreshIcon.flip(false, true);
+		ObjectiveIcon = iconsAtlas.findRegion("objective");
+		ObjectiveIcon.flip(false, true);
 	}
 	
 	public void loadFonts() {

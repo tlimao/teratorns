@@ -4,17 +4,19 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.utils.Array;
 import com.teratorns.assets.AssestsLoader;
-import com.teratorns.game.gui.BlueContainer;
 import com.teratorns.game.gui.ButtonFactory;
-import com.teratorns.game.gui.ContainerFactory;
 import com.teratorns.game.gui.ButtonFactory.ButtonColor;
-import com.teratorns.game.gui.ContainerFactory.ContainerColor;
-import com.teratorns.game.gui.TextButton;
-import com.teratorns.gui.Button;
-import com.teratorns.gui.Container;
+import com.teratorns.gui.BaseButton;
+import com.teratorns.gui.BaseContainer;
+import com.teratorns.gui.Container.ContainerAlignment;
 import com.teratorns.gui.GuiElement;
+import com.teratorns.gui.ImageButton;
+import com.teratorns.gui.TextArea;
+import com.teratorns.gui.TextButton;
 import com.teratorns.interaction.ActionListener;
 import com.teratorns.interaction.Interactor;
+import com.teratorns.objects.Bird;
+import com.teratorns.objects.SwarmConstants;
 
 public class GameEditor implements Interactor<Rectangle> {
 	
@@ -26,70 +28,16 @@ public class GameEditor implements Interactor<Rectangle> {
 	
 	private String action;
 	
+	private boolean flag;
+	
+	private float raio;
+	
 	public GameEditor(GameWorld gameWorld) {
 		this.gameWorld = gameWorld;
 		
 		guiElements = new Array<GuiElement>();
 		
-		BlueContainer pc1 = (BlueContainer) ContainerFactory.createContainer(10, 10, 440, 50, ContainerColor.BLUE);
-		pc1.setTag("Container 1");
-		guiElements.add(pc1);
-		
-		Button b1 = ButtonFactory.createButton(10, 10, 50, 30, ButtonColor.BLUE);
-		
-		b1.setTag("Pause");
-		b1.setActionListener(new ActionListener() {
-			
-			@Override
-			public void doAction() {
-				GameOptions.instance.pause();
-			}
-		});
-		
-		TextButton tb1 = new TextButton(b1);
-		tb1.setText(b1.getTag());
-		tb1.setScale(0.35f);
-		tb1.setColor(Color.WHITE);
-		tb1.setTextPadding(10, 10);
-		
-		Button b2 = ButtonFactory.createButton(10, 10, 50, 30, ButtonColor.BLUE);
-		b2.setTag("Resume");
-		b2.setActionListener(new ActionListener() {
-			
-			@Override
-			public void doAction() {
-				GameOptions.instance.resume();
-			}
-		});
-		
-		TextButton tb2 = new TextButton(b2);
-		tb2.setText(b2.getTag());
-		tb2.setScale(0.35f);
-		tb2.setColor(Color.WHITE);
-		tb2.setTextPadding(7, 10);
-		
-		Button b3 = ButtonFactory.createButton(10, 10, 50, 30, ButtonColor.BLUE);
-		b3.setTag("Create");
-		
-		b3.setActionListener(new ActionListener() {
-			
-			@Override
-			public void doAction() {
-				GameEditor.this.gameWorld.createSwarm();
-			}
-		});
-		
-		TextButton tb3 = new TextButton(b3);
-		tb3.setText(b3.getTag());
-		tb3.setScale(0.35f);
-		tb3.setColor(Color.WHITE);
-		tb3.setTextPadding(7, 10);
-		
-		pc1.addGuiElement(tb1);
-		
-		pc1.addGuiElement(tb2);
-		
-		pc1.addGuiElement(tb3);
+		createMenu();
 	}
 	
 	public Array<GuiElement> getGuiElements() {
@@ -115,5 +63,223 @@ public class GameEditor implements Interactor<Rectangle> {
 	public void drawInteractor() {
 		// TODO Auto-generated method stub
 		
+	}
+	
+	public void createMenu() {
+		final float d = 1;
+		final TextArea tx = new TextArea();
+		final TextArea txInd= new TextArea();
+		final TextArea txGroup = new TextArea();
+		final TextArea txRaio = new TextArea();
+		
+		ImageButton start = new ImageButton(AssestsLoader.instance.startIcon);
+		start.setActionListener(new ActionListener() {
+			
+			@Override
+			public void doAction() {
+				GameOptions.instance.resume();
+			}
+		});
+		
+		ImageButton stop = new ImageButton(AssestsLoader.instance.stopIcon);
+		stop.setActionListener(new ActionListener() {
+			
+			@Override
+			public void doAction() {
+				GameOptions.instance.pause();
+			}
+		});
+		
+		ImageButton refresh = new ImageButton(AssestsLoader.instance.refreshIcon);
+		refresh.setActionListener(new ActionListener() {
+			
+			@Override
+			public void doAction() {
+				gameWorld.createSwarm();
+				SwarmConstants.reset();
+				GameOptions.instance.pause();
+				tx.setText("Aleatory " + SwarmConstants.c3);
+				txGroup.setText("Group " + SwarmConstants.c1);
+				txInd.setText("Ind " + SwarmConstants.c2);
+				txRaio.setText("Raio " + SwarmConstants.raio);
+			}
+		});
+		
+		BaseContainer raio = new BaseContainer(0, 0);
+		raio.setColor(241f/255, 196f/255, 15f/255, 1f);
+		txRaio.setWidth(75);
+		txRaio.setText("Raio " + SwarmConstants.raio);
+		txRaio.setPadding(10, 14);
+		ImageButton plus = new ImageButton(AssestsLoader.instance.plusIcon);
+		plus.setActionListener(new ActionListener() {
+			
+			@Override
+			public void doAction() {
+				SwarmConstants.raio += d;
+				txRaio.setText("Raio " + SwarmConstants.raio);
+			}
+		});
+		
+		ImageButton minus = new ImageButton(AssestsLoader.instance.minusIcon);
+		minus.setActionListener(new ActionListener() {
+			
+			@Override
+			public void doAction() {
+				SwarmConstants.raio -= d;
+				
+				if (SwarmConstants.raio < 0) {
+					SwarmConstants.raio = 0;
+				}
+				
+				txRaio.setText("Raio " + SwarmConstants.raio);
+			}
+		});
+		
+		raio.addGuiElement(txRaio);
+		raio.addGuiElement(plus);
+		raio.addGuiElement(minus);
+		
+		BaseContainer menu = new BaseContainer(10, 10);
+		menu.setPadding(10, 10);
+		menu.setColor(0, 0, 0,0.3f);
+		
+		menu.addGuiElement(start);
+		menu.addGuiElement(stop);
+		menu.addGuiElement(refresh);
+		menu.addGuiElement(raio);
+
+		tx.setWidth(75);
+		tx.setText("Aleatory " + SwarmConstants.c3);
+		tx.setPadding(10, 14);
+		
+		BaseContainer aleatory = new BaseContainer(0,0);
+		aleatory.setColor(231f/255, 76f/255, 16f/255, 1f);
+		ImageButton inc = new ImageButton(AssestsLoader.instance.plusIcon);
+		inc.setActionListener(new ActionListener() {
+			
+			@Override
+			public void doAction() {
+				SwarmConstants.c3 += d;
+				
+				if (SwarmConstants.c3 > 3) {
+					SwarmConstants.c3 = 3;
+				}
+				
+				tx.setText("Aleatory: " + SwarmConstants.c3);
+				
+				if (gameWorld.getSwarm() != null) {
+					gameWorld.getSwarm().setAleatory(SwarmConstants.c3);
+				}
+			}
+		});
+		
+		ImageButton dec = new ImageButton(AssestsLoader.instance.minusIcon);
+		dec.setActionListener(new ActionListener() {
+			
+			@Override
+			public void doAction() {
+				SwarmConstants.c3 -= d;
+				
+				if (SwarmConstants.c3 < 0) {
+					SwarmConstants.c3 = 0;
+				}
+				
+				tx.setText("Aleatory: " + SwarmConstants.c3);
+			}
+		});
+		
+		aleatory.addGuiElement(tx);
+		aleatory.addGuiElement(inc);
+		aleatory.addGuiElement(dec);
+		
+		menu.addGuiElement(aleatory);
+		
+		txGroup.setWidth(75);
+		txGroup.setText("Group " + SwarmConstants.c1);
+		txGroup.setPadding(10, 14);
+		
+		BaseContainer group = new BaseContainer(0,0);
+		group.setColor(46f/255, 204f/255, 133f/255, 1f);
+		ImageButton incgroup = new ImageButton(AssestsLoader.instance.plusIcon);
+		incgroup.setActionListener(new ActionListener() {
+			
+			@Override
+			public void doAction() {
+				SwarmConstants.c1 += d;
+				
+				if (SwarmConstants.c1 > 3) {
+					SwarmConstants.c1 = 3;
+				}
+				
+				txGroup.setText("Group: " + SwarmConstants.c1);
+			}
+		});
+		
+		ImageButton decgroup = new ImageButton(AssestsLoader.instance.minusIcon);
+		decgroup.setActionListener(new ActionListener() {
+			
+			@Override
+			public void doAction() {
+				SwarmConstants.c1 -= d;
+				
+				if (SwarmConstants.c1 < 0) {
+					SwarmConstants.c1 = 0;
+				}
+				
+				txGroup.setText("Group: " + SwarmConstants.c1);
+			}
+		});
+		
+		group.addGuiElement(txGroup);
+		group.addGuiElement(incgroup);
+		group.addGuiElement(decgroup);
+		
+		menu.addGuiElement(group);
+		
+		txInd.setWidth(75);
+		txInd.setText("Ind " + SwarmConstants.c2);
+		txInd.setPadding(10, 14);
+		
+		BaseContainer ind = new BaseContainer(0,0);
+		ind.setColor(41f/255, 128f/255, 185f/255, 1f);
+		ImageButton incind = new ImageButton(AssestsLoader.instance.plusIcon);
+		incind.setActionListener(new ActionListener() {
+			
+			@Override
+			public void doAction() {
+				SwarmConstants.c2 += d;
+				
+				if (SwarmConstants.c2 > 3) {
+					SwarmConstants.c2 = 3;
+				}
+				
+				txInd.setText("Ind: " + SwarmConstants.c2);
+			}
+		});
+		
+		ImageButton decind = new ImageButton(AssestsLoader.instance.minusIcon);
+		decind.setActionListener(new ActionListener() {
+			
+			@Override
+			public void doAction() {
+				SwarmConstants.c2 -= d;
+				
+				if (SwarmConstants.c2 < 0) {
+					SwarmConstants.c2 = 0;
+				}
+				
+				txInd.setText("Ind: " + SwarmConstants.c2);
+			}
+		});
+		
+		ind.addGuiElement(txInd);
+		ind.addGuiElement(incind);
+		ind.addGuiElement(decind);
+		
+		menu.addGuiElement(ind);
+		
+		guiElements.add(menu);
+		
+		menu.setPosition(30, 420);
 	}
 }

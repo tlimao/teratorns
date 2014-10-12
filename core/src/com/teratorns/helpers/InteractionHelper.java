@@ -41,7 +41,7 @@ public class InteractionHelper {
 			
 			Array<GameObject> objects = gameWorld.getWorldObjects();
 			
-			interactionRect.setPosition(point.sub(interactionRange / 2, interactionRange / 2));
+			interactionRect.setPosition(point);
 			
 			for (GameObject obj : objects) {
 				((Interactor<Rectangle>) obj).isTouched(interactionRect);

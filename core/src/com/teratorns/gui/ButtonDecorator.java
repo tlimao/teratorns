@@ -1,12 +1,7 @@
-package com.teratorns.game.gui;
+package com.teratorns.gui;
 
-import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
-import com.teratorns.game.GameRenderer;
-import com.teratorns.gui.Button;
-import com.teratorns.gui.Container;
 import com.teratorns.interaction.ActionListener;
 
 public abstract class ButtonDecorator extends Button {
@@ -55,8 +50,8 @@ public abstract class ButtonDecorator extends Button {
 	}
 	
 	@Override
-	public void parrentTo(Container parent) {
-		decoratedButton.parrentTo(parent);
+	public void parentTo(Container parent) {
+		decoratedButton.parentTo(parent);
 	}
 	
 	public void updatePosition(Vector2 position) {

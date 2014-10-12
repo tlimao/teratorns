@@ -30,7 +30,7 @@ public class Swarm {
 	
 	public void update()
 	{
-		for (int i = 0; i< swarm.size; i++) {
+		for (int i = 0; i < swarm.size; i++) {
 			swarm.get(i).update();
 		}
 	}
@@ -45,5 +45,12 @@ public class Swarm {
 	
 	public Array<Bird> getParticles() {
 		return swarm;
+	}
+	
+	public void setAleatory(float value)
+	{
+		for (int i = 0; i < swarm.size; i++) {
+			swarm.get(i).setAleatoryFactor(value);
+		}
 	}
 }

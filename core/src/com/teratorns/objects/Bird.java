@@ -3,8 +3,7 @@ package com.teratorns.objects;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.utils.Array;
-import com.teratorns.assets.AssestsLoader;
+import com.teratorns.assets.AssetsLoader;
 import com.teratorns.game.GameClock;
 import com.teratorns.game.GameRenderer;
 import com.teratorns.interaction.Interactor;
@@ -12,14 +11,11 @@ import com.teratorns.interaction.Interactor;
 public class Bird extends GameObject implements Interactor<Rectangle> {
 	private Vector2 pBest;
 	private Swarm swarm;
-	private float rand;
 	
 	public Bird(float x, float y) {
 		super(x, y);
 		pBest = position.cpy();
 		velocity.set((float) Math.random(), (float) Math.random());
-		
-		rand = SwarmConstants.c3;
 	}
 
 	@Override
@@ -27,55 +23,41 @@ public class Bird extends GameObject implements Interactor<Rectangle> {
 		float fitness = fitness();
 		
 		if (fitness > SwarmConstants.threshold) {
-			Array<Bird> neighbours = new Array<Bird>();
+			Vector2 v1, v2, v3, v4;
 			
-			for (Bird b : swarm.getParticles()) {
-				if (position.dst(b.getPosition()) < SwarmConstants.raio && !b.equals(this)) {
-					neighbours.add(b);
-				}
-			}
+			// Inércia
+			v1 = velocity.cpy();
+			
+			// Influência Própria
+			v2 = getPbest().sub(position).scl(SwarmConstants.c1);
 			
 			// Influência do Bando
 			Vector2 lBest = pBest.cpy();
 			
-			for (Bird b : neighbours) {
-				if (lBest.dst(FoodSource.food) > b.getPbest().dst(FoodSource.food)) {
-					lBest = b.getPbest();
+			for (Bird b : swarm.getParticles()) {
+				if (position.dst(b.getPosition()) < SwarmConstants.raio && !b.equals(this)) {
+					if (lBest.dst(FoodSource.food) > b.getPbest().dst(FoodSource.food)) {
+						lBest = b.getPbest();
+					}
 				}
 			}
 			
-			Vector2 v1 = lBest.sub(position);
-			//System.out.println(SwarmConstants.raio + " " + v1.toString());
-			
-			// Influência da Partícula
-			Vector2 v2 = velocity.cpy();
-			
-			// Influência Aleatória
-			Vector2 v3 = new Vector2((float) Math.random(), (float) Math.random());
+			v3 = (SwarmConstants.raio > 0) ? lBest.sub(position).scl(SwarmConstants.c2) : new Vector2(0, 0);
+
+			// Fator Aleatório
+			v4 = new Vector2(0, 0);
+			v4.add(v2.cpy().scl((float) -Math.random()));
+			v4.add(v3.cpy().scl((float) -Math.random()));
+			v4.scl(SwarmConstants.c3);
 			
 			// Nova Velocidade
-			velocity.set(0,0);
-			if (SwarmConstants.c1 > 1.0E-10f && SwarmConstants.raio > 0) {
-				velocity.add(v1.scl(SwarmConstants.c1));
-			}
-			if (SwarmConstants.c2 > 1.0E-10f) {
-				velocity.add(v2.scl(SwarmConstants.c2));
-			}
-			if (rand > 1.0E-10f && SwarmConstants.c3 > 0) {
-				velocity.add(v3.scl(rand));
-			}
-			velocity.nor().scl(0.3f);
-		
+			velocity.set(v1.add(v2.add(v3.add(v4))));
+			velocity.nor();
+			
 			position.add(velocity.cpy().scl(GameClock.instance.getDelta()));
 			
-			fitness = fitness();
-			
-			if (fitness < pBest.dst(FoodSource.food)) {
+			if (fitness() < pBest.dst(FoodSource.food)) {
 				pBest = position.cpy();
-				rand -= SwarmConstants.aleatoryDec;
-				if (rand < 0) {
-					rand = 0.0f;
-				}
 			}
 		}
 	}
@@ -97,7 +79,7 @@ public class Bird extends GameObject implements Interactor<Rectangle> {
 	public void draw() {
 		GameRenderer.instance.spriteRenderer.setColor(0, 0, 0, 1f);
 		
-		GameRenderer.instance.spriteRenderer.draw(AssestsLoader.instance.circle,
+		GameRenderer.instance.spriteRenderer.draw(AssetsLoader.instance.circle,
 				  position.x - width / 2, position.y - height / 2,
 				  width / 2 , height / 2,
 				  width     , height,
@@ -106,7 +88,7 @@ public class Bird extends GameObject implements Interactor<Rectangle> {
 		
 		GameRenderer.instance.spriteRenderer.setColor(0, 0, 0, 0.3f);
 		
-		GameRenderer.instance.spriteRenderer.draw(AssestsLoader.instance.boid,
+		GameRenderer.instance.spriteRenderer.draw(AssetsLoader.instance.boid,
 												  position.x - width / 2, position.y - height / 2,
 												  width / 2 , height / 2,
 												  width     , height,
@@ -126,9 +108,5 @@ public class Bird extends GameObject implements Interactor<Rectangle> {
 	public void drawInteractor() {
 		// TODO Auto-generated method stub
 		
-	}
-	
-	public void setAleatoryFactor(float value) {
-		rand = value;
 	}
 }

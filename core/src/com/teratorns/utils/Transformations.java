@@ -32,4 +32,10 @@ public abstract class Transformations {
 	public static Vector2 screenToWorld(Vector2 sP) {
 		return viewportToWorld(screenToViewport(sP));
 	}
+	
+	public static void refactor() {
+		factor_X_screenToViewport = Constants.viewportWidth / Constants.windowWidth;
+		factor_Y_screenToViewport = Constants.viewportHeight / Constants.windowHeight;
+		viewport_half = new Vector2(Constants.viewportWidth / 2, Constants.viewportHeight / 2);
+	}
 }

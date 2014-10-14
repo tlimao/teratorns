@@ -2,15 +2,15 @@ package com.teratorns.gui;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.math.Vector2;
-import com.teratorns.assets.AssestsLoader;
+import com.teratorns.assets.AssetsLoader;
 import com.teratorns.game.GameRenderer;
 
 public class BaseContainer extends Container {
 	private Color baseColor;
 	
 	public BaseContainer(float x, float y) {
-		super(x, y, 1, 1);
-		baseColor = Color.LIGHT_GRAY;
+		super(x, y, 0, 0);
+		baseColor = new Color(Color.LIGHT_GRAY);
 	}
 	
 	public BaseContainer(float x, float y, float w, float h) {
@@ -22,7 +22,7 @@ public class BaseContainer extends Container {
 	public void draw() {
 		Vector2 pos = getPosition();
 		GameRenderer.instance.spriteRenderer.setColor(baseColor);
-		GameRenderer.instance.spriteRenderer.draw(AssestsLoader.instance.baseColor, pos.x, pos.y, width, height);
+		GameRenderer.instance.spriteRenderer.draw(AssetsLoader.instance.baseColor, pos.x, pos.y, width, height);
 		GameRenderer.instance.spriteRenderer.setColor(Color.WHITE);
 		super.draw();
 	}

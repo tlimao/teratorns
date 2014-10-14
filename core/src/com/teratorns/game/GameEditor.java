@@ -1,36 +1,20 @@
 package com.teratorns.game;
 
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.utils.Array;
-import com.teratorns.assets.AssestsLoader;
-import com.teratorns.game.gui.ButtonFactory;
-import com.teratorns.game.gui.ButtonFactory.ButtonColor;
-import com.teratorns.gui.BaseButton;
+import com.teratorns.assets.AssetsLoader;
 import com.teratorns.gui.BaseContainer;
-import com.teratorns.gui.Container.ContainerAlignment;
 import com.teratorns.gui.GuiElement;
 import com.teratorns.gui.ImageButton;
 import com.teratorns.gui.TextArea;
-import com.teratorns.gui.TextButton;
 import com.teratorns.interaction.ActionListener;
 import com.teratorns.interaction.Interactor;
-import com.teratorns.objects.Bird;
 import com.teratorns.objects.SwarmConstants;
 
 public class GameEditor implements Interactor<Rectangle> {
 	
 	private Array<GuiElement> guiElements;
-	
-	private enum EditorStates {CREATE_SWARM, NUM_PARTICLES, PARTICLE_RAIO, PARTICLE_COLOR, SWARM_AIM, START, KILL};
-	
 	private GameWorld gameWorld;
-	
-	private String action;
-	
-	private boolean flag;
-	
-	private float raio;
 	
 	public GameEditor(GameWorld gameWorld) {
 		this.gameWorld = gameWorld;
@@ -44,12 +28,13 @@ public class GameEditor implements Interactor<Rectangle> {
 		return guiElements;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public boolean isTouched(Rectangle obj) {
 		boolean flag = false;
 		for (GuiElement element : guiElements) {
 			if (element instanceof Interactor<?>) {
-					if (((Interactor) element).isTouched(obj)) {
+					if (((Interactor<Rectangle> ) element).isTouched(obj)) {
 						flag = true;
 						break;
 					}
@@ -66,13 +51,13 @@ public class GameEditor implements Interactor<Rectangle> {
 	}
 	
 	public void createMenu() {
-		final float d = 1;
+		final int d = 1;
 		final TextArea tx = new TextArea();
 		final TextArea txInd= new TextArea();
 		final TextArea txGroup = new TextArea();
 		final TextArea txRaio = new TextArea();
 		
-		ImageButton start = new ImageButton(AssestsLoader.instance.startIcon);
+		ImageButton start = new ImageButton(AssetsLoader.instance.startIcon);
 		start.setActionListener(new ActionListener() {
 			
 			@Override
@@ -81,7 +66,7 @@ public class GameEditor implements Interactor<Rectangle> {
 			}
 		});
 		
-		ImageButton stop = new ImageButton(AssestsLoader.instance.stopIcon);
+		ImageButton stop = new ImageButton(AssetsLoader.instance.stopIcon);
 		stop.setActionListener(new ActionListener() {
 			
 			@Override
@@ -90,7 +75,7 @@ public class GameEditor implements Interactor<Rectangle> {
 			}
 		});
 		
-		ImageButton refresh = new ImageButton(AssestsLoader.instance.refreshIcon);
+		ImageButton refresh = new ImageButton(AssetsLoader.instance.refreshIcon);
 		refresh.setActionListener(new ActionListener() {
 			
 			@Override
@@ -99,8 +84,8 @@ public class GameEditor implements Interactor<Rectangle> {
 				SwarmConstants.reset();
 				GameOptions.instance.pause();
 				tx.setText("Aleatory " + SwarmConstants.c3);
-				txGroup.setText("Group " + SwarmConstants.c1);
-				txInd.setText("Ind " + SwarmConstants.c2);
+				txGroup.setText("Group " + SwarmConstants.c2);
+				txInd.setText("Ind " + SwarmConstants.c1);
 				txRaio.setText("Raio " + SwarmConstants.raio);
 			}
 		});
@@ -110,7 +95,7 @@ public class GameEditor implements Interactor<Rectangle> {
 		txRaio.setWidth(75);
 		txRaio.setText("Raio " + SwarmConstants.raio);
 		txRaio.setPadding(10, 14);
-		ImageButton plus = new ImageButton(AssestsLoader.instance.plusIcon);
+		ImageButton plus = new ImageButton(AssetsLoader.instance.plusIcon);
 		plus.setActionListener(new ActionListener() {
 			
 			@Override
@@ -120,7 +105,7 @@ public class GameEditor implements Interactor<Rectangle> {
 			}
 		});
 		
-		ImageButton minus = new ImageButton(AssestsLoader.instance.minusIcon);
+		ImageButton minus = new ImageButton(AssetsLoader.instance.minusIcon);
 		minus.setActionListener(new ActionListener() {
 			
 			@Override
@@ -139,7 +124,8 @@ public class GameEditor implements Interactor<Rectangle> {
 		raio.addGuiElement(plus);
 		raio.addGuiElement(minus);
 		
-		BaseContainer menu = new BaseContainer(30, 30);
+		BaseContainer menu = new BaseContainer(10, 10);
+		menu.setTag("Menu");
 		menu.setPadding(10, 10);
 		menu.setColor(0, 0, 0,0.3f);
 		
@@ -154,7 +140,7 @@ public class GameEditor implements Interactor<Rectangle> {
 		
 		BaseContainer aleatory = new BaseContainer(0,0);
 		aleatory.setColor(231f/255, 76f/255, 16f/255, 1f);
-		ImageButton inc = new ImageButton(AssestsLoader.instance.plusIcon);
+		ImageButton inc = new ImageButton(AssetsLoader.instance.plusIcon);
 		inc.setActionListener(new ActionListener() {
 			
 			@Override
@@ -166,14 +152,10 @@ public class GameEditor implements Interactor<Rectangle> {
 				}
 				
 				tx.setText("Aleatory: " + SwarmConstants.c3);
-				
-				if (gameWorld.getSwarm() != null) {
-					gameWorld.getSwarm().setAleatory(SwarmConstants.c3);
-				}
 			}
 		});
 		
-		ImageButton dec = new ImageButton(AssestsLoader.instance.minusIcon);
+		ImageButton dec = new ImageButton(AssetsLoader.instance.minusIcon);
 		dec.setActionListener(new ActionListener() {
 			
 			@Override
@@ -195,38 +177,38 @@ public class GameEditor implements Interactor<Rectangle> {
 		menu.addGuiElement(aleatory);
 		
 		txGroup.setWidth(75);
-		txGroup.setText("Group " + SwarmConstants.c1);
+		txGroup.setText("Group " + SwarmConstants.c2);
 		txGroup.setPadding(10, 14);
 		
 		BaseContainer group = new BaseContainer(0,0);
 		group.setColor(46f/255, 204f/255, 133f/255, 1f);
-		ImageButton incgroup = new ImageButton(AssestsLoader.instance.plusIcon);
+		ImageButton incgroup = new ImageButton(AssetsLoader.instance.plusIcon);
 		incgroup.setActionListener(new ActionListener() {
 			
 			@Override
 			public void doAction() {
-				SwarmConstants.c1 += d;
+				SwarmConstants.c2 += d;
 				
-				if (SwarmConstants.c1 > 3) {
-					SwarmConstants.c1 = 3;
+				if (SwarmConstants.c2 > 3) {
+					SwarmConstants.c2 = 3;
 				}
 				
-				txGroup.setText("Group: " + SwarmConstants.c1);
+				txGroup.setText("Group: " + SwarmConstants.c2);
 			}
 		});
 		
-		ImageButton decgroup = new ImageButton(AssestsLoader.instance.minusIcon);
+		ImageButton decgroup = new ImageButton(AssetsLoader.instance.minusIcon);
 		decgroup.setActionListener(new ActionListener() {
 			
 			@Override
 			public void doAction() {
-				SwarmConstants.c1 -= d;
+				SwarmConstants.c2 -= d;
 				
-				if (SwarmConstants.c1 < 0) {
-					SwarmConstants.c1 = 0;
+				if (SwarmConstants.c2 < 0) {
+					SwarmConstants.c2 = 0;
 				}
 				
-				txGroup.setText("Group: " + SwarmConstants.c1);
+				txGroup.setText("Group: " + SwarmConstants.c2);
 			}
 		});
 		
@@ -237,38 +219,38 @@ public class GameEditor implements Interactor<Rectangle> {
 		menu.addGuiElement(group);
 		
 		txInd.setWidth(75);
-		txInd.setText("Ind " + SwarmConstants.c2);
+		txInd.setText("Ind " + SwarmConstants.c1);
 		txInd.setPadding(10, 14);
 		
 		BaseContainer ind = new BaseContainer(0,0);
 		ind.setColor(41f/255, 128f/255, 185f/255, 1f);
-		ImageButton incind = new ImageButton(AssestsLoader.instance.plusIcon);
+		ImageButton incind = new ImageButton(AssetsLoader.instance.plusIcon);
 		incind.setActionListener(new ActionListener() {
 			
 			@Override
 			public void doAction() {
-				SwarmConstants.c2 += d;
+				SwarmConstants.c1 += d;
 				
-				if (SwarmConstants.c2 > 3) {
-					SwarmConstants.c2 = 3;
+				if (SwarmConstants.c1 > 3) {
+					SwarmConstants.c1 = 3;
 				}
 				
-				txInd.setText("Ind: " + SwarmConstants.c2);
+				txInd.setText("Ind: " + SwarmConstants.c1);
 			}
 		});
 		
-		ImageButton decind = new ImageButton(AssestsLoader.instance.minusIcon);
+		ImageButton decind = new ImageButton(AssetsLoader.instance.minusIcon);
 		decind.setActionListener(new ActionListener() {
 			
 			@Override
 			public void doAction() {
-				SwarmConstants.c2 -= d;
+				SwarmConstants.c1 -= d;
 				
-				if (SwarmConstants.c2 < 0) {
-					SwarmConstants.c2 = 0;
+				if (SwarmConstants.c1 < 0) {
+					SwarmConstants.c1 = 0;
 				}
 				
-				txInd.setText("Ind: " + SwarmConstants.c2);
+				txInd.setText("Ind: " + SwarmConstants.c1);
 			}
 		});
 		
@@ -280,6 +262,21 @@ public class GameEditor implements Interactor<Rectangle> {
 		
 		guiElements.add(menu);
 		
-		menu.setPosition(30, 30);
+		//menu.setPosition(30, 30);
+		
+		TextArea teratorns = new TextArea();
+		teratorns.setText("TERATORNS");
+		teratorns.setScale(0.5f);
+		teratorns.setTextColor(155.0f/255, 89.0f/255, 182.0f/255, 0.7f);
+		TextArea framework = new TextArea();
+		framework.setPosition(30, 20);
+		framework.setText("f r a m e w o r k");
+		framework.setTextColor(0, 0, 0, 0.3f);
+		BaseContainer teratornsLogo = new BaseContainer(10, 80);
+		teratornsLogo.setColor(0,0,0,0);
+		teratornsLogo.addGuiElement(teratorns);
+		teratornsLogo.addGuiElement(framework);
+		
+		guiElements.add(teratornsLogo);
 	}
 }

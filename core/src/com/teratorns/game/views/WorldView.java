@@ -2,7 +2,7 @@ package com.teratorns.game.views;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.utils.Array;
-import com.teratorns.assets.AssestsLoader;
+import com.teratorns.assets.AssetsLoader;
 import com.teratorns.game.GameRenderer;
 import com.teratorns.game.GameWorld;
 import com.teratorns.objects.GameObject;
@@ -44,7 +44,7 @@ public class WorldView extends View {
 			GameRenderer.instance.spriteRenderer.setProjectionMatrix(GameRenderer.instance.camera.combined);
 			GameRenderer.instance.spriteRenderer.begin();
 			GameRenderer.instance.spriteRenderer.setColor(1, 1, 1, 1);
-			GameRenderer.instance.spriteRenderer.draw(AssestsLoader.instance.baseColor,
+			GameRenderer.instance.spriteRenderer.draw(AssetsLoader.instance.baseColor,
 													  0, 0, 
 													  Constants.viewportWidth, Constants.viewportHeight);
 			GameRenderer.instance.spriteRenderer.setColor(Color.WHITE);

@@ -53,8 +53,9 @@ public abstract class Container implements GuiElement, Interactor<Rectangle> {
 			if (Math.abs(freePosition.x - position.x) >= width) {
 				setWidth(Math.abs(freePosition.x - position.x));
 			}
-			if (element.getPosition().y + element.getHeight() >= height) {
-				setHeight(element.getPosition().y + element.getHeight());
+			float ly = Math.abs(element.getPosition().y + element.getHeight() + padding.y - position.y);
+			if (ly >= height) {
+				setHeight(ly);
 			}
 		} else if (align.equals(ContainerAlignment.VERTICAL)) {
 			freePosition.y = element.getPosition().y + element.getHeight() + padding.y;
@@ -62,8 +63,9 @@ public abstract class Container implements GuiElement, Interactor<Rectangle> {
 				setHeight(Math.abs(freePosition.y - position.y));
 			}
 
-			if (element.getPosition().x + element.getWidth() >= width) {
-				setWidth(element.getPosition().x + element.getWidth() + padding.x);
+			float lx = Math.abs(element.getPosition().x + element.getWidth() + padding.x - position.x);
+			if (lx >= width) {
+				setWidth(lx);
 			}
 		}
 	}
@@ -142,9 +144,7 @@ public abstract class Container implements GuiElement, Interactor<Rectangle> {
 		this.parent = parent;
 		position.set(parent.getFreePosition().add(localPosition));
 		interactionRect.setPosition(position);
-		
 		freePosition.set(position.cpy().add(padding));
-
 		updateGuiChilds();
 	}
 	

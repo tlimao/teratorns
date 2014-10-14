@@ -1,7 +1,7 @@
 package com.teratorns;
 
 import com.badlogic.gdx.Game;
-import com.teratorns.assets.AssestsLoader;
+import com.teratorns.assets.AssetsLoader;
 import com.teratorns.screens.GameScreen;
 
 public class GameRun extends Game {
@@ -10,7 +10,7 @@ public class GameRun extends Game {
 	public void create() {
 		// Load assets
 		System.out.println("Loading assets ...");
-		AssestsLoader.instance.loadAssets();
+		AssetsLoader.instance.loadAssets();
 		setScreen(new GameScreen());
 	}
 	
@@ -19,6 +19,6 @@ public class GameRun extends Game {
 		super.dispose();
 		// Dispose assets
 		System.out.println("Dispose loaded assets ...");
-		AssestsLoader.instance.disposeAssests();
+		AssetsLoader.instance.disposeAssests();
 	}
 }

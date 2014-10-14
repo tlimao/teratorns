@@ -1,6 +1,6 @@
 package com.teratorns.game;
 
-import com.teratorns.assets.AssestsLoader;
+import com.teratorns.assets.AssetsLoader;
 
 public class GameClock {
 	
@@ -26,7 +26,7 @@ public class GameClock {
 	}
 	
 	private void startMusic() {
-		AssestsLoader.instance.horrorAmbientMusic.play();
+		AssetsLoader.instance.horrorAmbientMusic.play();
 	}
 	
 	public float getRunTime() {

@@ -1,6 +1,6 @@
 package com.teratorns.game.gui;
 
-import com.teratorns.assets.AssestsLoader;
+import com.teratorns.assets.AssetsLoader;
 import com.teratorns.gui.Container;
 
 public abstract class ContainerFactory {
@@ -10,8 +10,8 @@ public abstract class ContainerFactory {
 	public static Container createContainer(float x, float y, float w, float h, ContainerColor color) {
 		Container newContainer = null;
 		
-		float width = (((int) w) / AssestsLoader.instance.panelblueTransCenter.getRegionWidth());
-		float height = (((int) h) / AssestsLoader.instance.panelblueTransCenter.getRegionHeight());
+		float width = (((int) w) / AssetsLoader.instance.panelblueTransCenter.getRegionWidth());
+		float height = (((int) h) / AssetsLoader.instance.panelblueTransCenter.getRegionHeight());
 		
 		if (width < 2) {
 			width = 2;
@@ -21,8 +21,8 @@ public abstract class ContainerFactory {
 			height = 2;
 		}
 		
-		height *= AssestsLoader.instance.panelblueTransCenter.getRegionHeight();
-		width *= AssestsLoader.instance.panelblueTransCenter.getRegionWidth();
+		height *= AssetsLoader.instance.panelblueTransCenter.getRegionHeight();
+		width *= AssetsLoader.instance.panelblueTransCenter.getRegionWidth();
 		
 		switch (color) {
 			case ORANGE:

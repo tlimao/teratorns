@@ -33,7 +33,7 @@ public class GameWorld {
 		swarm1 = new Swarm();
 		worldObjects.clear();
 		
-		for (int i = 0 ; i < 9 ; i++) {
+		for (int i = 0 ; i < 20 ; i++) {
 			Bird b = new Bird((float) Math.random() * Constants.viewportWidth, (float) Math.random() * Constants.viewportHeight);
 			swarm1.addParticle(b);
 			worldObjects.add(b);

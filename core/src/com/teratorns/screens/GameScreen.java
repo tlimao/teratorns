@@ -2,6 +2,7 @@ package com.teratorns.screens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.teratorns.assets.AssetsLoader;
 import com.teratorns.game.GameClock;
 import com.teratorns.game.GameEditor;
 import com.teratorns.game.GameLogic;
@@ -14,6 +15,8 @@ import com.teratorns.game.views.WorldView;
 import com.teratorns.helpers.InputHelper;
 import com.teratorns.helpers.InteractionHelper;
 import com.teratorns.helpers.PlayerHelper;
+import com.teratorns.utils.Constants;
+import com.teratorns.utils.Transformations;
 import com.teratorns.view.ViewManager;
 
 public class GameScreen implements Screen {
@@ -56,8 +59,11 @@ public class GameScreen implements Screen {
 
 	@Override
 	public void resize(int width, int height) {
-		// TODO Auto-generated method stub
-		
+		Constants.windowWidth = width;
+		Constants.windowHeight = height;
+		Constants.aspectRatio = ((float) height) / width;
+		Transformations.refactor();
+		GameRenderer.instance.refactor();
 	}
 
 	@Override
@@ -86,7 +92,8 @@ public class GameScreen implements Screen {
 
 	@Override
 	public void dispose() {
-		// TODO Auto-generated method stub
-		
+		AssetsLoader.instance.disposeAssests();
+		GameRenderer.instance.shapeRenderer.dispose();
+		GameRenderer.instance.spriteRenderer.dispose();
 	}
 }

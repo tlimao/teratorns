@@ -11,9 +11,9 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.utils.Array;
 import com.teratorns.utils.Constants;
 
-public class AssestsLoader {
+public class AssetsLoader {
 	// Singleton
-	public static AssestsLoader instance = new AssestsLoader();
+	public static AssetsLoader instance = new AssetsLoader();
 	
 	private TextureAtlas zombieAtlas;
 	private TextureAtlas guiAtlas;
@@ -60,7 +60,7 @@ public class AssestsLoader {
 	public TextureRegion ObjectiveIcon;
 	public TextureRegion boid;
 	
-	private AssestsLoader() {
+	private AssetsLoader() {
 		System.out.println("Assets Loader Created");
 	}
 	
@@ -199,6 +199,8 @@ public class AssestsLoader {
 	public void disposeAssests() {
 		zombieAtlas.dispose();
 		guiAtlas.dispose();
+		iconsAtlas.dispose();
+		kenneyFont.dispose();
 		horrorAmbientMusic.dispose();
 	}
 }

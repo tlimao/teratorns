@@ -46,4 +46,9 @@ public class GameRenderer {
 			v.draw();
 		}
 	}
+	
+	public void refactor() {
+		guiCamera.setToOrtho(true, Constants.windowWidth, Constants.windowHeight);
+		camera.setToOrtho(true, Constants.viewportWidth, Constants.viewportHeight);
+	}
 }

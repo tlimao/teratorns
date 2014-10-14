@@ -2,7 +2,7 @@ package com.teratorns.gui;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.math.Vector2;
-import com.teratorns.assets.AssestsLoader;
+import com.teratorns.assets.AssetsLoader;
 import com.teratorns.game.GameRenderer;
 import com.teratorns.interaction.ActionListener;
 
@@ -29,6 +29,7 @@ public class TextArea implements GuiElement {
 		textPadding = new Vector2(0, 0);
 		textColor = new Color(Color.WHITE);
 		textScale = 0.25f;
+		text = "";
 	}
 	
 	@Override
@@ -53,10 +54,10 @@ public class TextArea implements GuiElement {
 
 	@Override
 	public void draw() {
-		AssestsLoader.instance.kenneyFont.setColor(textColor);
-		AssestsLoader.instance.kenneyFont.setScale(textScale);
+		AssetsLoader.instance.kenneyFont.setColor(textColor);
+		AssetsLoader.instance.kenneyFont.setScale(textScale);
 		Vector2 pos = getPosition().add(textPadding);
-		AssestsLoader.instance.kenneyFont.draw(GameRenderer.instance.spriteRenderer, text, pos.x, pos.y);
+		AssetsLoader.instance.kenneyFont.draw(GameRenderer.instance.spriteRenderer, text, pos.x, pos.y);
 	}
 
 	@Override
@@ -140,5 +141,13 @@ public class TextArea implements GuiElement {
 	@Override
 	public Vector2 getPosition() {
 		return position.cpy();
+	}
+	
+	public void setTextColor(float r, float g, float b, float a) {
+		textColor = new Color(r, g, b, a);
+	}
+	
+	public void setScale(float scale) {
+		textScale = scale;
 	}
 }

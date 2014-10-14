@@ -17,7 +17,6 @@ public class ImageButton extends ButtonDecorator {
 		scale = 1.0f;
 		imagePadding = new Vector2(0, 0);
 		setImage(image);
-		setScale(1.2f);
 	}
 
 	@Override

@@ -3,7 +3,7 @@ package com.teratorns.game.views;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import com.badlogic.gdx.math.Rectangle;
-import com.teratorns.assets.AssestsLoader;
+import com.teratorns.assets.AssetsLoader;
 import com.teratorns.game.GameRenderer;
 import com.teratorns.gui.GuiElement;
 import com.teratorns.helpers.InteractionHelper;
@@ -41,7 +41,7 @@ public class InteractionView extends View {
 			GameRenderer.instance.spriteRenderer.setProjectionMatrix(GameRenderer.instance.camera.combined);
 			GameRenderer.instance.spriteRenderer.begin();
 			GameRenderer.instance.spriteRenderer.setColor(0, 0, 0, 0.3f);
-			GameRenderer.instance.spriteRenderer.draw(AssestsLoader.instance.ObjectiveIcon,
+			GameRenderer.instance.spriteRenderer.draw(AssetsLoader.instance.ObjectiveIcon,
 													  lastClick.x - 0.25f, lastClick.y - 0.35f, 
 													  0, 0,
 													  1, 1,

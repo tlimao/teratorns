@@ -2,7 +2,7 @@ package com.teratorns.gui;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.math.Vector2;
-import com.teratorns.assets.AssestsLoader;
+import com.teratorns.assets.AssetsLoader;
 import com.teratorns.game.GameRenderer;
 
 public class TextButton extends ButtonDecorator {
@@ -23,10 +23,10 @@ public class TextButton extends ButtonDecorator {
 	@Override
 	public void draw() {
 		decoratedButton.draw();
-		AssestsLoader.instance.kenneyFont.setColor(textColor);
-		AssestsLoader.instance.kenneyFont.setScale(textScale);
+		AssetsLoader.instance.kenneyFont.setColor(textColor);
+		AssetsLoader.instance.kenneyFont.setScale(textScale);
 		Vector2 pos = getPosition().add(textPadding);
-		AssestsLoader.instance.kenneyFont.draw(GameRenderer.instance.spriteRenderer, text, pos.x, pos.y);
+		AssetsLoader.instance.kenneyFont.draw(GameRenderer.instance.spriteRenderer, text, pos.x, pos.y);
 	}
 	
 	public void setText(String text) {

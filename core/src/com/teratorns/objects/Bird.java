@@ -9,6 +9,7 @@ import com.teratorns.game.GameRenderer;
 import com.teratorns.interaction.Interactor;
 
 public class Bird extends GameObject implements Interactor<Rectangle> {
+	
 	private Vector2 pBest;
 	private Swarm swarm;
 	
@@ -51,8 +52,7 @@ public class Bird extends GameObject implements Interactor<Rectangle> {
 			v4.scl(SwarmConstants.c3);
 			
 			// Nova Velocidade
-			velocity.set(v1.add(v2.add(v3.add(v4))));
-			velocity.nor();
+			velocity.set(v1.add(v2.add(v3.add(v4)))).nor();
 			
 			position.add(velocity.cpy().scl(GameClock.instance.getDelta()));
 			
@@ -80,11 +80,11 @@ public class Bird extends GameObject implements Interactor<Rectangle> {
 		GameRenderer.instance.spriteRenderer.setColor(0, 0, 0, 1f);
 		
 		GameRenderer.instance.spriteRenderer.draw(AssetsLoader.instance.circle,
-				  position.x - width / 2, position.y - height / 2,
-				  width / 2 , height / 2,
-				  width     , height,
-				  SwarmConstants.raio , SwarmConstants.raio,
-				  rotation);
+												  position.x - width / 2, position.y - height / 2,
+												  width / 2 , height / 2,
+												  width     , height,
+												  SwarmConstants.raio , SwarmConstants.raio,
+												  rotation);
 		
 		GameRenderer.instance.spriteRenderer.setColor(0, 0, 0, 0.3f);
 		
@@ -107,6 +107,5 @@ public class Bird extends GameObject implements Interactor<Rectangle> {
 	@Override
 	public void drawInteractor() {
 		// TODO Auto-generated method stub
-		
 	}
 }

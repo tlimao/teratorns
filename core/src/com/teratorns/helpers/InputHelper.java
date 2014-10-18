@@ -1,9 +1,6 @@
 package com.teratorns.helpers;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputProcessor;
-import com.badlogic.gdx.graphics.Pixmap;
-import com.teratorns.assets.AssetsLoader;
 
 public class InputHelper implements InputProcessor {
 
@@ -52,8 +49,7 @@ public class InputHelper implements InputProcessor {
 
 	@Override
 	public boolean mouseMoved(int screenX, int screenY) {
-		//Pixmap pixmap = new Pixmap(Gdx.files.internal("gui/cursor.png"));
-		//Gdx.input.setCursorImage(pixmap, screenX, screenY);
+		// TODO Auto-generated method stub
 		return false;
 	}
 

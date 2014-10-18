@@ -40,7 +40,7 @@ public class GameRenderer {
 		CameraHelper.instance.updateCamera();
 		
 		Gdx.gl.glClearColor(0, 0, 0, 1);
-		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+		//Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		
 		for (View v : ViewManager.instance.views) {
 			v.draw();
@@ -50,5 +50,11 @@ public class GameRenderer {
 	public void refactor() {
 		guiCamera.setToOrtho(true, Constants.windowWidth, Constants.windowHeight);
 		camera.setToOrtho(true, Constants.viewportWidth, Constants.viewportHeight);
+	}
+	
+	public void dispose() {
+		spriteRenderer.dispose();
+		shapeRenderer.dispose();
+		physicsRenderer.dispose();
 	}
 }

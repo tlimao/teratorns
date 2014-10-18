@@ -54,7 +54,6 @@ public class GameScreen implements Screen {
 		
 		// Render game
 		GameRenderer.instance.render();
-	
 	}
 
 	@Override
@@ -69,31 +68,26 @@ public class GameScreen implements Screen {
 	@Override
 	public void show() {
 		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
 	public void hide() {
 		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
 	public void pause() {
 		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
 	public void resume() {
 		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
 	public void dispose() {
 		AssetsLoader.instance.disposeAssests();
-		GameRenderer.instance.shapeRenderer.dispose();
-		GameRenderer.instance.spriteRenderer.dispose();
+		GameRenderer.instance.dispose();
 	}
 }

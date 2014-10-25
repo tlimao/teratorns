@@ -40,14 +40,14 @@ public class GameRenderer {
 		CameraHelper.instance.updateCamera();
 		
 		Gdx.gl.glClearColor(0, 0, 0, 1);
-		//Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		
 		for (View v : ViewManager.instance.views) {
 			v.draw();
 		}
 	}
 	
-	public void refactor() {
+	public void adjustCameraParameters() {
 		guiCamera.setToOrtho(true, Constants.windowWidth, Constants.windowHeight);
 		camera.setToOrtho(true, Constants.viewportWidth, Constants.viewportHeight);
 	}

@@ -37,8 +37,7 @@ public class Swarm {
 	
 	public void draw()
 	{
-		for (Bird particle : swarm)
-		{
+		for (Bird particle : swarm) {
 			particle.draw();
 		}
 	}

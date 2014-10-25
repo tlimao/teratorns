@@ -1,46 +1,49 @@
 package com.teratorns.game;
 
-import com.badlogic.gdx.utils.Array;
 import com.teratorns.objects.Bird;
-import com.teratorns.objects.GameObject;
 import com.teratorns.objects.Swarm;
+import com.teratorns.objects.SwarmConstants;
 import com.teratorns.utils.Constants;
 
 public class GameWorld {
-	
-	private Array<GameObject> worldObjects;
-	private Swarm swarm1;
+	private Swarm swarm;
 	
 	public GameWorld() {
-		worldObjects = new Array<GameObject>();
-	}
-	
-	public Array<GameObject> getWorldObjects() {
-		return worldObjects;
-	}
-	
-	public void addObject(GameObject obj) {
-		worldObjects.add(obj);
+		createSwarm();
 	}
 	
 	public void update() {
-		if (swarm1 != null) {
-			swarm1.update();
+		
+		if (swarm != null) {
+			swarm.update();
 		}
 	}
 	
 	public void createSwarm() {
-		swarm1 = new Swarm();
-		worldObjects.clear();
+		swarm = new Swarm();
 		
-		for (int i = 0 ; i < 20 ; i++) {
+		for (int i = 0 ; i < SwarmConstants.swarmSize ; i++) {
 			Bird b = new Bird((float) Math.random() * Constants.viewportWidth, (float) Math.random() * Constants.viewportHeight);
-			swarm1.addParticle(b);
-			worldObjects.add(b);
+			swarm.addParticle(b);
+		}
+	}
+	
+	public void addParticle() {
+		if (swarm != null) {
+			Bird b = new Bird((float) Math.random() * Constants.viewportWidth, (float) Math.random() * Constants.viewportHeight);
+			swarm.addParticle(b);
+		}
+	}
+	
+	public void removeParticle() {
+		if (swarm.getParticles().size > 1) {
+			if (swarm.getParticles().size > 0) {
+				swarm.getParticles().removeIndex(0);
+			}
 		}
 	}
 	
 	public Swarm getSwarm() {
-		return swarm1;
+		return swarm;
 	}
 }

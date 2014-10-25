@@ -9,6 +9,8 @@ public class SwarmConstants {
 	public static float raio = 0;
 	
 	public static float threshold = 0.1f;
+	
+	public static int swarmSize = 15;
 
 	public static void reset() {
 		c1 = 0;

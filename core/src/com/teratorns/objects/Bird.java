@@ -16,7 +16,7 @@ public class Bird extends GameObject implements Interactor<Rectangle> {
 	public Bird(float x, float y) {
 		super(x, y);
 		pBest = position.cpy();
-		velocity.set((float) Math.random(), (float) Math.random());
+		velocity.set((float) Math.random() - 0.5f, (float) Math.random() - 0.5f);
 	}
 
 	@Override
@@ -34,22 +34,32 @@ public class Bird extends GameObject implements Interactor<Rectangle> {
 			
 			// Influência do Bando
 			Vector2 lBest = pBest.cpy();
+			boolean hasNeighbours = false;
 			
 			for (Bird b : swarm.getParticles()) {
-				if (position.dst(b.getPosition()) < SwarmConstants.raio && !b.equals(this)) {
+				if (position.dst(b.getPosition()) < 2 * SwarmConstants.raio && !b.equals(this)) {
 					if (lBest.dst(FoodSource.food) > b.getPbest().dst(FoodSource.food)) {
 						lBest = b.getPbest();
+						hasNeighbours = true;
 					}
 				}
 			}
 			
-			v3 = (SwarmConstants.raio > 0) ? lBest.sub(position).scl(SwarmConstants.c2) : new Vector2(0, 0);
+			v3 = (SwarmConstants.raio > 0 && hasNeighbours) ? lBest.sub(position).scl(SwarmConstants.c2) : new Vector2(0, 0);
 
 			// Fator Aleatório
 			v4 = new Vector2(0, 0);
 			v4.add(v2.cpy().scl((float) -Math.random()));
 			v4.add(v3.cpy().scl((float) -Math.random()));
 			v4.scl(SwarmConstants.c3);
+			
+			if (SwarmConstants.c1 == 0 && SwarmConstants.c2 == 0) {
+				if (SwarmConstants.c3 != 0) {
+					v4.set((float) Math.random() - 0.5f, (float) Math.random() - 0.5f); 
+				} else {
+					v4.set(0, 0);
+				}
+			} 
 			
 			// Nova Velocidade
 			velocity.set(v1.add(v2.add(v3.add(v4)))).nor();
@@ -78,23 +88,20 @@ public class Bird extends GameObject implements Interactor<Rectangle> {
 	@Override
 	public void draw() {
 		GameRenderer.instance.spriteRenderer.setColor(0, 0, 0, 1f);
-		
+		GameRenderer.instance.spriteRenderer.setColor(52f/255, 152f/255, 219f/255, 0.3f);
 		GameRenderer.instance.spriteRenderer.draw(AssetsLoader.instance.circle,
 												  position.x - width / 2, position.y - height / 2,
 												  width / 2 , height / 2,
 												  width     , height,
-												  SwarmConstants.raio , SwarmConstants.raio,
-												  rotation);
-		
+												  2 * SwarmConstants.raio , 2 * SwarmConstants.raio,
+												  0);
 		GameRenderer.instance.spriteRenderer.setColor(0, 0, 0, 0.3f);
-		
 		GameRenderer.instance.spriteRenderer.draw(AssetsLoader.instance.boid,
 												  position.x - width / 2, position.y - height / 2,
 												  width / 2 , height / 2,
 												  width     , height,
 												  0.5f      , 0.5f,
 												  velocity.angle());
-		
 		GameRenderer.instance.spriteRenderer.setColor(Color.WHITE);
 	}
 

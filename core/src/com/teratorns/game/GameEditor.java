@@ -56,6 +56,7 @@ public class GameEditor implements Interactor<Rectangle> {
 		final TextArea txInd= new TextArea();
 		final TextArea txGroup = new TextArea();
 		final TextArea txRaio = new TextArea();
+		final TextArea txParticles = new TextArea();
 		
 		ImageButton start = new ImageButton(AssetsLoader.instance.startIcon);
 		start.setActionListener(new ActionListener() {
@@ -87,8 +88,44 @@ public class GameEditor implements Interactor<Rectangle> {
 				txGroup.setText("Group " + SwarmConstants.c2);
 				txInd.setText("Ind " + SwarmConstants.c1);
 				txRaio.setText("Raio " + SwarmConstants.raio);
+				txParticles.setText("Boids " + SwarmConstants.swarmSize);
 			}
 		});
+		
+		BaseContainer particles = new BaseContainer(0, 0);
+		particles.setColor(26f/255, 188f/255, 156f/255, 1f);
+		txParticles.setWidth(75);
+		txParticles.setText("Boids " + SwarmConstants.swarmSize);
+		txParticles.setPadding(10, 14);
+		ImageButton boidInc = new ImageButton(AssetsLoader.instance.plusIcon);
+		boidInc.setActionListener(new ActionListener() {
+			
+			@Override
+			public void doAction() {
+				SwarmConstants.swarmSize += d;
+				gameWorld.addParticle();
+				txParticles.setText("Boids " + SwarmConstants.swarmSize);
+			}
+		});
+		
+		ImageButton boidsDec = new ImageButton(AssetsLoader.instance.minusIcon);
+		boidsDec.setActionListener(new ActionListener() {
+			
+			@Override
+			public void doAction() {
+				SwarmConstants.swarmSize -= d;
+				
+				if (SwarmConstants.swarmSize < 1) {
+					SwarmConstants.swarmSize = 1;
+				}
+				gameWorld.removeParticle();
+				txParticles.setText("Boids " + SwarmConstants.swarmSize);
+			}
+		});
+		
+		particles.addGuiElement(txParticles);
+		particles.addGuiElement(boidInc);
+		particles.addGuiElement(boidsDec);
 		
 		BaseContainer raio = new BaseContainer(0, 0);
 		raio.setColor(241f/255, 196f/255, 15f/255, 1f);
@@ -100,7 +137,7 @@ public class GameEditor implements Interactor<Rectangle> {
 			
 			@Override
 			public void doAction() {
-				SwarmConstants.raio += d;
+				SwarmConstants.raio += d * 0.5f;
 				txRaio.setText("Raio " + SwarmConstants.raio);
 			}
 		});
@@ -110,7 +147,7 @@ public class GameEditor implements Interactor<Rectangle> {
 			
 			@Override
 			public void doAction() {
-				SwarmConstants.raio -= d;
+				SwarmConstants.raio -= d * 0.5f;
 				
 				if (SwarmConstants.raio < 0) {
 					SwarmConstants.raio = 0;
@@ -132,6 +169,7 @@ public class GameEditor implements Interactor<Rectangle> {
 		menu.addGuiElement(start);
 		menu.addGuiElement(stop);
 		menu.addGuiElement(refresh);
+		menu.addGuiElement(particles);
 		menu.addGuiElement(raio);
 
 		tx.setWidth(75);

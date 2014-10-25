@@ -5,6 +5,8 @@ import com.badlogic.gdx.utils.Array;
 import com.teratorns.assets.AssetsLoader;
 import com.teratorns.game.GameRenderer;
 import com.teratorns.game.GameWorld;
+import com.teratorns.objects.Bird;
+import com.teratorns.objects.FoodSource;
 import com.teratorns.objects.GameObject;
 import com.teratorns.utils.Constants;
 import com.teratorns.view.Layer;
@@ -24,15 +26,25 @@ public class WorldView extends View {
 
 		@Override
 		public void draw() {
-			Array<GameObject> objects = gameWorld.getWorldObjects();
-			
+			// Initialize Sprite Renderer
 			GameRenderer.instance.spriteRenderer.setProjectionMatrix(GameRenderer.instance.camera.combined);
 			GameRenderer.instance.spriteRenderer.begin();
+			// Draw Food Source Flag
+			GameRenderer.instance.spriteRenderer.setColor(0, 0, 0, 0.3f);
+			GameRenderer.instance.spriteRenderer.draw(AssetsLoader.instance.objectiveIcon,
+													  FoodSource.food.x - 0.25f, FoodSource.food.y - 0.35f, 
+													  0, 0,
+													  0.5f, 0.5f,
+													  1, 1,
+													  0);
+			GameRenderer.instance.spriteRenderer.setColor(Color.WHITE);
+			// Draw Boids
+			Array<Bird> objects = gameWorld.getSwarm().getParticles();
 			
 			for (GameObject obj : objects) {
 				obj.draw();
 			}
-			
+			// Finalize Sprite Renderer
 			GameRenderer.instance.spriteRenderer.end();
 		}
 	}
@@ -48,20 +60,7 @@ public class WorldView extends View {
 													  0, 0, 
 													  Constants.viewportWidth, Constants.viewportHeight);
 			GameRenderer.instance.spriteRenderer.setColor(Color.WHITE);
-			/*for (int i = 0; i < Constants.viewportWidth; i++) {
-				for (int j = 0; j < Constants.viewportHeight; j++) {
-					GameRenderer.instance.spriteRenderer.draw(AssestsLoader.instance.grass,
-							  i, j,
-							  0, 0,
-							  1, 1,
-							  1, 1,
-							  0);
-				}
-			}
-			*/
-			
 			GameRenderer.instance.spriteRenderer.end();
-			
 		}
 	}
 }

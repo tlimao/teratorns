@@ -6,6 +6,7 @@ import com.badlogic.gdx.utils.Array;
 import com.teratorns.game.GameEditor;
 import com.teratorns.game.GameWorld;
 import com.teratorns.interaction.Interactor;
+import com.teratorns.objects.Bird;
 import com.teratorns.objects.FoodSource;
 import com.teratorns.objects.GameObject;
 import com.teratorns.utils.Transformations;
@@ -39,7 +40,7 @@ public class InteractionHelper {
 			
 			FoodSource.food.set(point);
 			
-			Array<GameObject> objects = gameWorld.getWorldObjects();
+			Array<Bird> objects = gameWorld.getSwarm().getParticles();
 			
 			interactionRect.setPosition(point);
 			

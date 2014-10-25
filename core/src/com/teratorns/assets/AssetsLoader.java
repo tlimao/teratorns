@@ -3,9 +3,11 @@ package com.teratorns.assets;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.Texture.TextureFilter;
+import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.utils.Array;
 import com.teratorns.utils.Constants;
 
 public class AssetsLoader {
@@ -13,6 +15,9 @@ public class AssetsLoader {
 	public static AssetsLoader instance = new AssetsLoader();
 
 	private TextureAtlas iconsAtlas;
+	private TextureAtlas antAtlas;
+	
+	public Animation antAnimation;
 	
 	public BitmapFont kenneyFont;
 	
@@ -42,6 +47,8 @@ public class AssetsLoader {
 		loadFonts();
 		
 		loadPsoAssets();
+		
+		loadAnt();
 	}
 	
 	private void loadBaseUiAssets() {
@@ -85,9 +92,27 @@ public class AssetsLoader {
 		circle = new TextureRegion(txCircle);
 	}
 	
+	private void loadAnt() {
+		antAtlas = new TextureAtlas(Gdx.files.internal("gfx/ant/antpack.pack"));
+		Array<TextureRegion> antAnim = new Array<TextureRegion>();
+		
+		for (Texture t : antAtlas.getTextures()) {
+			t.setFilter(TextureFilter.Linear, TextureFilter.Linear);
+		}
+		
+		antAnim.add(antAtlas.findRegion("ant1"));
+		antAnim.add(antAtlas.findRegion("ant2"));
+		antAnim.add(antAtlas.findRegion("ant3"));
+		antAnim.add(antAtlas.findRegion("ant2"));
+		
+		antAnimation = new Animation(0.1f, antAnim);
+		antAnimation.setPlayMode(Animation.PlayMode.LOOP);
+	}
+	
 	/** Dispose loaded assets */
 	public void disposeAssests() {
 		iconsAtlas.dispose();
 		kenneyFont.dispose();
+		antAtlas.dispose();
 	}
 }

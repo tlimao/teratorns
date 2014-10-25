@@ -62,7 +62,7 @@ public class GameScreen implements Screen {
 		Constants.windowHeight = height;
 		Constants.aspectRatio = ((float) height) / width;
 		Transformations.refactor();
-		GameRenderer.instance.refactor();
+		GameRenderer.instance.adjustCameraParameters();
 	}
 
 	@Override

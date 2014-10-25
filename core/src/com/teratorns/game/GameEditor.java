@@ -80,7 +80,7 @@ public class GameEditor implements Interactor<Rectangle> {
 			
 			@Override
 			public void doAction() {
-				gameWorld.createSwarm();
+				gameWorld.createColony();
 				SwarmConstants.reset();
 				GameOptions.instance.pause();
 				tx.setText("Aleatory " + SwarmConstants.c3);

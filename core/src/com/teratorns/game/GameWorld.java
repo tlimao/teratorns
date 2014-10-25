@@ -1,15 +1,19 @@
 package com.teratorns.game;
 
+import java.util.ArrayList;
+
+import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;
-import com.teratorns.objects.Bird;
+import com.teratorns.game.logic.ColonyVariables;
+import com.teratorns.objects.Ant;
+import com.teratorns.objects.Colony;
+import com.teratorns.objects.Food;
 import com.teratorns.objects.GameObject;
-import com.teratorns.objects.Swarm;
-import com.teratorns.utils.Constants;
 
 public class GameWorld {
 	
 	private Array<GameObject> worldObjects;
-	private Swarm swarm1;
+	private Colony colony;
 	
 	public GameWorld() {
 		worldObjects = new Array<GameObject>();
@@ -24,23 +28,45 @@ public class GameWorld {
 	}
 	
 	public void update() {
-		if (swarm1 != null) {
-			swarm1.update();
+		if (colony != null) {
+			colony.update();
 		}
 	}
 	
-	public void createSwarm() {
-		swarm1 = new Swarm();
+	public void createColony() {
+		colony = new Colony();
 		worldObjects.clear();
 		
-		for (int i = 0 ; i < 20 ; i++) {
-			Bird b = new Bird((float) Math.random() * Constants.viewportWidth, (float) Math.random() * Constants.viewportHeight);
-			swarm1.addParticle(b);
-			worldObjects.add(b);
+		for (int i = 0 ; i < ColonyVariables.instance.antsNumber; i++) {
+			Ant a = new Ant();
+			colony.addAnt(a);
+			worldObjects.add(a);
+		}
+		
+		
+		ColonyVariables.instance.foodPositions = new ArrayList<Vector2>();
+		
+		for(int i = 0; i < ColonyVariables.instance.sources; i++){
+			
+			int x = (int) Math.floor(Math.random()*ColonyVariables.instance.splitFactor);
+			int y = (int) Math.floor(Math.random()*ColonyVariables.instance.splitFactor);
+			if(new Vector2(x,y).equals(ColonyVariables.instance.colonyPosition)){
+				i--;
+			}
+			else{
+				ColonyVariables.instance.foodPositions.add(new Vector2(x,y));
+			}
+		}
+		
+		for(Vector2 food : ColonyVariables.instance.foodPositions){
+			Food f = new Food(food.x, food.y);
+			System.out.println("("+food.x+","+food.y+")");
+			colony.addFood(f);
+			worldObjects.add(f);
 		}
 	}
 	
-	public Swarm getSwarm() {
-		return swarm1;
+	public Colony getColony() {
+		return colony;
 	}
 }

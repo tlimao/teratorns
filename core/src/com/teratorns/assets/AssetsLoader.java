@@ -66,6 +66,39 @@ public class AssetsLoader {
 	
 	/** Load assets */
 	public void loadAssets() {
+//		antAtlas = new TextureAtlas(Gdx.files.internal(Constants.TX_ANT_MAP));
+//		
+//		for (Texture t : antAtlas.getTextures()) {
+//			t.setFilter(TextureFilter.Linear, TextureFilter.Linear);
+//		}
+//		
+//		Array<TextureRegion> antTextures = new Array<TextureRegion>();
+//		TextureRegion txa;
+//		
+//		for (int i = 1 ; i < 7 ; i++) {
+//			txa = antAtlas.findRegion("ant1" + i);
+//			txa.flip(false, true);
+//			antTextures.add(txa);
+//		}
+//		
+//		for (int i = 1 ; i < 5 ; i++) {
+//			tx = zombieAtlas.findRegion("ant" + i);
+//			tx.flip(false, true);
+//			zombieTextures.add(tx);
+//		}
+//		
+//		for (int i = 1 ; i < 4 ; i++) {
+//			tx = zombieAtlas.findRegion("zl" + i);
+//			tx.flip(false, true);
+//			zombieTextures.add(tx);
+//		}
+//		
+//		for (int i = 1 ; i < 4 ; i++) {
+//			tx = zombieAtlas.findRegion("zr" + i);
+//			tx.flip(false, true);
+//			zombieTextures.add(tx);
+//		}
+		
 		zombieAtlas = new TextureAtlas(Gdx.files.internal(Constants.TX_ZOMBIE_MAP));
 
 		for (Texture t : zombieAtlas.getTextures()) {

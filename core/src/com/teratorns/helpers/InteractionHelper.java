@@ -5,6 +5,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;
 import com.teratorns.game.GameEditor;
 import com.teratorns.game.GameWorld;
+import com.teratorns.game.logic.ColonyVariables;
 import com.teratorns.interaction.Interactor;
 import com.teratorns.objects.FoodSource;
 import com.teratorns.objects.GameObject;
@@ -42,11 +43,16 @@ public class InteractionHelper {
 			Array<GameObject> objects = gameWorld.getWorldObjects();
 			
 			interactionRect.setPosition(point);
+			ColonyVariables.instance.foodPositions.add(getCellCenter(point));
 			
-			for (GameObject obj : objects) {
-				((Interactor<Rectangle>) obj).isTouched(interactionRect);
-			}
+//			for (GameObject obj : objects) {
+//				((Interactor<Rectangle>) obj).isTouched(interactionRect);
+//			}
 		}
+	}
+	
+	public Vector2 getCellCenter(Vector2 grid){
+		return new Vector2(grid.cpy().x*ColonyVariables.instance.gridWidthSize + ColonyVariables.instance.gridWidthSize/2, grid.cpy().y*ColonyVariables.instance.gridHeightSize + ColonyVariables.instance.gridHeightSize/2);
 	}
 	
 	public Rectangle getLastClick() {

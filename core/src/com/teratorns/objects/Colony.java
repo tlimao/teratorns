@@ -6,13 +6,12 @@ import com.teratorns.game.logic.PheromoneLogic;
 public class Colony {
 
 	private Array<Ant> ants;
-	private Array<Food> foods;
+	Food food;
 //	private Vector2 aim;
 	
 	public Colony()
 	{
 		ants = new Array<Ant>();
-		foods = new Array<Food>();
 	//	aim = FoodSource.food;
 	}
 	
@@ -22,6 +21,7 @@ public class Colony {
 	
 	public void onClick(float x, float y)
 	{
+		
 //		aim.set(x, y);
 	}
 	
@@ -52,7 +52,7 @@ public class Colony {
 	}
 
 	public void addFood(Food f) {
-		foods.add(f);
+		this.food = f;
 		f.setColony(this);
 	}
 }

@@ -1,7 +1,5 @@
 package com.teratorns.game;
 
-import java.util.ArrayList;
-
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;
 import com.teratorns.game.logic.ColonyVariables;
@@ -35,6 +33,7 @@ public class GameWorld {
 	
 	public void createColony() {
 		colony = new Colony();
+		ColonyVariables.instance.colony = colony;
 		worldObjects.clear();
 		
 		for (int i = 0 ; i < ColonyVariables.instance.antsNumber; i++) {
@@ -44,26 +43,19 @@ public class GameWorld {
 		}
 		
 		
-		ColonyVariables.instance.foodPositions = new ArrayList<Vector2>();
+		int x = 0;
+		int y = 0;
+		do{
+			x = (int) Math.floor(Math.random()*ColonyVariables.instance.splitFactor);
+			y = (int) Math.floor(Math.random()*ColonyVariables.instance.splitFactor);
+		} while(new Vector2(x,y).equals(ColonyVariables.instance.colonyPosition));
 		
-		for(int i = 0; i < ColonyVariables.instance.sources; i++){
-			
-			int x = (int) Math.floor(Math.random()*ColonyVariables.instance.splitFactor);
-			int y = (int) Math.floor(Math.random()*ColonyVariables.instance.splitFactor);
-			if(new Vector2(x,y).equals(ColonyVariables.instance.colonyPosition)){
-				i--;
-			}
-			else{
-				ColonyVariables.instance.foodPositions.add(new Vector2(x,y));
-			}
-		}
+		Food f = new Food(x, y);
+		colony.addFood(f);
+		worldObjects.add(f);
 		
-		for(Vector2 food : ColonyVariables.instance.foodPositions){
-			Food f = new Food(food.x, food.y);
-			System.out.println("("+food.x+","+food.y+")");
-			colony.addFood(f);
-			worldObjects.add(f);
-		}
+		float distance = Vector2.dst(ColonyVariables.instance.colonyPosition.x, ColonyVariables.instance.colonyPosition.y, x, y);
+		ColonyVariables.instance.evaporateFactor = (1 - .001f*ColonyVariables.instance.maxVelocity/distance*distance);
 	}
 	
 	public Colony getColony() {

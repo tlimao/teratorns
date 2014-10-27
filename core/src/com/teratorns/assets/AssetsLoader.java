@@ -15,14 +15,11 @@ public class AssetsLoader {
 	// Singleton
 	public static AssetsLoader instance = new AssetsLoader();
 	
-	private TextureAtlas zombieAtlas;
 	private TextureAtlas guiAtlas;
 	private TextureAtlas iconsAtlas;
-	
-	public Animation zombieWalkingDown;
-	public Animation zombieWalkingUp;
-	public Animation zombieWalkingLeft;
-	public Animation zombieWalkingRight;
+
+	private TextureAtlas antAtlas;
+	public Animation antWalking;
 	
 	public TextureRegion circle;
 	public TextureRegion arrow;
@@ -58,7 +55,8 @@ public class AssetsLoader {
 	public TextureRegion minusIcon;
 	public TextureRegion refreshIcon;
 	public TextureRegion ObjectiveIcon;
-	public TextureRegion boid;
+	public TextureRegion txa;
+	public TextureRegion food;
 	
 	private AssetsLoader() {
 		System.out.println("Assets Loader Created");
@@ -66,99 +64,29 @@ public class AssetsLoader {
 	
 	/** Load assets */
 	public void loadAssets() {
-//		antAtlas = new TextureAtlas(Gdx.files.internal(Constants.TX_ANT_MAP));
-//		
-//		for (Texture t : antAtlas.getTextures()) {
-//			t.setFilter(TextureFilter.Linear, TextureFilter.Linear);
-//		}
-//		
-//		Array<TextureRegion> antTextures = new Array<TextureRegion>();
-//		TextureRegion txa;
-//		
-//		for (int i = 1 ; i < 7 ; i++) {
-//			txa = antAtlas.findRegion("ant1" + i);
-//			txa.flip(false, true);
-//			antTextures.add(txa);
-//		}
-//		
-//		for (int i = 1 ; i < 5 ; i++) {
-//			tx = zombieAtlas.findRegion("ant" + i);
-//			tx.flip(false, true);
-//			zombieTextures.add(tx);
-//		}
-//		
-//		for (int i = 1 ; i < 4 ; i++) {
-//			tx = zombieAtlas.findRegion("zl" + i);
-//			tx.flip(false, true);
-//			zombieTextures.add(tx);
-//		}
-//		
-//		for (int i = 1 ; i < 4 ; i++) {
-//			tx = zombieAtlas.findRegion("zr" + i);
-//			tx.flip(false, true);
-//			zombieTextures.add(tx);
-//		}
+		antAtlas = new TextureAtlas(Gdx.files.internal(Constants.TX_ANT_MAP));
 		
-		zombieAtlas = new TextureAtlas(Gdx.files.internal(Constants.TX_ZOMBIE_MAP));
-
-		for (Texture t : zombieAtlas.getTextures()) {
+		for (Texture t : antAtlas.getTextures()) {
 			t.setFilter(TextureFilter.Linear, TextureFilter.Linear);
 		}
 		
-		Array<TextureRegion> zombieTextures = new Array<TextureRegion>();
-		TextureRegion tx;
+		Array<TextureRegion> antTextures = new Array<TextureRegion>();
 		
-		for (int i = 1 ; i < 7 ; i++) {
-			tx = zombieAtlas.findRegion("zf" + i);
-			tx.flip(false, true);
-			zombieTextures.add(tx);
-		}
-		
-		for (int i = 1 ; i < 5 ; i++) {
-			tx = zombieAtlas.findRegion("zb" + i);
-			tx.flip(false, true);
-			zombieTextures.add(tx);
-		}
 		
 		for (int i = 1 ; i < 4 ; i++) {
-			tx = zombieAtlas.findRegion("zl" + i);
-			tx.flip(false, true);
-			zombieTextures.add(tx);
+			txa = antAtlas.findRegion("ant" + i);
+			txa.flip(false, true);
+			antTextures.add(txa);
 		}
 		
-		for (int i = 1 ; i < 4 ; i++) {
-			tx = zombieAtlas.findRegion("zr" + i);
-			tx.flip(false, true);
-			zombieTextures.add(tx);
-		}
-	
-		TextureRegion[] walkingDown  = {zombieTextures.get(0), zombieTextures.get(1), zombieTextures.get(2),
-										zombieTextures.get(3), zombieTextures.get(4), zombieTextures.get(5)};
+		food = antAtlas.findRegion("food");
 		
-		TextureRegion[] walkingUp    = {zombieTextures.get(6), zombieTextures.get(7),
-										zombieTextures.get(8), zombieTextures.get(9)};
+		TextureRegion[] walking  = {antTextures.get(0), antTextures.get(1), antTextures.get(2)};
 		
-		TextureRegion[] walkingLeft  = {zombieTextures.get(10), zombieTextures.get(11), zombieTextures.get(12)};
-		
-		TextureRegion[] walkingRight = {zombieTextures.get(13), zombieTextures.get(14), zombieTextures.get(15)};
-		
-		zombieWalkingDown = new Animation(0.2f, walkingDown);
-		zombieWalkingDown.setPlayMode(Animation.PlayMode.LOOP);
-		
-		zombieWalkingUp = new Animation(0.2f, walkingUp);
-		zombieWalkingUp.setPlayMode(Animation.PlayMode.LOOP);
-		
-		zombieWalkingLeft = new Animation(0.2f, walkingLeft);
-		zombieWalkingLeft.setPlayMode(Animation.PlayMode.LOOP);
-		
-		zombieWalkingRight = new Animation(0.2f, walkingRight);
-		zombieWalkingRight.setPlayMode(Animation.PlayMode.LOOP);
-		
-		circle = zombieAtlas.findRegion("circle");
-		grass = zombieAtlas.findRegion("grass");
-		arrow = zombieAtlas.findRegion("arrow");
-		flag = zombieAtlas.findRegion("flag");
-		flag.flip(false, true);
+		antWalking = new Animation(0.2f, walking);
+		antWalking.setPlayMode(Animation.PlayMode.LOOP);
+
+		//////////////////////
 		
 		horrorAmbientMusic = Gdx.audio.newSound(Gdx.files.internal("fx/horror.mp3"));
 		
@@ -198,9 +126,6 @@ public class AssetsLoader {
 		
 		
 		baseColor = new TextureRegion(new Texture(Gdx.files.internal("gui/base_color.png")));
-		Texture txBoid = new Texture(Gdx.files.internal("gui/boid.png"));
-		txBoid.setFilter(TextureFilter.Linear, TextureFilter.Linear);
-		boid = new TextureRegion(txBoid);
 		
 		iconsAtlas = new TextureAtlas(Gdx.files.internal(Constants.TX_ICONS_MAP));
 
@@ -230,7 +155,7 @@ public class AssetsLoader {
 	
 	/** Dispose loaded assets */
 	public void disposeAssests() {
-		zombieAtlas.dispose();
+		antAtlas.dispose();
 		guiAtlas.dispose();
 		iconsAtlas.dispose();
 		kenneyFont.dispose();

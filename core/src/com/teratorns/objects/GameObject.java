@@ -12,8 +12,8 @@ public abstract class GameObject {
 	protected float rotation;
 	
 	public GameObject(float x, float y) {
-		width = 1;
-		height = 1;
+		width = .3f;
+		height = .3f;
 		rotation = 0;
 		position = new Vector2(x, y);
 		velocity = new Vector2(0, 0);

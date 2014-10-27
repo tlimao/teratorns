@@ -1,11 +1,9 @@
 package com.teratorns.game.views;
 
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import com.badlogic.gdx.math.Rectangle;
 import com.teratorns.assets.AssetsLoader;
 import com.teratorns.game.GameRenderer;
-import com.teratorns.gui.GuiElement;
 import com.teratorns.helpers.InteractionHelper;
 import com.teratorns.view.Layer;
 import com.teratorns.view.View;

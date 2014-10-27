@@ -42,48 +42,48 @@ public class Ant extends GameObject{
 	@Override
 	public void update(){
 		if(isOut()){
-			System.out.println("is out!");
+//			System.out.println("is out!");
 			//velocity.scl(-1);
 			giveUp = true;
 		}
 		if(giveUp){
 			searching = false;
-			System.out.println("giving up");
+//			System.out.println("giving up");
 			aim.set(getCellCenter(ColonyVariables.instance.colonyPosition));
-			if(aim.x < 0 || aim.y < 0){
-				System.out.println("aim -> colony :" + this.aim);
-			}
+//			if(aim.x < 0 || aim.y < 0){
+//				System.out.println("aim -> colony :" + this.aim);
+//			}
 			giveUp = false;
 		}
 		else{
-			gridPosition = PheromoneLogic.instance.calculatePosition(position);
+			gridPosition = PheromoneLogic.instance.calculateGridPosition(position);
 			if(position.dst(aim) < ColonyVariables.instance.raio){
 				if(searching){
 					size++;
 					if(size == ColonyVariables.instance.limitOfSteps){
 						giveUp = true;
 					}
-					if(ColonyVariables.instance.foodPositions.contains(gridPosition)){
+					if(PheromoneLogic.instance.calculateGridPosition(this.colony.food.position).equals(gridPosition)){
 						//velocity.set(0,0);
-						System.out.println("find food");
+//						System.out.println("find food");
 						food = true;
 						searching = false;
 						spreadPheromone();
 						setAim(false);
-						System.out.println(aim);
+//						System.out.println(aim);
 					}
 					else{
 						setAim(true);
 					}
 				}
 				else{
-					System.out.println("backing");
+//					System.out.println("backing");
 					if(food){
-						System.out.println("releasing pheromone");
+//						System.out.println("releasing pheromone");
 						spreadPheromone();
 					}
 					if(gridPosition.equals(ColonyVariables.instance.colonyPosition)){
-						System.out.println("im home");
+//						System.out.println("im home");
 						//velocity.set(0,0);
 						food = false;
 						searching = true;
@@ -112,12 +112,12 @@ public class Ant extends GameObject{
 		else{
 			GameRenderer.instance.spriteRenderer.setColor(1, 0, 0, 0.3f);
 		}
-			GameRenderer.instance.spriteRenderer.draw(AssetsLoader.instance.boid,
+			GameRenderer.instance.spriteRenderer.draw(AssetsLoader.instance.txa,
 													  position.x - width / 2, position.y - height / 2,
 													  width / 2 , height / 2,
 													  width     , height,
 													  0.5f      , 0.5f,
-													  velocity.angle());
+													  velocity.angle()*3);
 	}
 	
 	public void setColony(Colony colony) {
@@ -213,9 +213,9 @@ public class Ant extends GameObject{
 			}
 			path.add(directions.get(notNullDirections.get(random)));
 			aim.set(getCellCenter(directions.get(notNullDirections.get(random))));
-			if(aim.x < 0 || aim.y < 0){
-				System.out.println("aim -> next: " + this.aim);
-			}
+//			if(aim.x < 0 || aim.y < 0){
+//				System.out.println("aim -> next: " + this.aim);
+//			}
 		}
 		else{
 			if(path.size() <= 1){
@@ -224,9 +224,9 @@ public class Ant extends GameObject{
 			else{
 				//path.remove(path.size() - 1);
 				aim.set(getCellCenter(path.remove(path.size() - 1)));
-				if(aim.x < 0 || aim.y < 0){
-					System.out.println("aim -> back: " + this.aim);
-				}
+//				if(aim.x < 0 || aim.y < 0){
+//					System.out.println("aim -> back: " + this.aim);
+//				}
 			}
 		}
 	}

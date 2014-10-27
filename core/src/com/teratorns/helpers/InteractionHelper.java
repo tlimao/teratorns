@@ -2,13 +2,11 @@ package com.teratorns.helpers;
 
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.utils.Array;
 import com.teratorns.game.GameEditor;
 import com.teratorns.game.GameWorld;
 import com.teratorns.game.logic.ColonyVariables;
-import com.teratorns.interaction.Interactor;
-import com.teratorns.objects.FoodSource;
-import com.teratorns.objects.GameObject;
+import com.teratorns.game.logic.PheromoneLogic;
+import com.teratorns.objects.Food;
 import com.teratorns.utils.Transformations;
 
 public class InteractionHelper {
@@ -38,12 +36,9 @@ public class InteractionHelper {
 		else {
 			Vector2 point = Transformations.screenToWorld(sX, sY);
 			
-			FoodSource.food.set(point);
-			
-			Array<GameObject> objects = gameWorld.getWorldObjects();
-			
-			interactionRect.setPosition(point);
-			ColonyVariables.instance.foodPositions.add(getCellCenter(point));
+			Vector2 newFood = PheromoneLogic.instance.calculateGridPosition(point);
+			System.out.println(newFood);
+			ColonyVariables.instance.colony.addFood(new Food(newFood.x,newFood.y));
 			
 //			for (GameObject obj : objects) {
 //				((Interactor<Rectangle>) obj).isTouched(interactionRect);

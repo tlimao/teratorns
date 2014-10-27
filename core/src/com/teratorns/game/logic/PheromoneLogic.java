@@ -14,7 +14,7 @@ public class PheromoneLogic {
 		startMap();
 	}
 	
-	public Vector2 calculatePosition(Vector2 realPosition){
+	public Vector2 calculateGridPosition(Vector2 realPosition){
 		Vector2 gridPosition = new Vector2();
 		gridPosition.x = (float) Math.floor(realPosition.x/ColonyVariables.instance.gridWidthSize);
 		gridPosition.y = (float) Math.floor(realPosition.y/ColonyVariables.instance.gridHeightSize);
@@ -22,24 +22,11 @@ public class PheromoneLogic {
 	}
 	 
 	public void startMap(){
-//		pheromoneMap.put(new Vector2(-1,-1), 0f);
-//		pheromoneMap.put(new Vector2(ColonyVariables.instance.gridWidthSize, ColonyVariables.instance.gridHeightSize), 0f);
-//		for(int i = 0; i < ColonyVariables.instance.splitFactor; i++){
-//			pheromoneMap.put(new Vector2(i,-1), 0f);
-//			pheromoneMap.put(new Vector2(i,ColonyVariables.instance.gridHeightSize), 0f);
-//			for(int j = 0; j < ColonyVariables.instance.splitFactor; j++){
-//				pheromoneMap.put(new Vector2(i,j), 1f);
-//				pheromoneMap.put(new Vector2(-1,j), 0f);
-//				pheromoneMap.put(new Vector2(ColonyVariables.instance.gridWidthSize,j), 0f);
-//				
-//			}
-//		}
-		
-	for(int i = 0; i < ColonyVariables.instance.splitFactor; i++){
-		for(int j = 0; j < ColonyVariables.instance.splitFactor; j++){
-			pheromoneMap.put(new Vector2(i,j), 1f);	
+		for(int i = 0; i < ColonyVariables.instance.splitFactor; i++){
+			for(int j = 0; j < ColonyVariables.instance.splitFactor; j++){
+				pheromoneMap.put(new Vector2(i,j), 1f);	
+			}
 		}
-	}
 		System.out.println(pheromoneMap);
 	}
 

@@ -22,7 +22,7 @@ public class WorldView extends View {
 		this.gameWorld = gameWorld;
 		this.addLayer(new BackgroundLayer());
 		this.addLayer(new PheromoneLayer());
-		this.addLayer(new DebugLayer());
+		//this.addLayer(new DebugLayer());
 		this.addLayer(new ObjectsLayer());
 	}
 	
@@ -53,19 +53,6 @@ public class WorldView extends View {
 			GameRenderer.instance.spriteRenderer.draw(AssetsLoader.instance.baseColor,
 													  0, 0, 
 													  Constants.viewportWidth, Constants.viewportHeight);
-			//GameRenderer.instance.spriteRenderer.setColor(Color.WHITE);
-			/*for (int i = 0; i < Constants.viewportWidth; i++) {
-				for (int j = 0; j < Constants.viewportHeight; j++) {
-					GameRenderer.instance.spriteRenderer.draw(AssestsLoader.instance.grass,
-							  i, j,
-							  0, 0,
-							  1, 1,
-							  1, 1,
-							  0);
-				}
-			}
-			*/
-			
 			GameRenderer.instance.spriteRenderer.end();
 			
 		}
@@ -92,7 +79,6 @@ public class WorldView extends View {
 	}
 	
 	private class DebugLayer extends Layer{
-
 		@Override
 		public void draw() {
 			GameRenderer.instance.shapeRenderer.setProjectionMatrix(GameRenderer.instance.camera.combined);

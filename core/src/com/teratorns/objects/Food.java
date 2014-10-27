@@ -18,18 +18,11 @@ public class Food extends GameObject{
 
 	@Override
 	public void draw() {
-//		GameRenderer.instance.spriteRenderer.setColor(0, 0, 0, 0.3f);
-//		GameRenderer.instance.spriteRenderer.draw(AssetsLoader.instance.circle,
-//				  position.x - width / 2, position.y - height / 2,
-//				  width / 2 , height / 2,
-//				  width     , height,
-//				  ColonyVariables.instance.gridWidthSize , ColonyVariables.instance.gridHeightSize,
-//				  rotation);
-		GameRenderer.instance.spriteRenderer.setColor(0, 0, 0, 0.3f);
-		GameRenderer.instance.spriteRenderer.draw(AssetsLoader.instance.boid,
-												  position.x - width / 2, position.y - height / 2,
-												  width / 2 , height / 2,
-												  width     , height,
+		GameRenderer.instance.spriteRenderer.setColor(0.5f,0,1, 1);
+		GameRenderer.instance.spriteRenderer.draw(AssetsLoader.instance.food,
+												  position.x - width*4 / 2, position.y - height*4 / 2,
+												  width*4 / 2 , height*4 / 2,
+												  width*4     , height*4,
 												  0.5f      , 0.5f,
 												  velocity.angle());
 	}

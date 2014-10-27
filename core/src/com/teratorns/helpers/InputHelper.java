@@ -1,9 +1,6 @@
 package com.teratorns.helpers;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputProcessor;
-import com.badlogic.gdx.graphics.Pixmap;
-import com.teratorns.assets.AssetsLoader;
 
 public class InputHelper implements InputProcessor {
 

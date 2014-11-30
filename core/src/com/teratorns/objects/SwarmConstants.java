@@ -1,6 +1,6 @@
 package com.teratorns.objects;
 
-public class SwarmConstants {
+public abstract class SwarmConstants {
 	
 	public static int c1 = 0;
 	public static int c2 = 0;

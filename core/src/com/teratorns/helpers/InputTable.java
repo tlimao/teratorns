@@ -7,12 +7,12 @@ import com.teratorns.game.GameRenderer;
 import com.teratorns.utils.Constants;
 import com.teratorns.utils.Transformations;
 
-public class InputHelper implements InputProcessor, GestureListener {
+public class InputTable implements InputProcessor, GestureListener {
 
-	private InteractionHelper interactionHelper;
+	private TableHelper tableHelper;
 	
-	public InputHelper(InteractionHelper interactionHelper) {
-		this.interactionHelper = interactionHelper;
+	public InputTable(TableHelper tableHelper) {
+		this.tableHelper = tableHelper;
 	}
 	
 	@Override
@@ -36,7 +36,7 @@ public class InputHelper implements InputProcessor, GestureListener {
 	@Override
 	public boolean touchDown(int screenX, int screenY, int pointer, int button) {
 		// TODO Auto-generated method stub
-		interactionHelper.clicked(screenX, screenY);
+		tableHelper.clicked(screenX, screenY);
 		return false;
 	}
 

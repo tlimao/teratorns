@@ -6,7 +6,7 @@ public class GameOptions {
 	public static GameOptions instance = new GameOptions();
 	
 	private GameOptions() {
-		pause = true;
+		pause = false;
 	}
 	
 	public void pause() {

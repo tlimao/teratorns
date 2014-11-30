@@ -2,12 +2,12 @@ package com.teratorns.utils;
 
 public class Constants {
 	
-	public static int windowWidth = 800;
-	public static int windowHeight = 480;
+	public static int windowWidth = 720;
+	public static int windowHeight = 1280;
 	
 	public static float aspectRatio = ((float) windowHeight) / windowWidth;
 	
-	public static float viewportWidth = 10;
+	public static float viewportWidth = 60;
 	public static float viewportHeight = viewportWidth * aspectRatio;
 	
 	public static String BASE_COLOR = "gui/base/base_color.png";
@@ -19,4 +19,6 @@ public class Constants {
 	
 	public static String KENNEY_BASE_FONT = "fnt/kenney.fnt";
 	public static String KENNEY_BASE_TX = "fnt/kenney.png";
+	
+	public static float INTERACTION_TIME = 0.1f;
 }

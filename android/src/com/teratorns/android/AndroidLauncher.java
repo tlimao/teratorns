@@ -5,6 +5,7 @@ import android.os.Bundle;
 import com.badlogic.gdx.backends.android.AndroidApplication;
 import com.badlogic.gdx.backends.android.AndroidApplicationConfiguration;
 import com.teratorns.GameRun;
+import com.teratorns.utils.Constants;
 
 public class AndroidLauncher extends AndroidApplication {
 	@Override

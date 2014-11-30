@@ -5,31 +5,31 @@ public class GameClock {
 	
 	public static GameClock instance = new GameClock();
 	
-	private float runtime;
+	private float runTime;
 	private float delta;
-	private float musicTimeStart = 10;
-	private boolean musicFlag = false;
+	
+	private float gameTime;
 	
 	private GameClock() {
-		runtime = 0;
+		runTime = 0;
+		gameTime = 0;
 	}
 	
-	public void incrementTime(float delta) {
-		runtime += delta;
+	public void incrementRunTime(float delta) {
+		runTime += delta;
 		this.delta = delta;
-		
-		if (runtime > musicTimeStart && !musicFlag) {
-			startMusic();
-			musicFlag = true;
-		}
 	}
 	
-	private void startMusic() {
-		// Nada
+	public void incrementGameTime(float delta) {
+		gameTime += delta;
 	}
 	
 	public float getRunTime() {
-		return runtime;
+		return runTime;
+	}
+	
+	public float getGameTime() {
+		return gameTime;
 	}
 	
 	public float getDelta() {
@@ -37,6 +37,7 @@ public class GameClock {
 	}
 	
 	public void reset() {
-		runtime = 0;
+		runTime = 0;
+		gameTime = 0;
 	}
 }

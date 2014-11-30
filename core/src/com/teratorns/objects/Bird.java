@@ -7,6 +7,7 @@ import com.teratorns.assets.AssetsLoader;
 import com.teratorns.game.GameClock;
 import com.teratorns.game.GameRenderer;
 import com.teratorns.interaction.Interactor;
+import com.teratorns.utils.Constants;
 
 public class Bird extends GameObject implements Interactor<Rectangle> {
 	
@@ -88,7 +89,7 @@ public class Bird extends GameObject implements Interactor<Rectangle> {
 	@Override
 	public void draw() {
 		GameRenderer.instance.spriteRenderer.setColor(0, 0, 0, 1f);
-		GameRenderer.instance.spriteRenderer.setColor(52f/255, 152f/255, 219f/255, 0.3f);
+		GameRenderer.instance.spriteRenderer.setColor(0, 0, 0, 0.3f);
 		GameRenderer.instance.spriteRenderer.draw(AssetsLoader.instance.circle,
 												  position.x - width / 2, position.y - height / 2,
 												  width / 2 , height / 2,

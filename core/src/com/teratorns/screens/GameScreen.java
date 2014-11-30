@@ -42,9 +42,12 @@ public class GameScreen implements Screen {
 
 	@Override
 	public void render(float delta) {
+		// Update RunTime
+		GameClock.instance.incrementRunTime(delta);
+		
 		if (!GameOptions.instance.isPaused()) {
-			// Update GameClock
-			GameClock.instance.incrementTime(delta);
+			// Update GameTime
+			GameClock.instance.incrementGameTime(delta);
 			
 			// Apply Logic to game world
 			gameLogic.update();

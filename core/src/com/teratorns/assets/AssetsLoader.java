@@ -112,6 +112,7 @@ public class AssetsLoader {
 	/** Dispose loaded assets */
 	public void disposeAssests() {
 		iconsAtlas.dispose();
+		antAtlas.dispose();
 		kenneyFont.dispose();
 		antAtlas.dispose();
 	}

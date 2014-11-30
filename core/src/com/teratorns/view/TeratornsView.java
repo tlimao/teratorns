@@ -15,6 +15,7 @@ public class TeratornsView extends View {
 		this.gameWorld = gameWorld;
 		
 		addLayer(new TeratornsLogoLayer());
+		addLayer(new TeratornsinteractionLayer());
 	}
 	
 	private class TeratornsLogoLayer extends Layer {
@@ -35,15 +36,17 @@ public class TeratornsView extends View {
 		}
 	}
 	
-	/*private class TeratornsinteractionLayer extends Layer {
+	private class TeratornsinteractionLayer extends Layer {
 
 		@Override
 		public void draw() {
+			// Initialize Shape Renderer
+			GameRenderer.instance.shapeRenderer.setProjectionMatrix(GameRenderer.instance.camera.combined);
 			Array<GameObject> gameObjects = gameWorld.getWorldObjects();
 			
 			for (GameObject obj : gameObjects) {
 				((Interactor<?>) obj).drawInteractor();
 			}
 		}
-	}*/
+	}
 }

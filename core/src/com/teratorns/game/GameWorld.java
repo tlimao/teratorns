@@ -12,10 +12,11 @@ public class GameWorld {
 	public GameWorld() {
 		worldObjects = new Array<GameObject>();
 		
-		float x = (Constants.viewportWidth - 1) / 2; 
-		float y = (Constants.viewportHeight - 1) / 2; 
+		float x = (Constants.viewportWidth - 5) / 2.0f; 
+		float y = (Constants.viewportHeight - 5 * Constants.aspectRatio) / 2.0f;
 		
-		addObject(new TeratornsLogoObject(x, y));
+		GameObject logo = new TeratornsLogoObject(x, y, 5);
+		addObject(logo);
 	}
 	
 	public Array<GameObject> getWorldObjects() {

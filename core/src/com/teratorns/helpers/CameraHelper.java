@@ -31,6 +31,10 @@ public class CameraHelper {
 		position.set(pos);
 	}
 	
+	public Vector2 getPosition() {
+		return position.cpy();
+	}
+	
 	public void incrementZoom() {
 		zoom += zoomInc;
 		
@@ -47,7 +51,7 @@ public class CameraHelper {
 		}
 	}
 	
-	public void updateCamera() {	
+	public void updateCamera() {
 		GameRenderer.instance.camera.position.set(position.y, position.x, 0);
 		GameRenderer.instance.camera.zoom = zoom;
 	}

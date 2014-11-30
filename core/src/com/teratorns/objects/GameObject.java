@@ -23,6 +23,16 @@ public abstract class GameObject {
 		scale = 1.0f;
 	}
 	
+	public GameObject(float x, float y, float s) {
+		position = new Vector2(x, y);
+		velocity = new Vector2(0, 0);
+		acceleration = new Vector2(0, 0);
+		width = s;
+		height = s * Constants.aspectRatio;
+		rotation = 0.0f;
+		scale = 1.0f;
+	}
+	
 	public Vector2 getPosition() {
 		return position.cpy();
 	}
@@ -73,6 +83,8 @@ public abstract class GameObject {
 	
 	public void setScale(float scl) {
 		scale = scl;
+		width *= scale;
+		height *= scale;
 	}
 
 	public abstract void update();

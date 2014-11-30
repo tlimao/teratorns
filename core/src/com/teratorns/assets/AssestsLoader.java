@@ -10,11 +10,11 @@ public class AssestsLoader {
 	
 	/** Load assets */
 	public void loadAssets() {
-		
+		// Load Assets (gfx, snd fx, etc) here ...
 	}
 	
 	/** Dispose loaded assets */
 	public void disposeAssests() {
-		
+		// Dispose all Assests Here
 	}
 }

@@ -46,4 +46,15 @@ public class GameRenderer {
 			v.draw();
 		}
 	}
+	
+	public void adjustCameraParameters() {
+		guiCamera.setToOrtho(true, Constants.windowWidth, Constants.windowHeight);
+		camera.setToOrtho(true, Constants.viewportWidth, Constants.viewportHeight);
+	}
+	
+	public void dispose() {
+		spriteRenderer.dispose();
+		shapeRenderer.dispose();
+		physicsRenderer.dispose();
+	}
 }

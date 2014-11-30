@@ -2,6 +2,7 @@ package com.teratorns.screens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.teratorns.assets.AssetsLoader;
 import com.teratorns.game.GameClock;
 import com.teratorns.game.GameLogic;
 import com.teratorns.game.GameOptions;
@@ -10,15 +11,20 @@ import com.teratorns.game.GameWorld;
 import com.teratorns.helpers.InputHelper;
 import com.teratorns.helpers.InteractionHelper;
 import com.teratorns.helpers.PlayerHelper;
+import com.teratorns.utils.Constants;
+import com.teratorns.view.TeratornsView;
+import com.teratorns.view.ViewManager;
 
 public class GameScreen implements Screen {
 	
 	private GameWorld gameWorld;
 	private GameLogic gameLogic;
 	
-	public GameScreen() {
+	@Override
+	public void show() {
 		gameWorld = new GameWorld();
 		gameLogic = new GameLogic(gameWorld);
+		ViewManager.instance.addView(new TeratornsView(gameWorld));
 		
 		PlayerHelper playerHelper = new PlayerHelper();
 		GameOptions gameOptions = new GameOptions();
@@ -41,37 +47,29 @@ public class GameScreen implements Screen {
 
 	@Override
 	public void resize(int width, int height) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void show() {
-		// TODO Auto-generated method stub
-		
+		Constants.setScreenDimensions(width, height);
+		GameRenderer.instance.adjustCameraParameters();
 	}
 
 	@Override
 	public void hide() {
-		// TODO Auto-generated method stub
-		
+		Gdx.input.setInputProcessor(null);
 	}
 
 	@Override
 	public void pause() {
 		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
 	public void resume() {
 		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
 	public void dispose() {
-		// TODO Auto-generated method stub
-		
+		AssetsLoader.instance.disposeAssests();
+		GameRenderer.instance.dispose();
+		Gdx.input.setInputProcessor(null);
 	}
 }

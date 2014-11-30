@@ -10,8 +10,8 @@
       <operations public="false" package="false" protected="false" private="false" static="true"/>    
     </display>  
   </class>  
-  <class id="2" language="java" name="com.teratorns.assets.AssestsLoader" project="teratorns-core" 
-    file="/teratorns-core/src/com/teratorns/assets/AssestsLoader.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="2" language="java" name="com.teratorns.assets.AssetsLoader" project="teratorns-core" 
+    file="/teratorns-core/src/com/teratorns/assets/AssetsLoader.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="183" y="84"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
       visibility="true">      
@@ -173,172 +173,172 @@
     </display>  
   </class>  
   <dependency id="20">    
-    <end type="SOURCE" refId="18"/>    
-    <end type="TARGET" refId="17"/>  
-  </dependency>  
-  <dependency id="21">    
-    <end type="SOURCE" refId="6"/>    
-    <end type="TARGET" refId="18"/>  
-  </dependency>  
-  <dependency id="22">    
-    <end type="SOURCE" refId="15"/>    
-    <end type="TARGET" refId="3"/>  
-  </dependency>  
-  <dependency id="23">    
-    <end type="SOURCE" refId="15"/>    
-    <end type="TARGET" refId="9"/>  
-  </dependency>  
-  <association id="24">    
-    <bendpoint x="761" y="247"/>    
-    <bendpoint x="701" y="247"/>    
-    <end type="SOURCE" refId="4" navigable="false">      
-      <attribute id="25" name="gameWorld"/>      
-      <multiplicity id="26" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="7" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <dependency id="27">    
-    <end type="SOURCE" refId="8"/>    
-    <end type="TARGET" refId="6"/>  
-  </dependency>  
-  <association id="28">    
-    <end type="SOURCE" refId="19" navigable="false">      
-      <attribute id="29" name="instance"/>      
-      <multiplicity id="30" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="19" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <dependency id="31">    
     <end type="SOURCE" refId="6"/>    
     <end type="TARGET" refId="16"/>  
   </dependency>  
-  <dependency id="32">    
-    <end type="SOURCE" refId="8"/>    
-    <end type="TARGET" refId="16"/>  
-  </dependency>  
-  <association id="33">    
-    <end type="SOURCE" refId="8" navigable="false">      
-      <attribute id="34" name="instance"/>      
-      <multiplicity id="35" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="8" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="36">    
-    <end type="SOURCE" refId="9" navigable="false">      
-      <attribute id="37" name="interactionHelper"/>      
-      <multiplicity id="38" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="10" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="39">    
-    <bendpoint x="613" y="85"/>    
-    <end type="SOURCE" refId="15" navigable="false">      
-      <attribute id="40" name="gameLogic"/>      
-      <multiplicity id="41" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="4" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="42">    
+  <association id="21">    
     <bendpoint x="1047" y="238"/>    
     <bendpoint x="893" y="238"/>    
     <end type="SOURCE" refId="10" navigable="false">      
-      <attribute id="43" name="gameOptions"/>      
-      <multiplicity id="44" minimum="0" maximum="1"/>    
+      <attribute id="22" name="gameOptions"/>      
+      <multiplicity id="23" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="5" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <dependency id="45">    
-    <end type="SOURCE" refId="1"/>    
-    <end type="TARGET" refId="2"/>  
-  </dependency>  
-  <association id="46">    
-    <bendpoint x="1047" y="562"/>    
+  <association id="24">    
     <end type="SOURCE" refId="10" navigable="false">      
-      <attribute id="47" name="gameWorld"/>      
-      <multiplicity id="48" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="7" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <dependency id="49">    
-    <end type="SOURCE" refId="15"/>    
-    <end type="TARGET" refId="6"/>  
-  </dependency>  
-  <association id="50">    
-    <end type="SOURCE" refId="3" navigable="false">      
-      <attribute id="51" name="instance"/>      
-      <multiplicity id="52" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="3" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="53">    
-    <end type="SOURCE" refId="10" navigable="false">      
-      <attribute id="54" name="playerHelper"/>      
-      <multiplicity id="55" minimum="0" maximum="1"/>    
+      <attribute id="25" name="playerHelper"/>      
+      <multiplicity id="26" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="11" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <dependency id="56">    
-    <end type="SOURCE" refId="7"/>    
-    <end type="TARGET" refId="13"/>  
+  <dependency id="27">    
+    <end type="SOURCE" refId="15"/>    
+    <end type="TARGET" refId="3"/>  
   </dependency>  
-  <association id="57">    
-    <bendpoint x="613" y="563"/>    
-    <end type="SOURCE" refId="15" navigable="false">      
-      <attribute id="58" name="gameWorld"/>      
-      <multiplicity id="59" minimum="0" maximum="1"/>    
+  <dependency id="28">    
+    <end type="SOURCE" refId="15"/>    
+    <end type="TARGET" refId="5"/>  
+  </dependency>  
+  <association id="29">    
+    <bendpoint x="1047" y="562"/>    
+    <end type="SOURCE" refId="10" navigable="false">      
+      <attribute id="30" name="gameWorld"/>      
+      <multiplicity id="31" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="7" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <dependency id="60">    
+  <dependency id="32">    
     <end type="SOURCE" refId="1"/>    
-    <end type="TARGET" refId="15"/>  
+    <end type="TARGET" refId="2"/>  
   </dependency>  
-  <dependency id="61">    
+  <association id="33">    
+    <end type="SOURCE" refId="19" navigable="false">      
+      <attribute id="34" name="instance"/>      
+      <multiplicity id="35" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="19" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="36">    
     <end type="SOURCE" refId="19"/>    
     <end type="TARGET" refId="18"/>  
   </dependency>  
-  <dependency id="62">    
-    <end type="SOURCE" refId="15"/>    
-    <end type="TARGET" refId="5"/>  
+  <dependency id="37">    
+    <end type="SOURCE" refId="8"/>    
+    <end type="TARGET" refId="16"/>  
   </dependency>  
-  <dependency id="63">    
-    <end type="SOURCE" refId="15"/>    
-    <end type="TARGET" refId="11"/>  
+  <association id="38">    
+    <end type="SOURCE" refId="9" navigable="false">      
+      <attribute id="39" name="interactionHelper"/>      
+      <multiplicity id="40" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="10" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="41">    
+    <bendpoint x="761" y="247"/>    
+    <bendpoint x="701" y="247"/>    
+    <end type="SOURCE" refId="4" navigable="false">      
+      <attribute id="42" name="gameWorld"/>      
+      <multiplicity id="43" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="7" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="44">    
+    <end type="SOURCE" refId="3" navigable="false">      
+      <attribute id="45" name="instance"/>      
+      <multiplicity id="46" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="3" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="47">    
+    <end type="SOURCE" refId="8"/>    
+    <end type="TARGET" refId="6"/>  
   </dependency>  
-  <dependency id="64">    
-    <end type="SOURCE" refId="6"/>    
-    <end type="TARGET" refId="19"/>  
-  </dependency>  
-  <association id="65">    
+  <association id="48">    
     <end type="SOURCE" refId="6" navigable="false">      
-      <attribute id="66" name="instance"/>      
-      <multiplicity id="67" minimum="0" maximum="1"/>    
+      <attribute id="49" name="instance"/>      
+      <multiplicity id="50" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="6" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <dependency id="68">    
+  <dependency id="51">    
     <end type="SOURCE" refId="15"/>    
     <end type="TARGET" refId="10"/>  
   </dependency>  
-  <association id="69">    
+  <association id="52">    
+    <bendpoint x="613" y="85"/>    
+    <end type="SOURCE" refId="15" navigable="false">      
+      <attribute id="53" name="gameLogic"/>      
+      <multiplicity id="54" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="4" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="55">    
     <end type="SOURCE" refId="2" navigable="false">      
-      <attribute id="70" name="instance"/>      
-      <multiplicity id="71" minimum="0" maximum="1"/>    
+      <attribute id="56" name="instance"/>      
+      <multiplicity id="57" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="2" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
+  <association id="58">    
+    <bendpoint x="613" y="563"/>    
+    <end type="SOURCE" refId="15" navigable="false">      
+      <attribute id="59" name="gameWorld"/>      
+      <multiplicity id="60" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="7" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="61">    
+    <end type="SOURCE" refId="7"/>    
+    <end type="TARGET" refId="13"/>  
+  </dependency>  
+  <dependency id="62">    
+    <end type="SOURCE" refId="18"/>    
+    <end type="TARGET" refId="17"/>  
+  </dependency>  
+  <dependency id="63">    
+    <end type="SOURCE" refId="15"/>    
+    <end type="TARGET" refId="9"/>  
+  </dependency>  
+  <dependency id="64">    
+    <end type="SOURCE" refId="15"/>    
+    <end type="TARGET" refId="11"/>  
+  </dependency>  
+  <association id="65">    
+    <end type="SOURCE" refId="8" navigable="false">      
+      <attribute id="66" name="instance"/>      
+      <multiplicity id="67" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="8" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="68">    
+    <end type="SOURCE" refId="15"/>    
+    <end type="TARGET" refId="6"/>  
+  </dependency>  
+  <dependency id="69">    
+    <end type="SOURCE" refId="1"/>    
+    <end type="TARGET" refId="15"/>  
+  </dependency>  
+  <dependency id="70">    
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="19"/>  
+  </dependency>  
+  <dependency id="71">    
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="18"/>  
+  </dependency>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
     accessors="true" visibility="true">    
     <attributes public="false" package="false" protected="false" private="false" static="true"/>    

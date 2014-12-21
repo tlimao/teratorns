@@ -5,6 +5,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;
 import com.teratorns.game.GameOptions;
 import com.teratorns.game.GameWorld;
+import com.teratorns.game.objects.FireSkull;
 import com.teratorns.interaction.Interactor;
 import com.teratorns.objects.GameObject;
 import com.teratorns.utils.Constants;
@@ -38,6 +39,10 @@ public class InteractionHelper {
 		
 		for (GameObject obj : worldObjects) {
 			((Interactor<Rectangle>) obj).isTouched(interactRect);
+			
+			if (obj instanceof FireSkull) {
+				((FireSkull) obj).setAim(lastClickedPosition);
+			}
 		}
 	}
 	

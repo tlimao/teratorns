@@ -15,7 +15,8 @@ public class GameWorld {
 		float x = (Constants.viewportWidth - 5) / 2.0f; 
 		float y = (Constants.viewportHeight - 5 * Constants.aspectRatio) / 2.0f;
 		
-		GameObject logo = new TeratornsLogoObject(x, y, 5);
+		GameObject logo = new TeratornsLogoObject(x, y);
+		logo.setScale(5);
 		addObject(logo);
 	}
 	

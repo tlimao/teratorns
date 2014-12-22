@@ -1,7 +1,6 @@
 package com.teratorns.objects;
 
 import com.badlogic.gdx.math.Vector2;
-import com.teratorns.utils.Constants;
 
 public abstract class GameObject {
 	
@@ -18,17 +17,7 @@ public abstract class GameObject {
 		velocity = new Vector2(0, 0);
 		acceleration = new Vector2(0, 0);
 		width = 1;
-		height = width * Constants.aspectRatio;
-		rotation = 0.0f;
-		scale = 1.0f;
-	}
-	
-	public GameObject(float x, float y, float s) {
-		position = new Vector2(x, y);
-		velocity = new Vector2(0, 0);
-		acceleration = new Vector2(0, 0);
-		width = s;
-		height = s * Constants.aspectRatio;
+		height = 1;
 		rotation = 0.0f;
 		scale = 1.0f;
 	}
@@ -83,8 +72,8 @@ public abstract class GameObject {
 	
 	public void setScale(float scl) {
 		scale = scl;
-		width *= scale;
-		height *= scale;
+		width *= scl;
+		height *= scl;
 	}
 
 	public abstract void update();

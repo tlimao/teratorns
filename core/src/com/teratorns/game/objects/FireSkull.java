@@ -23,13 +23,6 @@ public class FireSkull extends GameObject implements Interactor<Rectangle> {
 		aim = position.cpy();
 		isAdjusted = false;
 	}
-	
-	public FireSkull(float x, float y, float s) {
-		super(x, y, s);
-		interactionRect = new Rectangle(x, y, width, height);
-		aim = position.cpy();
-		isAdjusted = false;
-	}
 
 	@Override
 	public void update() {

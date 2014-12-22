@@ -3,6 +3,7 @@ package com.teratorns.objects;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import com.badlogic.gdx.math.Rectangle;
+import com.badlogic.gdx.math.Vector2;
 import com.teratorns.assets.AssetsLoader;
 import com.teratorns.game.GameRenderer;
 import com.teratorns.interaction.Interactor;
@@ -14,11 +15,9 @@ public class TeratornsLogoObject extends GameObject implements Interactor<Rectan
 	
 	public TeratornsLogoObject(float x, float y) {
 		super(x, y);
-		interactionRect = new Rectangle(x, y, width, height);
-	}
-	
-	public TeratornsLogoObject(float x, float y, float s) {
-		super(x, y, s);
+		/* you need to adjust the dimensions (Width & Height) of the object 
+		 * in proportion to the size of the corresponding sprite */
+		height = ((float) AssetsLoader.instance.teratorns.getRegionHeight()) / AssetsLoader.instance.teratorns.getRegionWidth();
 		interactionRect = new Rectangle(x, y, width, height);
 	}
 
@@ -44,20 +43,35 @@ public class TeratornsLogoObject extends GameObject implements Interactor<Rectan
 	@Override
 	public void update() {
 		// TODO Auto-generated method stub
-		
+	}
+	
+	@Override
+	public void setPosition(float x, float y) {
+		/* Remember that by moving the the rectangle of interaction (interactRect) 
+		 * should follow the movement */
+		super.setPosition(x, y);
+		interactionRect.setPosition(x, y);
+	}
+	
+	@Override
+	public void setPosition(Vector2 pos) {
+		super.setPosition(pos);
+		interactionRect.setPosition(pos);
 	}
 
 	@Override
 	public void draw() {
 		GameRenderer.instance.spriteRenderer.draw(AssetsLoader.instance.teratorns, 
-												  position.x, position.y, 
-												  width, height);
+												  position.x , position.y , 
+												  width /2   , height /2  ,
+												  width      , height     ,
+												  1          , 1          ,
+												  rotation);
 	}
 	
 	@Override
 	public void setScale(float scl) {
 		super.setScale(scl);
-		
 		interactionRect.setSize(width, height);
 	}
 }

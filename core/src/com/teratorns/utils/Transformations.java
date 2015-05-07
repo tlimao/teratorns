@@ -5,6 +5,7 @@ import com.teratorns.helpers.CameraHelper;
 
 public abstract class Transformations {
 
+	// these constants inform ratio viewport and the actual size of the device screen
 	private static float factor_X_screenToViewport = Constants.viewportWidth / Constants.windowWidth;
 	private static float factor_Y_screenToViewport = Constants.viewportHeight / Constants.windowHeight;
 	private static Vector2 viewport_half = new Vector2(Constants.viewportWidth / 2, Constants.viewportHeight / 2);
@@ -33,6 +34,7 @@ public abstract class Transformations {
 		return viewportToWorld(screenToViewport(sP));
 	}
 	
+	/** This method recalculates the constants that inform ratio viewport and the actual size of the device screen */
 	public static void refactor() {
 		factor_X_screenToViewport = Constants.viewportWidth / Constants.windowWidth;
 		factor_Y_screenToViewport = Constants.viewportHeight / Constants.windowHeight;

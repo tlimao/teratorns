@@ -4,11 +4,11 @@ import com.badlogic.gdx.Gdx;
 
 public abstract class Constants {
 	
-	public static int windowWidth = 800;
-	public static int windowHeight = 500;
+	public static int windowWidth;
+	public static int windowHeight;
 	
 	public static float aspectRatio = ((float) windowHeight) / windowWidth;
-	
+	// by default viewport is ... but you can adjust to your needs
 	public static float viewportWidth = 10;
 	public static float viewportHeight = viewportWidth * aspectRatio;
 	
@@ -19,19 +19,22 @@ public abstract class Constants {
 		readjustViewport();
 	}
 	
+	/** This method adjusts the window size in accordance with the actual size of the device screen */
 	public static void recalculateParameters() {
 
 		switch(Gdx.app.getType()) {
+			// In Android
 			case Android:
 				windowWidth = Gdx.graphics.getWidth();
 				windowHeight = Gdx.graphics.getHeight();
-				
+			
+			// Other Devices (browser, desktop, ...)	
 			default:
 				windowWidth = (int) (Gdx.graphics.getWidth() * 0.75f);
 				windowHeight = (int) (Gdx.graphics.getHeight() * 0.75f);
 				break;
 		}
-		
+		// The aspect ratio is function of real size of screen
 		aspectRatio = ((float) windowHeight) / windowWidth;
 		readjustViewport();
 	}

@@ -3,7 +3,6 @@ package com.teratorns;
 import com.badlogic.gdx.Game;
 import com.teratorns.assets.AssetsLoader;
 import com.teratorns.screens.GameScreen;
-import com.teratorns.screens.LinesGameScreen;
 
 public class GameRun extends Game {
 
@@ -12,7 +11,7 @@ public class GameRun extends Game {
 		// Load assets
 		System.out.println("Loading assets ...");
 		AssetsLoader.instance.loadAssets();
-		setScreen(new LinesGameScreen());
+		setScreen(new GameScreen());
 	}
 	
 	@Override

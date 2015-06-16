@@ -1,6 +1,8 @@
 package com.teratorns.gui;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.teratorns.assets.AssetsLoader;
 import com.teratorns.game.GameRenderer;
@@ -47,5 +49,10 @@ public class TextButton extends ButtonDecorator {
 	
 	public void setScale(float scale) {
 		textScale = scale;
+	}
+	
+	@Override
+	public boolean isTouched(Rectangle obj) {
+		return super.isTouched(obj);
 	}
 }

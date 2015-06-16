@@ -11,7 +11,7 @@ public class BaseButton extends Button {
 	
 	public BaseButton(float x, float y, float w, float h) {
 		super(x, y, w, h);
-		baseColor = Color.GREEN;
+		baseColor = Color.WHITE;
 	}
 
 	@Override

@@ -51,7 +51,7 @@ public abstract class Container implements GuiElement, Interactor<Rectangle> {
 		if (align.equals(ContainerAlignment.HORIZONTAL)) {
 			freePosition.x = element.getPosition().x + element.getWidth() + padding.x;
 			if (Math.abs(freePosition.x - position.x) >= width) {
-				setWidth(Math.abs(freePosition.x - position.x));
+				setWidth(Math.abs(freePosition.x - position.x) + padding.x);
 			}
 			float ly = Math.abs(element.getPosition().y + element.getHeight() + padding.y - position.y);
 			if (ly >= height) {

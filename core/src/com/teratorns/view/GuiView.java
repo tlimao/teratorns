@@ -14,7 +14,7 @@ public class GuiView extends View {
 		this.gameGui = gameGui;
 		
 		addLayer(new GuiLayer());
-		addLayer(new GuiInteraction());
+		//addLayer(new GuiInteraction());
 	}
 	
 	private class GuiLayer extends Layer {

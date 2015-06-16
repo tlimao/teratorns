@@ -11,6 +11,13 @@ public abstract class Constants {
 	// by default viewport is ... but you can adjust to your needs
 	public static float viewportWidth = 10;
 	public static float viewportHeight = viewportWidth * aspectRatio;
+	// Default for GUI
+	public static String BASE_COLOR = "gui/base/base_color.png";
+	
+	public static String KENNEY_BASE_FONT = "fnt/kenney.fnt";
+	public static String KENNEY_BASE_TX = "fnt/kenney.png";
+	
+	public static float INTERACTION_TIME = 0.1f;
 	
 	public static void setScreenDimensions(int width, int height) {
 		windowWidth = width;

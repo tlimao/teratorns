@@ -12,6 +12,8 @@ public class AssetsLoader {
 	// Singleton
 	public static AssetsLoader instance = new AssetsLoader();
 	
+	// Fotos
+	public TextureRegion travel;
 	public TextureRegion teratorns;
 	public Sound click;
 
@@ -42,6 +44,11 @@ public class AssetsLoader {
 		txTeratorns.setFilter(TextureFilter.Linear, TextureFilter.Linear);
 		teratorns = new TextureRegion(txTeratorns);
 		teratorns.flip(false, true);
+		
+		Texture txTravel = new Texture(Gdx.files.internal("travel.jpg"));
+		txTravel.setFilter(TextureFilter.Linear, TextureFilter.Linear);
+		travel = new TextureRegion(txTravel);
+		travel.flip(false, true);
 		
 		click = Gdx.audio.newSound(Gdx.files.internal("click.mp3"));
 	}

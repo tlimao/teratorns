@@ -44,11 +44,11 @@ public class InteractionHelper {
 		
 		interactRect.setPosition(lastClickedPosition);
 
-		Array<GameObject> worldObjects = gameWorld.getWorldObjects();
+		/*Array<GameObject> worldObjects = gameWorld.getWorldObjects();
 		
 		for (GameObject obj : worldObjects) {
 			((Interactor<Rectangle>) obj).isTouched(interactRect);
-		}
+		}*/
 	}
 	
 	public Vector2 getLastClickPosition() {

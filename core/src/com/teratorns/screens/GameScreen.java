@@ -40,7 +40,7 @@ public class GameScreen implements Screen {
 		Gdx.input.setInputProcessor(inputHelper);
 		
 		ViewManager.instance.addView(new GuiView(gameGui));
-		ViewManager.instance.addView(new TeratornsView(gameWorld));
+		//ViewManager.instance.addView(new TeratornsView(gameWorld));
 		ViewManager.instance.addView(new InteractionView(interactionHelper));
 	}
 

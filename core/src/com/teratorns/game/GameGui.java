@@ -1,6 +1,5 @@
 package com.teratorns.game;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.utils.Array;
@@ -13,7 +12,6 @@ import com.teratorns.gui.ImageButton;
 import com.teratorns.gui.TextButton;
 import com.teratorns.interaction.ActionListener;
 import com.teratorns.interaction.Interactor;
-import com.teratorns.utils.Constants;
 
 public class GameGui implements Interactor<Rectangle> {
 	
@@ -57,6 +55,7 @@ public class GameGui implements Interactor<Rectangle> {
 		container1.setPadding(20, 20);
 		BaseContainer container2 = new BaseContainer(0,0);
 		container2.setPadding(20, 20);
+		container2.setColor(Color.DARK_GRAY);
 		BaseContainer container3 = new BaseContainer(0,0);
 		container3.setPadding(20, 20);
 		container3.setAlignment(ContainerAlignment.VERTICAL);
@@ -65,8 +64,7 @@ public class GameGui implements Interactor<Rectangle> {
 		container4.setAlignment(ContainerAlignment.VERTICAL);
 		
 		ImageButton button1 = new ImageButton(AssetsLoader.instance.travel);
-		button1.setWidth(200);
-		button1.setHeight(200);
+		button1.setDimensions(200, 200);
 		/*TextButton button1 = new TextButton(new BaseButton(0, 0, 200, 200));
 		button1.setText("  C");
 		button1.setColor(Color.CYAN);*/
@@ -74,7 +72,7 @@ public class GameGui implements Interactor<Rectangle> {
 			
 			@Override
 			public void doAction() {
-				AssetsLoader.instance.click.play(5f);
+				AssetsLoader.instance.robertoRibeiro.play();
 			}
 		});
 		
@@ -102,9 +100,12 @@ public class GameGui implements Interactor<Rectangle> {
 		button7.setText("  N");
 		button7.setColor(Color.CYAN);
 		
-		TextButton button8 = new TextButton(new BaseButton(50, 40, 110, 110));
+		/*TextButton button8 = new TextButton(new BaseButton(50, 40, 110, 110));
 		button8.setText("  A");
-		button8.setColor(Color.CYAN);
+		button8.setColor(Color.CYAN);*/
+		ImageButton button8 = new ImageButton(AssetsLoader.instance.f5);
+		button8.setDimensions(110, 110);
+		button8.setPosition(50, 40);
 		
 		TextButton button9 = new TextButton(new BaseButton(20, 1, 920, 68));
 		button9.setText("ITABAIANA");

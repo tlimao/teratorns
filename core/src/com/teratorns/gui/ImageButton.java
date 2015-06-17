@@ -62,6 +62,25 @@ public class ImageButton extends ButtonDecorator {
 	}
 	
 	@Override
+	public void setWidth(float width) {
+		super.setWidth(width);
+		imageTextureWidth = width;
+	}
+	
+	@Override
+	public void setHeight(float height) {
+		super.setHeight(height);
+		imageTextureHeight = height;
+	}
+	
+	@Override
+	public void setDimensions(float width, float height) {
+		super.setDimensions(width, height);
+		imageTextureWidth = width;
+		imageTextureHeight = height;
+	}
+	
+	@Override
 	public boolean isTouched(Rectangle obj) {
 		clikedFlag = super.isTouched(obj);
 		touchStart = GameClock.instance.getRunTime();

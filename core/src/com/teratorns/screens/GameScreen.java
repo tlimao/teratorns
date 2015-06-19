@@ -41,7 +41,7 @@ public class GameScreen implements Screen {
 		
 		ViewManager.instance.addView(new GuiView(gameGui));
 		//ViewManager.instance.addView(new TeratornsView(gameWorld));
-		ViewManager.instance.addView(new InteractionView(interactionHelper));
+		//ViewManager.instance.addView(new InteractionView(interactionHelper));
 	}
 
 	@Override

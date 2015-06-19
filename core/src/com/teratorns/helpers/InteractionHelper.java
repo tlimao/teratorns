@@ -33,10 +33,10 @@ public class InteractionHelper {
 	}
 	
 	public void touchIn(int sX, int sY) {
-		// Screen System
+		// Screen System (Pixels)
 		interactRect.setPosition(new Vector2(sX, sY));
 		
-		// For GUI elements consider the screen coordinate system in pixels
+		// For GUI elements consider the Screen System (Pixels)
 		gameGui.isTouched(interactRect);
 		
 		// World System

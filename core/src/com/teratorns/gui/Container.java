@@ -73,20 +73,26 @@ public abstract class Container implements GuiElement, Interactor<Rectangle> {
 	@SuppressWarnings("unchecked")
 	@Override
 	public boolean isTouched(Rectangle obj) {
-		boolean flag = interactionRect.overlaps(obj);
-		
-		if (flag) {
-			for (GuiElement element : guiElements) {
-				if (element instanceof Interactor<?>) {
-					if (((Interactor<Rectangle>) element).isTouched(obj))
-					{
-						break;
+		if (isVisible()) {
+			boolean flag = interactionRect.overlaps(obj);
+			
+			if (flag) {
+				for (GuiElement element : guiElements) {
+					if (element instanceof Interactor<?>) {
+						if (((Interactor<Rectangle>) element).isTouched(obj))
+						{
+							break;
+						}
 					}
 				}
 			}
+				
+			return flag;
 		}
-			
-		return flag;
+		
+		else {
+			return false;
+		}
 	}
 	
 	@Override

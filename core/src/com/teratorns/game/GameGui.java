@@ -47,90 +47,173 @@ public class GameGui implements Interactor<Rectangle> {
 	@Override
 	public void drawInteractor() {
 		// TODO Auto-generated method stub
-		
 	}
 	
 	private void createGui() {
-		BaseContainer container1 = new BaseContainer(0,0);
+		final BaseContainer container1 = new BaseContainer(0,0);
 		container1.setPadding(20, 20);
+		container1.setColor(0,0,0,0);
 		BaseContainer container2 = new BaseContainer(0,0);
 		container2.setPadding(20, 20);
-		container2.setColor(Color.DARK_GRAY);
+		container2.setColor(0,0,0,0);
 		BaseContainer container3 = new BaseContainer(0,0);
 		container3.setPadding(20, 20);
 		container3.setAlignment(ContainerAlignment.VERTICAL);
+		container3.setColor(0,0,0,0);
 		BaseContainer container4 = new BaseContainer(981,0);
 		container4.setPadding(74, 40);
 		container4.setAlignment(ContainerAlignment.VERTICAL);
+		container4.setColor(0,0,0,0);
 		
-		ImageButton button1 = new ImageButton(AssetsLoader.instance.travel);
+		final ImageButton button1 = new ImageButton(AssetsLoader.instance.lC);
 		button1.setDimensions(200, 200);
-		/*TextButton button1 = new TextButton(new BaseButton(0, 0, 200, 200));
-		button1.setText("  C");
-		button1.setColor(Color.CYAN);*/
+		button1.setPosition(0, 20);
 		button1.setActionListener(new ActionListener() {
 			
 			@Override
 			public void doAction() {
-				AssetsLoader.instance.robertoRibeiro.play();
+				stopMusic();
+				button1.setImage(AssetsLoader.instance.carol1);
+				AssetsLoader.instance.roberto.play();
 			}
 		});
 		
-		TextButton button2 = new TextButton(new BaseButton(10, 100, 150, 150));
-		button2.setText("  A");
-		button2.setColor(Color.CYAN);
+		final ImageButton button2 = new ImageButton(AssetsLoader.instance.lA);
+		button2.setDimensions(110, 300);
+		button2.setPosition(10, 20);
+		button2.setActionListener(new ActionListener() {
+					
+			@Override
+			public void doAction() {
+				button2.setImage(AssetsLoader.instance.carol3);
+			}
+		});
 		
-		TextButton button3 = new TextButton(new BaseButton(0, 0, 100, 100));
-		button3.setText("  R");
-		button3.setColor(Color.CYAN);
+		final ImageButton button3 = new ImageButton(AssetsLoader.instance.lR);
+		button3.setDimensions(100, 100);
+		button3.setActionListener(new ActionListener() {
+			
+			@Override
+			public void doAction() {
+				stopMusic();
+				button3.setImage(AssetsLoader.instance.carol2);
+				AssetsLoader.instance.elis.play();
+			}
+		});
 		
-		TextButton button4 = new TextButton(new BaseButton(60, 20, 300, 300));
-		button4.setText("  O");
-		button4.setColor(Color.CYAN);
+		final ImageButton button4 = new ImageButton(AssetsLoader.instance.lO);
+		button4.setDimensions(300, 300);
+		button4.setPosition(60, 20);
+		button4.setActionListener(new ActionListener() {
+			
+			@Override
+			public void doAction() {
+				button4.setImage(AssetsLoader.instance.carol4);
+			}
+		});
 		
-		TextButton button5 = new TextButton(new BaseButton(20, 0, 250, 250));
-		button5.setText("  L");
-		button5.setColor(Color.CYAN);
+		final ImageButton button5 = new ImageButton(AssetsLoader.instance.lL);
+		button5.setDimensions(168, 300);
+		button5.setPosition(0, 0);
+		button5.setActionListener(new ActionListener() {
+			
+			@Override
+			public void doAction() {
+				button5.setImage(AssetsLoader.instance.carol8);
+			}
+		});
 		
-		TextButton button6 = new TextButton(new BaseButton(50, 50, 100, 100));
-		button6.setText("  I");
-		button6.setColor(Color.CYAN);
+		final ImageButton button6 = new ImageButton(AssetsLoader.instance.lI);
+		button6.setDimensions(100, 100);
+		button6.setPosition(50, 50);
+		button6.setActionListener(new ActionListener() {
+			
+			@Override
+			public void doAction() {
+				button6.setImage(AssetsLoader.instance.carol6);
+			}
+		});
 		
-		TextButton button7 = new TextButton(new BaseButton(20, 0, 200, 200));
-		button7.setText("  N");
-		button7.setColor(Color.CYAN);
+		final ImageButton button7 = new ImageButton(AssetsLoader.instance.lN);
+		button7.setDimensions(200, 200);
+		button7.setPosition(20, 0);
+		button7.setActionListener(new ActionListener() {
+			
+			@Override
+			public void doAction() {
+				button7.setImage(AssetsLoader.instance.carol7);
+			}
+		});
 		
-		/*TextButton button8 = new TextButton(new BaseButton(50, 40, 110, 110));
-		button8.setText("  A");
-		button8.setColor(Color.CYAN);*/
-		ImageButton button8 = new ImageButton(AssetsLoader.instance.f5);
-		button8.setDimensions(110, 110);
-		button8.setPosition(50, 40);
+		final ImageButton button8 = new ImageButton(AssetsLoader.instance.lA);
+		button8.setDimensions(150, 312);
+		button8.setPosition(60, 10);
+		button8.setActionListener(new ActionListener() {
+			
+			@Override
+			public void doAction() {
+				button8.setImage(AssetsLoader.instance.carol5);
+			}
+		});
 		
 		TextButton button9 = new TextButton(new BaseButton(20, 1, 920, 68));
 		button9.setText("ITABAIANA");
 		button9.setColor(Color.CYAN);
 		
-		TextButton button10 = new TextButton(new BaseButton(0, 0, 150, 150));
-		button10.setText("Elis");
-		button10.setColor(Color.CYAN);
+		final ImageButton button10 = new ImageButton(AssetsLoader.instance.song);
+		button10.setDimensions(150, 150);
+		button10.setActionListener(new ActionListener() {
+			
+			@Override
+			public void doAction() {
+				stopMusic();
+				button10.setImage(AssetsLoader.instance.elisCd);
+				AssetsLoader.instance.elis.play();
+			}
+		});
 		
-		TextButton button11 = new TextButton(new BaseButton(0, 0, 150, 150));
-		button11.setText("Chico B.");
-		button11.setColor(Color.CYAN);
+		final ImageButton button11 = new ImageButton(AssetsLoader.instance.song);
+		button11.setDimensions(150, 150);
+		button11.setActionListener(new ActionListener() {
+			
+			@Override
+			public void doAction() {
+				stopMusic();
+				button11.setImage(AssetsLoader.instance.robertoCd);
+				AssetsLoader.instance.roberto.play();
+			}
+		});
 		
-		TextButton button12 = new TextButton(new BaseButton(0, 0, 150, 150));
-		button12.setText("Roberto R.");
-		button12.setColor(Color.CYAN);
+		final ImageButton button12 = new ImageButton(AssetsLoader.instance.song);
+		button12.setDimensions(150, 150);
+		button12.setActionListener(new ActionListener() {
+			
+			@Override
+			public void doAction() {
+				stopMusic();
+				button12.setImage(AssetsLoader.instance.chicoCd);
+				AssetsLoader.instance.chico.play();
+			}
+		});
 		
-		TextButton button13 = new TextButton(new BaseButton(0, 0, 150, 150));
-		button13.setText("Alcione");
-		button13.setColor(Color.CYAN);
+		final ImageButton button13 = new ImageButton(AssetsLoader.instance.song);
+		button13.setDimensions(150, 150);
+		button13.setActionListener(new ActionListener() {
+			
+			@Override
+			public void doAction() {
+				stopMusic();
+				container1.setVisible(true);
+				button13.setImage(AssetsLoader.instance.miltonCd);
+				AssetsLoader.instance.milton.play();
+			}
+		});
 		
 		container1.addGuiElement(button1);
 		container1.addGuiElement(button2);
 		container1.addGuiElement(button3);
 		container1.addGuiElement(button4);
+		container1.setVisible(false);
 		container2.addGuiElement(button5);
 		container2.addGuiElement(button6);
 		container2.addGuiElement(button7);
@@ -138,7 +221,7 @@ public class GameGui implements Interactor<Rectangle> {
 		
 		container3.addGuiElement(container1);
 		container3.addGuiElement(container2);
-		container3.addGuiElement(button9);
+		//container3.addGuiElement(button9);
 		
 		container4.addGuiElement(button10);
 		container4.addGuiElement(button11);
@@ -147,5 +230,12 @@ public class GameGui implements Interactor<Rectangle> {
 		
 		guiElements.add(container3);
 		guiElements.add(container4);
+	}
+	
+	private void stopMusic() {
+		AssetsLoader.instance.milton.stop();
+		AssetsLoader.instance.elis.stop();
+		AssetsLoader.instance.roberto.stop();
+		AssetsLoader.instance.chico.stop();
 	}
 }

@@ -47,9 +47,9 @@ public class ImageButton extends ButtonDecorator {
 
 	public void setImage(TextureRegion image) {
 		this.image = image;
-		imageTextureWidth = image.getRegionWidth();
-		imageTextureHeight = image.getRegionHeight();
-		decoratedButton.setDimensions(imageTextureWidth, imageTextureHeight);
+		//imageTextureWidth = image.getRegionWidth();
+		//imageTextureHeight = image.getRegionHeight();
+		//decoratedButton.setDimensions(imageTextureWidth, imageTextureHeight);
 	}
 	
 	public void setScale(float imageScale) {

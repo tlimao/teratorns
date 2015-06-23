@@ -29,6 +29,9 @@ public class AssetsLoader {
 	public TextureRegion carol7;
 	public TextureRegion carol8;
 	
+	public TextureRegion txt1;
+	public TextureRegion txt2;
+	
 	public TextureRegion lC;
 	public TextureRegion lA;
 	public TextureRegion lR;
@@ -194,6 +197,16 @@ public class AssetsLoader {
 		txlN.setFilter(TextureFilter.Linear, TextureFilter.Linear);
 		lN = new TextureRegion(txlN);
 		lN.flip(false, true);
+		
+		Texture txTxt1 = new Texture(Gdx.files.internal("text1.png"));
+		txTxt1.setFilter(TextureFilter.Linear, TextureFilter.Linear);
+		txt1 = new TextureRegion(txTxt1);
+		txt1.flip(false, true);
+		
+		Texture txTxt2 = new Texture(Gdx.files.internal("text2.png"));
+		txTxt2.setFilter(TextureFilter.Linear, TextureFilter.Linear);
+		txt2 = new TextureRegion(txTxt2);
+		txt2.flip(false, true);
 		
 		click = Gdx.audio.newSound(Gdx.files.internal("click.mp3"));
 		

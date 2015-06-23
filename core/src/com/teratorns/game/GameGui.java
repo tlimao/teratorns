@@ -50,17 +50,18 @@ public class GameGui implements Interactor<Rectangle> {
 	}
 	
 	private void createGui() {
+		AssetsLoader.instance.elis.play();
 		final BaseContainer container1 = new BaseContainer(0,0);
 		container1.setPadding(20, 20);
 		container1.setColor(0,0,0,0);
 		BaseContainer container2 = new BaseContainer(0,0);
 		container2.setPadding(20, 20);
 		container2.setColor(0,0,0,0);
-		BaseContainer container3 = new BaseContainer(0,0);
+		final BaseContainer container3 = new BaseContainer(0,0);
 		container3.setPadding(20, 20);
 		container3.setAlignment(ContainerAlignment.VERTICAL);
 		container3.setColor(0,0,0,0);
-		BaseContainer container4 = new BaseContainer(981,0);
+		final BaseContainer container4 = new BaseContainer(981,0);
 		container4.setPadding(74, 40);
 		container4.setAlignment(ContainerAlignment.VERTICAL);
 		container4.setColor(0,0,0,0);
@@ -213,7 +214,6 @@ public class GameGui implements Interactor<Rectangle> {
 		container1.addGuiElement(button2);
 		container1.addGuiElement(button3);
 		container1.addGuiElement(button4);
-		container1.setVisible(false);
 		container2.addGuiElement(button5);
 		container2.addGuiElement(button6);
 		container2.addGuiElement(button7);
@@ -228,8 +228,33 @@ public class GameGui implements Interactor<Rectangle> {
 		container4.addGuiElement(button12);
 		container4.addGuiElement(button13);
 		
-		guiElements.add(container3);
-		guiElements.add(container4);
+		//guiElements.add(container3);
+		//guiElements.add(container4);
+		
+		final ImageButton button0 = new ImageButton(AssetsLoader.instance.txt1);
+		button0.setDimensions(328, 37);
+		button0.setScale(2f);
+		button0.setPosition(270, 300);
+		button0.setActionListener(new ActionListener() {
+			int count = 0;
+			
+			@Override
+			public void doAction() {
+				if (count == 0) {
+					button0.setScale(1.25f);
+					button0.setImage(AssetsLoader.instance.txt2);
+					button0.setDimensions(862, 273);
+					button0.setPosition(125, 125);
+					count++;
+				} else {
+					guiElements.removeIndex(guiElements.size - 1);
+					guiElements.add(container3);
+					guiElements.add(container4);
+				}
+			}
+		}); 
+		
+		guiElements.add(button0);
 	}
 	
 	private void stopMusic() {

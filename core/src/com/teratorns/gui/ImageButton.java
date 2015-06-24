@@ -36,6 +36,7 @@ public class ImageButton extends ButtonDecorator {
 				clikedFlag = false;
 			}
 		}
+		
 		GameRenderer.instance.spriteRenderer.draw(image,
 												  pos.x, pos.y,
 												  0, 0,

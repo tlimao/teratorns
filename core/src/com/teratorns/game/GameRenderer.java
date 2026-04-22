@@ -8,6 +8,7 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.teratorns.helpers.CameraHelper;
 import com.teratorns.utils.Constants;
+import com.teratorns.utils.Transformations;
 import com.teratorns.view.View;
 import com.teratorns.view.ViewManager;
 
@@ -24,10 +25,19 @@ public class GameRenderer {
 	
 	private GameRenderer() {
 		System.out.println("Renderer Created");
-		
+
+		// Tornar dimensões da janela dinâmicas com base no tamanho atual da tela
+		if (Gdx.graphics != null) {
+			Constants.windowWidth = Gdx.graphics.getWidth();
+			Constants.windowHeight = Gdx.graphics.getHeight();
+			Constants.aspectRatio = ((float) Constants.windowHeight) / Constants.windowWidth;
+			Constants.viewportHeight = Constants.viewportWidth * Constants.aspectRatio;
+			Transformations.refactor();
+		}
+
 		camera = new OrthographicCamera();
 		camera.setToOrtho(true, Constants.viewportWidth, Constants.viewportHeight);
-		
+
 		guiCamera = new OrthographicCamera();
 		guiCamera.setToOrtho(true, Constants.windowWidth, Constants.windowHeight);
 		

@@ -4,6 +4,7 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.teratorns.assets.AssetsLoader;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.teratorns.game.GameClock;
 import com.teratorns.game.GameRenderer;
 import com.teratorns.interaction.Interactor;
@@ -13,6 +14,9 @@ public class Bird extends GameObject implements Interactor<Rectangle> {
 	
 	private Vector2 pBest;
 	private Swarm swarm;
+
+	// Fração do viewport usada para definir o tamanho visual do pássaro (ajustar conforme necessário)
+	private static final float BOID_VIEWPORT_FRACTION = 0.06f; // 6% da altura do viewport
 	
 	public Bird(float x, float y) {
 		super(x, y);
@@ -27,13 +31,13 @@ public class Bird extends GameObject implements Interactor<Rectangle> {
 		if (fitness > SwarmConstants.threshold) {
 			Vector2 v1, v2, v3, v4;
 			
-			// In�rcia
+			// In�rcia
 			v1 = velocity.cpy();
 			
-			// Influ�ncia Pr�pria
+			// Influ�ncia Pr�pria
 			v2 = getPbest().sub(position).scl(SwarmConstants.c1);
 			
-			// Influ�ncia do Bando
+			// Influ�ncia do Bando
 			Vector2 lBest = pBest.cpy();
 			boolean hasNeighbours = false;
 			
@@ -48,7 +52,7 @@ public class Bird extends GameObject implements Interactor<Rectangle> {
 			
 			v3 = (SwarmConstants.raio > 0 && hasNeighbours) ? lBest.sub(position).scl(SwarmConstants.c2) : new Vector2(0, 0);
 
-			// Fator Aleat�rio
+			// Fator Aleat�rio
 			v4 = new Vector2(0, 0);
 			v4.add(v2.cpy().scl((float) -Math.random()));
 			v4.add(v3.cpy().scl((float) -Math.random()));
@@ -88,21 +92,37 @@ public class Bird extends GameObject implements Interactor<Rectangle> {
 
 	@Override
 	public void draw() {
-		GameRenderer.instance.spriteRenderer.setColor(0, 0, 0, 1f);
+		// Calcular tamanhos em unidades do viewport (independente de pixels)
+		TextureRegion boidTx = AssetsLoader.instance.boid;
+		float regionW = boidTx.getRegionWidth();
+		float regionH = boidTx.getRegionHeight();
+
+		// Fração do viewport que o pássaro deve ocupar (tuneable)
+		float desiredHeightWorld = Constants.viewportHeight * BOID_VIEWPORT_FRACTION;
+		float desiredWidthWorld = desiredHeightWorld * (regionW / regionH);
+
+		float drawScaleX = desiredWidthWorld / width; // width normalmente 1
+		float drawScaleY = desiredHeightWorld / height;
+
+		// Círculo: use SwarmConstants.raio se disponível, senão derive a partir do boid
+		float circleRadiusWorld = (SwarmConstants.raio > 0) ? SwarmConstants.raio : (desiredWidthWorld / 2f);
+		float circleScaleX = (2 * circleRadiusWorld) / width;
+		float circleScaleY = (2 * circleRadiusWorld) / height;
+
 		GameRenderer.instance.spriteRenderer.setColor(0, 0, 0, 0.3f);
 		GameRenderer.instance.spriteRenderer.draw(AssetsLoader.instance.circle,
-												  position.x - width / 2, position.y - height / 2,
-												  width / 2 , height / 2,
-												  width     , height,
-												  2 * SwarmConstants.raio , 2 * SwarmConstants.raio,
-												  0);
+				  position.x - width / 2, position.y - height / 2,
+				  width / 2 , height / 2,
+				  width     , height,
+				  circleScaleX , circleScaleY,
+				  0);
 		GameRenderer.instance.spriteRenderer.setColor(0, 0, 0, 0.3f);
 		GameRenderer.instance.spriteRenderer.draw(AssetsLoader.instance.boid,
-												  position.x - width / 2, position.y - height / 2,
-												  width / 2 , height / 2,
-												  width     , height,
-												  0.5f      , 0.5f,
-												  velocity.angle());
+				  position.x - width / 2, position.y - height / 2,
+				  width / 2 , height / 2,
+				  width     , height,
+				  drawScaleX, drawScaleY,
+				  velocity.angle());
 		GameRenderer.instance.spriteRenderer.setColor(Color.WHITE);
 	}
 

@@ -25,13 +25,13 @@ public class Bird extends GameObject implements Interactor<Rectangle> {
 		if (fitness > SwarmConstants.threshold) {
 			Vector2 v1, v2, v3, v4;
 			
-			// Inércia
+			// InÃ©rcia
 			v1 = velocity.cpy();
 			
-			// Influência Própria
+			// InfluÃªncia PrÃ³pria
 			v2 = getPbest().sub(position).scl(SwarmConstants.c1);
 			
-			// Influência do Bando
+			// InfluÃªncia do Bando
 			Vector2 lBest = pBest.cpy();
 			
 			for (Bird b : swarm.getParticles()) {
@@ -44,7 +44,7 @@ public class Bird extends GameObject implements Interactor<Rectangle> {
 			
 			v3 = (SwarmConstants.raio > 0) ? lBest.sub(position).scl(SwarmConstants.c2) : new Vector2(0, 0);
 
-			// Fator Aleatório
+			// Fator AleatÃ³rio
 			v4 = new Vector2(0, 0);
 			v4.add(v2.cpy().scl((float) -Math.random()));
 			v4.add(v3.cpy().scl((float) -Math.random()));
@@ -88,7 +88,7 @@ public class Bird extends GameObject implements Interactor<Rectangle> {
 		
 		GameRenderer.instance.spriteRenderer.setColor(0, 0, 0, 0.3f);
 		
-		GameRenderer.instance.spriteRenderer.draw(AssetsLoader.instance.boid,
+		GameRenderer.instance.spriteRenderer.draw(AssetsLoader.instance.txa,
 												  position.x - width / 2, position.y - height / 2,
 												  width / 2 , height / 2,
 												  width     , height,
